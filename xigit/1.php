@@ -1,0 +1,3 @@
+<?php
+	$nama = "Bayu Nugroho";
+?>

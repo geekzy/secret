@@ -1,0 +1,1 @@
+<? echo "Anda sudah memilih : " . $_REQUEST['pilihan']; ?>

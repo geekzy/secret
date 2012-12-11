@@ -1,0 +1,1230 @@
+<?php
+
+	require 'init.php';
+	require 'auth.php';
+
+if (class_exists('sk_controller')) {
+	// do nothing
+} else if (defined('CLASS_sk_CONTROLLER')) {
+	// do nothing
+} else {
+	define('CLASS_sk_CONTROLLER', TRUE);
+
+include_once 'class.sk.inc.php';
+class sk_controller extends depkes2_manager {
+	var $sk_label;
+	var $optional_arr;
+	function sk_controller() {
+		$this->sk_label = array (
+			'id_sk' => 'Id Surat Keputusan',
+			'no_sk' => 'Nomor Surat Keputusan',
+			'id_cek_1' => 'Nama Pemohon',
+			'nama' => 'Pengesah',
+			'nip' => 'NIP pengesah',
+			'izin_produksi' => 'Izin Produksi',
+			'nama_pendaftar' => 'Nama Pemohon',
+			'insert_by' => 'Insert By',
+			'date_insert' => 'Date Insert'
+		);
+		$this->depkes2_manager();
+		$this->optional_arr = array (
+			'id_sk' => TRUE,
+			'sk' => FALSE,
+			'keputusan' => FALSE,
+			'insert_by' => TRUE,
+			'date_insert' => TRUE// could be toupper, tolower, protect, user_defined, user_rules
+		);
+	}
+
+
+	function id_cek_1_form(&$config) {
+                eval($this->load_config);
+                $selected = $value_arr['id_cek_1'];
+
+		#include_once 'class.cek_1_alkes.inc.php';
+		$fk_sql = ''.
+		'SELECT
+			cek.id_cek_1 as skey,
+			tt.urut_no_tt as svalue,
+			pendaftar.nama_pendaftar as svalue2
+		FROM
+			'.$GLOBALS[my_cek].' cek
+			[sk]
+			LEFT JOIN '.$GLOBALS[my_tt].' tt ON (tt.no_tt = cek.no_tt)
+			LEFT JOIN '.$GLOBALS[my_pendaftar].' pendaftar ON (pendaftar.kode_pendaftar = tt.kode_pendaftar)
+			LEFT JOIN '.$GLOBALS[my_sp].' sp ON (sp.id_cek_1 = cek.id_cek_1)
+		WHERE
+			[spsk]
+			AND (cek.status_direktur = \'0\' OR cek.status_kasubdit = \'0\')
+		ORDER BY
+			cek.date_insert
+			';
+		if($_GET['action']=='edit'){
+			$fk_sql = str_replace('[sk]', '', $fk_sql);
+			$fk_sql = str_replace('[spsk]', 'sp.id_cek_1 IS NULL', $fk_sql);
+		} else {
+			$fk_sql = str_replace('[sk]', 'LEFT JOIN '.$GLOBALS[my_table].' sk ON (sk.id_cek_1 = cek.id_cek_1)', $fk_sql);
+			$fk_sql = str_replace('[spsk]', '(sk.id_cek_1 IS NULL AND sp.id_cek_1 IS NULL)', $fk_sql);
+		}
+
+		#$result = cek_1_alkes::select($fk_sql);
+		global $adodb; $rs = $adodb->Execute($fk_sql);
+		$result = $rs->GetRows();
+		$opener_sql = htmlentities($fk_sql);
+		$opener_sql = str_replace("\n", " ", $opener_sql);
+		$opener_var = htmlentities('id_cek_1');
+		$default_value = array(
+			array (
+				'skey' => '',
+				'svalue' => __('No Tanda Terima - ').' '.$this->sk_label['id_cek_1']
+			)
+		);
+		$result = array_merge($default_value, $result);
+		$optional_arr['id_cek_1'] = 'user_defined';
+		$value_arr['id_cek_1'] = $this->select_form('id_cek_1', $result, $selected);
+		$optional_arr['id_cek_1_rule'] = "\n".
+		"       if(theform.id_cek_1.value == '')\n".
+		"       {\n".
+		"               alert('Field ".$label_arr['id_cek_1']." ".__('empty').".');\n".
+		"               theform.id_cek_1.focus();\n".
+		"               form_submitted=false;\n".
+		"               return false;\n".
+		"       }\n";
+
+
+	}
+
+
+	// create add sk form
+	function add_sk_form() {
+//		if (! $this->get_permission('fill_this')) return $this->intruder();
+		global ${$GLOBALS['session_vars']}, ${$GLOBALS['get_vars']};
+		#$field_arr = sk::get_field_set();
+
+                global $_SESSION, $_GET, $adodb, $ses;
+                $record = $_GET;
+                $label_arr = $this->sk_label;
+                $optional_arr = $this->optional_arr;
+
+
+		include_once 'class.xform.inc.php';
+		$field_arr[] = xform::xf('id_sk','C','255');
+		$field_arr[] = xform::xf('no_sk','C','255');
+		$field_arr[] = xform::xf('id_cek_1','C','255');
+		$field_arr[] = xform::xf('nama','C','255');
+		$field_arr[] = xform::xf('nip','C','255');
+		$field_arr[] = xform::xf('insert_by','C','255');
+		$field_arr[] = xform::xf('date_insert','C','255');
+		$field_arr[] = xform::xf('izin_produksi','C','255');
+
+                $rs = $adodb->Execute("SELECT * FROM ".$GLOBALS[my_table]." sk WHERE id_sk='{$record['id_sk']}'");
+                if ($rs && ! $rs->EOF) {
+                        $value_arr = $rs->fields;
+                        $optional_arr['id_sk'] = 'protect';
+                        $mode = 'edit';
+                } else {
+                        $value_arr = array ();
+                        $mode = 'add';
+                }
+
+		$optional_arr['nama'] = 'protect';
+		$optional_arr['nip'] = 'protect';
+		if (! $value_arr['nama']) $value_arr['nama'] = "DRS. H. TATO SUPRAPTO BASIR, APT.MM.";
+		if (! $value_arr['nip']) $value_arr['nip'] = "140 086 626";
+
+		list($suf1, $suf2, $suf3) = split(" ", strtolower($GLOBALS[my_title]));
+		if ($suf2 == 'produksi') {
+		} else {
+			$optional_arr[izin_produksi] = TRUE;
+		}
+//		$value_arr = array ();
+		$optional_arr['keputusan'] = 'user_defined';
+		$value_arr['keputusan']= '<textarea rows="100" cols="75" name="keputusan" class="text"></textarea>';
+
+		eval($this->save_config);
+		$this->id_cek_1_form($config);
+		$this->slip_field($config,'izin_produksi','after','no_sk');
+
+                $label_arr['submit_val'] = "Submit";
+                $label_arr['form_extra']  = "<input type=hidden name=action     value='post$mode'>"; // default null
+                $label_arr['form_extra'] .= "<input type=hidden name=oldpkvalue value='{$record['id_sk']}'>";
+                $label_arr['form_title'] = "Form ".ucwords($mode)." Surat Keputusan ".$GLOBALS[my_title]."";
+                $label_arr['form_width'] = '100%';
+                $label_arr['form_name'] = 'theform';
+
+		if ($suf1 == 'adendum') {	
+			$optional_arr[izin_produksi] = TRUE;
+			$label_arr[no_sk] = 'Nomor Surat';
+		}
+
+
+
+		$_form = new form();
+		$_form->set_config(
+			array (
+				'field_arr'	=> $field_arr,
+				'label_arr'	=> $label_arr,
+				'value_arr'	=> $value_arr,
+				'optional_arr'	=> $optional_arr
+			)
+		);
+		return $_form->parse_field();
+	}
+
+	// create update sk form
+	function update_sk_form() {
+		return $this->add_sk_form();
+	}
+
+	// handle event add sk
+	function add_sk() {
+//		if (! $this->get_permission('fill_this')) return $this->intruder();
+		global ${$GLOBALS['post_vars']};
+
+		global $adodb;
+		$record = $_POST;
+		foreach ($record as $k => $v) $record[$k] = trim($v);
+
+                // add record
+                $rs = $adodb->Execute("SELECT * FROM ".$GLOBALS[my_table]." WHERE id_sk='".intval($record['oldpkvalue'])."'");
+                if ($rs && ! $rs->EOF) {
+                        $adodb->Execute($adodb->GetUpdateSQL($rs, $record, 1));
+                        $st = "Updated";
+                } else {
+                        $record['insert_by'] = $ses->loginid;
+                        $record['date_insert'] = time();
+                        $adodb->Execute($adodb->GetInsertSQL($rs, $record));
+                        $st = "Added";
+                }
+
+                $status = "Successfull $st SK ".$GLOBALS[my_title]." '<b>{$record['no_sk']}</b>'";
+                $this->log($status);
+
+                $_block = new block();
+                $_block->set_config('title', 'Status');
+                $_block->set_config('width', "90%");
+                $_block->parse(array("*".$status));
+                return $_block->get_str();
+	}
+
+	// handle event update sk
+	function update_sk() {
+		return $this->add_sk();
+	}
+
+	// handle delete sk
+	function delete_sk() {
+//		if (! $this->get_permission('fill_this')) return $this->intruder();
+		global ${$GLOBALS['get_vars']}, ${$GLOBALS['post_vars']};
+
+		global $adodb;
+		$query = "";
+		$query3 = "";
+		for ($i=0;$i<count(${$GLOBALS['post_vars']}['pk_str']);$i++) {
+			if ($query) $query .= " OR ";
+			if ($query3) $query3 .= " OR ";
+
+			$var_pie = explode("&", ${$GLOBALS['post_vars']}['pk_str'][$i]);
+			$query2 = "";
+			$query4 = "";
+			foreach ($var_pie as $key => $value) {
+				list($myvar, $myval) = explode("=", $value);
+				if ($query2) $query2 .= " AND ";
+				$query2 .= "$myvar='".urldecode($myval)."'";
+				if ($myvar=='fill_this') {
+					if ($query4) $query4 .= " AND ";
+					$query4 .= "$myvar='$myval'";
+				}
+			}
+			if ($query2) $query .= "($query2)";
+			if ($query4) $query3 .= "($query4)";
+		}
+
+
+		if ($query)
+			$success = $adodb->Execute("delete from ".$GLOBALS[my_table]." where ".$query);
+
+
+                if ($success){
+                        $status = '<font color=green><b>'.__('Successfull Deleted').'</b></font> '.
+                                'SK '.$GLOBALS[my_title].' <font color=red>'.$msg.'</font>';
+                } else {
+                        $GLOBALS['self_close_js'] = $adodb->ErrorMsg();
+                        $status = '<font color=red><b>'.__('Failed Deleted').'</b></font> '.
+                                'SK '.$GLOBALS[my_title].' <font color=red>'.$msg.'</font>';
+                }
+                $this->log($status);
+
+                $_block = new block();
+                $_block->set_config('title', ('Delete SK '.$GLOBALS[my_title].' Status'));
+                $_block->set_config('width', 595);
+                $_block->parse(array("*".$status));
+                return $_block->get_str();
+	}
+
+// pdf ada di sini ????
+
+	function view_sk_form() {
+//		if (! $this->get_permission('fill_this')) return $this->intruder();
+		global ${$GLOBALS['session_vars']}, ${$GLOBALS['get_vars']}, $adodb;
+		#$field_arr = sk::get_field_set();
+#$adodb->debug = 1;
+		$optional_arr = $this->optional_arr;
+		$optional_arr['id_sk'] = 'protect';
+
+		$record = array (
+			'id_sk' => ${$GLOBALS['get_vars']}['id_sk']
+		);
+		#$result = sk::get($record);
+
+		$value_arr = $result[0];
+		$label_arr = $this->sk_label;
+
+		// SK
+		$sqlA = "SELECT no_sk, id_cek_1 FROM ".$GLOBALS[my_table]." sk WHERE id_sk ='".$_GET['id_sk']."'";
+		$hasil=$adodb->Execute($sqlA);
+		WHILE(! $hasil->EOF){
+			$no_sk = $hasil->fields['no_sk'];
+			$id_cek_1 = $hasil->fields['id_cek_1'];
+			$hasil->MoveNext();
+		}
+
+		setlocale(LC_TIME, 'id_ID', 'id');
+
+		$sqlB="
+		select
+		sk.id_sk,
+		sk.no_sk,
+		sk.nama,
+		sk.izin_produksi,
+		sk.nip,
+		pendaftar.nama_pendaftar,
+		pendaftar.nama_pabrik,
+		pendaftar.npwp,
+		pendaftar.alamat_pendaftar,
+		pendaftar.alamat_pendaftar_2,
+		pendaftar.namapenanggungjwb,
+		pendaftar.alamatgudang,
+		pendaftar.alamat_bengkel,
+		pendaftar.alamat_pabrik,
+		pendaftar.nama_propinsi_1,
+		pendaftar.nama_propinsi_2,
+		pendaftar.nama_direktur,
+		kelas.golongan,
+		tt.jenis_izin_produksi,
+		tt.urut_no_tt,
+		tt.kode_subdit,
+		tt.date_insert,
+		cek.no_rekomendasi,
+		cek.date_rekomendasi,
+		cek.nama_produk,
+		cek.no_pemohon,
+		cek.date_pemohon,
+		cek.no_bap,
+		cek.date_bap,
+		cek.no_sk_lama,
+		cek.date_sk_lama,
+		cek.lisensi,
+		cek.lisensi2,
+		cek.nama_produk2,
+		cek.lisensi3,
+		cek.nama_produk3,
+		cek.lisensi4,
+		cek.nama_produk4,
+		cek.lisensi5,
+		cek.nama_produk5,
+		cek.jenis,
+		cek.id_kategori,
+		cek.id_sub_kategori,
+		cek.ukuran,
+		cek.kemasan,
+		cek.perubahan
+		FROM
+		".$GLOBALS[my_table]." sk
+		LEFT OUTER JOIN ".$GLOBALS[my_cek]." cek ON (cek.id_cek_1 = sk.id_cek_1)
+		LEFT OUTER JOIN ".$GLOBALS[my_tt]." tt ON (tt.no_tt = cek.no_tt)
+		LEFT OUTER JOIN ".$GLOBALS[my_pendaftar]." pendaftar ON (pendaftar.kode_pendaftar = tt.kode_pendaftar)
+		LEFT OUTER JOIN ".$GLOBALS[my_kelas]." kelas ON (kelas.id_golongan = cek.id_golongan)
+		WHERE
+		sk.id_cek_1 = '".$id_cek_1."'
+		";
+#$adodb->debug = 1;
+		$rsb = $adodb->Execute($sqlB);
+		$golongan = $rsb->fields['golongan'];
+		$nama_produk = $rsb->fields['nama_produk'];
+		$no_sk = $rsb->fields['no_sk'];
+		$jenis_izin_produksi = $rsb->fields['jenis_izin_produksi'];
+		$izin_produksi = $rsb->fields['izin_produksi'];
+		$nama_perusahaan = $rsb->fields['nama_pabrik'];
+		$izin_produksi = $rsb->fields['izin_produksi'];
+		$nama_propinsi_1 = $rsb->fields['nama_propinsi_1'];
+		$alamat_pendaftar = $rsb->fields['alamat_pendaftar'];
+		$alamat_pendaftar_2 = $rsb->fields['alamat_pendaftar_2'];
+		#if ($alamat_pendaftar_2) $alamat_pendaftar .= ', '.$alamat_pendaftar_2;
+		$urut_no_tt = $rsb->fields['urut_no_tt'];
+		$nama_penanggung = $rsb->fields['namapenanggungjwb'];
+		$alamat_gudang = $rsb->fields['alamatgudang'];
+		$alamat_bengkel = $rsb->fields['alamat_bengkel'];
+		$nama_direktur = $rsb->fields['nama_direktur'];
+		$date_insert = strftime("%d %B %G",strtotime(date('d F Y',$rsb->fields['date_insert'])));//date('d F Y',$rsb->fields['date_insert']);
+		$no_rekomendasi = $rsb->fields['no_rekomendasi'];
+		$no_pemohon = $rsb->fields['no_pemohon'];
+		if ($rsb->fields[date_pemohon]) $date_pemohon = strftime("%d %B %G",strtotime(date('d F Y',$rsb->fields['date_pemohon'])));//date('d F Y',$rsb->fields['date_pemohon']);
+		$alamat_pabrik = $rsb->fields['alamat_pabrik'];
+		$nama_propinsi_2 = $rsb->fields['nama_propinsi_2'];
+		$date_rekomendasi = strftime("%d %B %G",strtotime(date('d F Y',$rsb->fields['date_rekomendasi'])));//date('d F Y',$rsb->fields['date_rekomendasi']);
+		$no_bap = $rsb->fields['no_bap'];
+		$npwp = $rsb->fields['npwp'];
+		$date_bap = strftime("%d %B %G",strtotime(date('d F Y',$rsb->fields['date_bap'])));// date('d F Y',$rsb->fields['date_bap']);
+		$kode_subdit = $rsb->fields['kode_subdit'];
+		$nama = $rsb->fields['nama'];
+		$nip = $rsb->fields['nip'];
+		$no_sk_lama = $rsb->fields[no_sk_lama];
+		$date_sk_lama = strftime("%d %B %G",strtotime(date('d F Y',$rsb->fields[date_sk_lama])));// date('d F Y', $rsb->fields[date_sk_lama]);
+		$lisensi = $rsb->fields[lisensi];
+		$nama_produk = $rsb->fields[nama_produk];
+		$lisensi2 = $rsb->fields[lisensi2];
+		$nama_produk2 = $rsb->fields[nama_produk2];
+		$lisensi3 = $rsb->fields[lisensi3];
+		$nama_produk3 = $rsb->fields[nama_produk3];
+		$lisensi4 = $rsb->fields[lisensi4];
+		$nama_produk4 = $rsb->fields[nama_produk4];
+		$lisensi5 = $rsb->fields[lisensi5];
+		$nama_produk5 = $rsb->fields[nama_produk5];
+
+		$jenis = $rsb->fields[jenis];
+		$id_kategori = $rsb->fields[id_kategori];
+		$id_sub_kategori = $rsb->fields[id_sub_kategori];
+		$ukuran = $rsb->fields[ukuran];
+		$kemasan = $rsb->fields[kemasan];
+		$nama_pendaftar = $rsb->fields[nama_pendaftar];
+		$nama_pabrik = $rsb->fields[nama_pabrik];
+
+		$perubahan = $rsb->fields[perubahan];
+
+		#$rsS = $adodb->Execute("SELECT keterangan FROM subdit where id_subdit = '".$kode_subdit."'");
+		#$ketS = $rsS->fields[keterangan];
+
+
+
+		if ($GLOBALS['suf1'] == 'adendum') {
+			require 'init.php';
+			define('FPDF_FONTPATH','fpdf/font/');
+			require('fpdf/fpdf.php');
+			$pdf=new FPDF('P','mm','legal');
+			$pdf->Open();
+			if ($GLOBALS['suf2'] == 'produksi') {
+				// =================== ini untuk produksi
+				$pdf->addpage();
+				$pdf->SetFont('Arial','',12);
+				$pdf->ln(60);
+				$pdf->Cell(30,7,'Nomor      :','',0,'L');$pdf->Cell(100,7,''.$no_sk.'','',0,'L');$pdf->Cell(40,7,'Jakarta, '.$date_insert.'','',0,'R');
+				$pdf->Ln(5);
+				$pdf->Cell(30,7,'Lampiran  :','',0,'L');$pdf->Cell(100,7,'1 (satu) lembar ','',0,'L');
+				$pdf->Ln();
+
+				if($kode_subdit=='5' || $kode_subdit=='6'){$jenis = 'Alat Kesehatan';}
+				elseif($kode_subdit=='7'){$jenis='Diagnostik dan Reagensia';}
+				elseif($kode_subdit=='8'){$jenis='Perbekalan Kesehatan Rumah Tangga';}
+
+				$pdf->Cell(30,7,'Perihal     :','',0,'L');$pdf->multiCell(80,7,'Penambahan Jenis Produksi '.$jenis.' (Addendum I)','','L');
+				
+				$pdf->Cell(40,7,'Kepada Yth,','','L');
+				$pdf->SetFont('Arial','B',12);
+				$pdf->ln();
+				
+				$pdf->SetFont('Arial','',12);
+				$pdf->Cell(20,7,'Pimpinan ');
+				
+				$pdf->SetFont('Arial','BI',12);
+				$pdf->Cell(80,7,''.$nama_pendaftar);
+				$pdf->Ln();
+				
+				$pdf->SetFont('Arial','',12);
+				$pdf->Cell(100,7,''.$alamat_pendaftar);
+				$pdf->Ln();
+				
+				$pdf->SetFont('Arial','',12);
+				$pdf->Cell(10,7,'di ');
+				$pdf->Ln();
+				
+				$pdf->Cell(10,7,'');
+				$pdf->SetFont('Arial','BU',12);
+				$pdf->Cell(90,7,$alamat_pendaftar_2);
+				$pdf->Ln();
+				
+				$pdf->ln(10);
+				$pdf->SetFont('Arial','',12);
+				if($no_rekomendasi != ''){
+				$no_rekom = 'dan rekomendasi dari Dinkes Propinsi '.$nama_propinsi_1.' No.'.$no_rekomendasi.' tanggal '.$date_rekomendasi.'';}
+				$pdf->MultiCell(0,7,'Membaca permohonan Saudara No. '.$no_pemohon.' tanggal '.$date_pemohon.', perihal seperti pada pokok surat '.$no_rekom.', dengan maksud untuk menambah jenis produksi '.$jenis.' yang akan di produksi oleh '.$nama_perusahaan.'.'."\n".
+				"\n".
+				'Dengan ini kami sampaikan persetujuan dalam bentuk Addendum I lampiran Izin Produksi '.$jenis.' '.$no_sk_lama.' tanggal '.$date_sk_lama.' dengan daftar tambahan jenis '.$jenis.' yang akan di produksi.'."\n".
+				"\n".
+				'Untuk diperhatikan agar Addendum I ini selalu di lampirkan pada izin Produksi '.$jenis.' tersebut.'."\n".
+				"\n".
+				'Demikian agar menjadi maklum.');
+				$pdf->ln(10);
+				$pdf->SetFont('Arial','B',12);
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'a.n DIREKTUR JENDERAL PELAYANAN','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'KEFARMASIAN DAN ALAT  KESEHATAN','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'DIREKTUR BINA PRODUKSI DAN DISTRIBUSI','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'ALAT KESEHATAN','',0,'C');
+				$pdf->Ln(20);
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(10,7,'','',0,'L');$pdf->Cell(80,7,''.$nama.'','B',0,'C');$pdf->Cell(10,7,'','',0,'L');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(10,7,'','',0,'L');$pdf->Cell(80,7,'NIP .'.$nip.'','',0,'C');$pdf->Cell(10,7,'','',1,'L');
+				$pdf->Ln(4);
+
+				$xx = 0;
+				$pdf->SetFont('Arial','U',12);
+				$pdf->Cell(180,7,'Tembusan kepada Yth :','',1,'L');
+				$pdf->SetFont('Arial','',12);
+				$pdf->Cell(180,7,++$xx.'. Ka Dinas Kesehatan Prop. '.$nama_propinsi_1.'','',1,'L');
+				$pdf->Cell(180,7,++$xx.'. Direktur Jenderal Perdagangan Dalam Negeri RI di Jakarta','',1,'L');
+				$pdf->Cell(180,7,++$xx.'. Dit Jen Bea dan Cukai,Dep. Keuangan RI di Jakarta','',1,'L');
+				$pdf->Cell(180,7,++$xx.'. Gakeslab di Jakarta','',1,'L');
+				// ini hal 2
+				$pdf->addpage();
+				$pdf->ln(60);
+				$pdf->cell(65,7,'Nomor  : '.$no_sk.'');
+				$pdf->cell(60,7,'');
+				$pdf->cell(65,7,'Jakarta  : '.$date_insert.'','','1');
+				$pdf->setfont('Arial','BU',12);
+				$pdf->ln(10);
+				$pdf->cell(0,7,'ADDENDUM I','','1','C');
+				$pdf->setfont('Arial','B',12);
+				$pdf->multicell(0,7,'LAMPIRAN KEPUTUSAN MENTERI KESEHATAN REPUBLIK INDONESIA','','C');
+		//		$pdf->ln();
+				$pdf->setfont('Arial','',12);
+				$pdf->cell(40,7,'');$pdf->cell(50,7,'NOMOR');$pdf->cell(5,7,':');$pdf->cell(0,7,''.$no_sk_lama.'','','1');
+				$pdf->cell(40,7,'');$pdf->cell(50,7,'TANGGAL');$pdf->cell(5,7,':');$pdf->cell(0,7,''.$date_sk_lama.'','','1');
+				$pdf->ln();
+				$pdf->cell(90,7,'NAMA PERUSAHAAN');$pdf->cell(5,7,':');$pdf->setfont('Arial','B',12);$pdf->cell(85,7,''.$nama_pendaftar.'','','1');
+				$pdf->setfont('Arial','',12);
+				$pdf->cell(90,7,'ALAMAT');$pdf->cell(5,7,':');$pdf->multicell(85,7,''.$alamat_pendaftar.'');
+				$pdf->ln();
+				$pdf->Cell(90,7,'JENIS '.strtoupper($jenis).' YANG DI PRODUKSI :','',1);
+
+				// $no_rekomendasi di sini khusus untuk addendum
+				if($no_bap < 2){ $pdf->Cell(90,7,'NO 1 SESUAI PADA LAMPIRAN TERDAHULU','',1);}
+				else { $pdf->Cell(90,7,'NO 1 S/D '.$no_bap.' SESUAI PADA LAMPIRAN TERDAHULU','',1); }
+				
+				$pdf->setfont('Arial','',12);
+				if (!$no_bap) $no_bap = 1;
+				$xx = $no_bap;
+				$pdf->SetFont('Arial', '', '12');
+				$pdf->Ln();
+				$piece = explode("\n", $nama_produk);
+				foreach ($piece as $key => $val) {
+					$val = trim($val);
+					if (ereg('^-', $val)) {
+						$pdf->SetFont('Arial', '', 12);
+						$pdf->Cell(90,7,'          '.$val.'','','1');
+					} else {
+						$pdf->SetFont('Arial', 'B', 12);
+						$pdf->Cell(90,7,'     '.++$xx.". ".$val.'','','1');
+					}
+				}
+				$pdf->Ln(5);
+
+
+				$pdf->ln(5);
+				$pdf->setfont('Arial','',12);
+				$pdf->multicell(0,7,'Dengan ketentuan bahwa alat kesehatan tersebut harus mendapatkan persetujuan izin edar sebelum di edarkan.');
+				$pdf->SetFont('Arial','B',12);
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'a.n DIREKTUR JENDERAL PELAYANAN','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'KEFARMASIAN DAN ALAT  KESEHATAN','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'DIREKTUR BINA PRODUKSI DAN DISTRIBUSI','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'ALAT KESEHATAN','',0,'C');
+				$pdf->Ln(20);
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(10,7,'','',0,'L');$pdf->Cell(80,7,''.$nama.'','B',0,'C');$pdf->Cell(10,7,'','',0,'L');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(10,7,'','',0,'L');$pdf->Cell(80,7,'NIP .'.$nip.'','',0,'C');$pdf->Cell(10,7,'','',1,'L');
+				$pdf->Ln(4);
+				
+			#################################
+			######## P E N Y A L U R ########
+			#################################
+			} else if ($GLOBALS['suf2'] == 'penyalur') {
+				$pdf->addpage();
+				$pdf->SetFont('Arial','',12);
+				$pdf->sety(60);
+				$pdf->Cell(30,7,'Nomor      :','',0,'L');$pdf->Cell(100,7,''.$no_sk.'','',0,'L');$pdf->Cell(40,7,'Jakarta, '.$date_insert.'','',0,'R');
+				$pdf->Ln(5);
+				$pdf->Cell(30,7,'Lampiran  :','',0,'L');$pdf->Cell(100,7,'1 (satu) lembar','',0,'L');
+				$pdf->Ln();
+				// kalo tidak fix  $suf3 = 'alkes' ; $suf3 = 'pkrt' -->''.$suf3.' (Addemdum '.$i.' )';
+
+				if($kode_subdit=='5' || $kode_subdit=='6'){$jenis = 'Alat Kesehatan';}
+				elseif($kode_subdit=='7'){$jenis='Diagnostik dan Reagensia';}
+				elseif($kode_subdit=='8'){$jenis='Perbekalan Kesehatan Rumah Tangga';}
+
+				$pdf->Cell(30,7,'Perihal     :','',0,'L');$pdf->multiCell(75,7,'Perluasan Keagenan Izin Penyalur '.$jenis.' (Addendum I)','','L');
+				$pdf->Cell(40,7,'Kepada Yth,','','L');
+				$pdf->SetFont('Arial','B',12);
+				$pdf->ln();
+				
+				$pdf->SetFont('Arial','',12);
+				$pdf->Cell(20,7,'Pimpinan ');
+				
+				$pdf->SetFont('Arial','BI',12);
+				$pdf->Cell(80,7,''.$nama_pendaftar);
+				$pdf->Ln();
+				
+				$pdf->SetFont('Arial','',12);
+				$pdf->Cell(100,7,''.$alamat_pendaftar);
+				$pdf->Ln();
+				
+				$pdf->SetFont('Arial','',12);
+				$pdf->Cell(10,7,'di ');
+				$pdf->Ln();
+				
+				$pdf->Cell(10,7,'');
+				$pdf->SetFont('Arial','BU',12);
+				$pdf->Cell(90,7,$alamat_pendaftar_2);
+				$pdf->Ln();
+				
+				$pdf->ln(10);
+				$pdf->SetFont('Arial','',12);
+				$pdf->Write(7,'Sesuai dengan surat permohonan Saudara No. '.trim($no_pemohon).
+				' tanggal '.trim($date_pemohon).
+				', perihal seperti pada pokok surat, dengan maksud untuk menambah jenis '.trim($jenis).
+				' produksi ');
+				
+				$pdf->SetFont('Arial','BI',12);
+				$pdf->Write(7, trim(strtoupper($nama_perusahaan)).
+				', '.trim(strtoupper($alamat_pabrik)));
+				
+				$pdf->SetFont('Arial','',12);
+				$pdf->Write(7, ' bersama ini kami sampaikan persetujuan dalam bentuk Addendum I lampiran Izin Penyalur '.
+				trim($jenis).' No. '.trim($no_sk_lama).
+				' tanggal '.trim($date_sk_lama).' dengan daftar tambahan '.trim($jenis).
+				' yang diedarkan oleh '.trim($nama_pendaftar).'.'."\n".
+				'Harap supaya Addendum I ini dilampirkan pada Izin Penyalur '.trim($jenis).
+				' tersebut.'."\n".
+				"\n".
+				'Demikian agar menjadi maklum.');
+				$pdf->ln(10);
+				$pdf->SetFont('Arial','B',12);
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'a.n DIREKTUR JENDERAL PELAYANAN','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'KEFARMASIAN DAN ALAT  KESEHATAN','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'DIREKTUR BINA PRODUKSI DAN DISTRIBUSI','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'ALAT KESEHATAN','',0,'C');
+				$pdf->Ln(20);
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(10,7,'','',0,'L');$pdf->Cell(80,7,''.$nama.'','B',0,'C');$pdf->Cell(10,7,'','',0,'L');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(10,7,'','',0,'L');$pdf->Cell(80,7,'NIP .'.$nip.'','',0,'C');$pdf->Cell(10,7,'','',1,'L');
+				$pdf->Ln(4);
+
+				$xx = 0;
+				$pdf->SetFont('Arial','U',12);
+				$pdf->Cell(180,7,'Tembusan kepada Yth :','',1,'L');
+				$pdf->SetFont('Arial','',12);
+				$pdf->Cell(180,7,++$xx.'. Menteri Kesehatan RI','',1,'L');
+				$pdf->Cell(180,7,++$xx.'. Ka Dinas Kesehatan Prop. '.$nama_propinsi_1.'','',1,'L');
+				$pdf->Cell(180,7,++$xx.'. Dep. Perdagangan Dalam Negeri RI di Jakarta','',1,'L');
+				$pdf->Cell(180,7,++$xx.'. Dit Jen Bea dan Cukai,Dep. Keuangan RI di Jakarta','',1,'L');
+				$pdf->Cell(180,7,++$xx.'. Gakeslab di Jakarta','',1,'L');
+				// ini hal 2
+				$pdf->addpage();
+				$pdf->ln(60);
+				$pdf->cell(65,7,'Nomor  : '.$no_sk.'');
+				$pdf->cell(60,7,'');
+				$pdf->cell(65,7,'Jakarta, '.$date_insert.'','','1');
+				$pdf->setfont('Arial','BU',12);
+				$pdf->ln(10);
+				$pdf->cell(0,7,'ADDENDUM I','','1','C');
+				$pdf->setfont('Arial','B',12);
+				$pdf->multicell(0,7,'LAMPIRAN KEPUTUSAN MENTERI KESEHATAN REPUBLIK INDONESIA','','C');
+		//		$pdf->ln();
+				$pdf->setfont('Arial','',12);
+				$pdf->cell(40,7,'');$pdf->cell(50,7,'NOMOR');$pdf->cell(5,7,':');$pdf->cell(0,7,''.$no_sk_lama.'','','1');
+				$pdf->cell(40,7,'');$pdf->cell(50,7,'TANGGAL');$pdf->cell(5,7,':');$pdf->cell(0,7,''.$date_sk_lama.'','','1');
+				$pdf->ln();
+				$pdf->cell(90,7,'NAMA PERUSAHAAN');$pdf->cell(5,7,':');$pdf->setfont('Arial','B',12);$pdf->cell(85,7,''.$nama_pendaftar.'','','1');
+				$pdf->setfont('Arial','',12);
+				$pdf->cell(90,7,'ALAMAT');$pdf->cell(5,7,':');$pdf->multicell(85,7,''.$alamat_pendaftar.'');
+				$pdf->ln();
+				$pdf->Cell(90,7,'MENYALURKAN '.strtoupper($jenis).' PRODUKSI DARI :','',1);
+
+				// $no_rekomendasi di sini khusus untuk addendum
+				if($no_bap < 2){ $pdf->Cell(90,7,'NO 1 SESUAI PADA LAMPIRAN TERDAHULU','',1);}
+				else { $pdf->Cell(90,7,'NO 1 S/D '.$no_bap.' SESUAI PADA LAMPIRAN TERDAHULU','',1); }
+
+
+				$pdf->setfont('Arial','',12);
+				if (!$no_bap) $no_bap = 1;
+				$xx = $no_bap;
+				if (($lisensi2 && $nama_produk2)
+				|| ($lisensi3 && $nama_produk3)
+				|| ($lisensi4 && $nama_produk4)
+				|| ($lisensi5 && $nama_produk5)) {
+	
+					$pdf->SetFont('Arial', 'BI', '12');
+					$pdf->Cell(180,7,'      '.++$xx.". ".$lisensi,'',0,'L');
+					$pdf->SetFont('Arial', '', '12');
+					$pdf->Ln();
+					$piece = explode("\n", $nama_produk);
+					foreach ($piece as $key => $val) {
+						$val = trim($val);
+						$pdf->SetFont('Arial', '', 12);
+						$pdf->Cell(90,7,'          '.$val.'','','1');
+					}
+					$pdf->Ln(5);
+	
+					if ($lisensi2 && $nama_produk2) {
+						$pdf->SetFont('Arial', 'BI', '12');
+						$pdf->Cell(180,7,'      '.++$xx.". ".$lisensi2,'',0,'L');
+						$pdf->SetFont('Arial', '', '12');
+						$pdf->Ln();
+						$piece = explode("\n", $nama_produk2);
+						foreach ($piece as $key => $val) {
+							$val = trim($val);
+							$pdf->SetFont('Arial', '', 12);
+							$pdf->Cell(90,7,'          '.$val.'','','1');
+						}
+						$pdf->Ln(5);
+					}
+	
+					if ($lisensi3 && $nama_produk3) {
+						$pdf->SetFont('Arial', 'BI', '12');
+						$pdf->Cell(180,7,'      '.++$xx.". ".$lisensi3,'',0,'L');
+						$pdf->SetFont('Arial', '', '12');
+						$pdf->Ln();
+						$piece = explode("\n", $nama_produk3);
+						foreach ($piece as $key => $val) {
+							$val = trim($val);
+							$pdf->SetFont('Arial', '', 12);
+							$pdf->Cell(90,7,'          '.$val.'','','1');
+						}
+						$pdf->Ln(5);
+					}
+					if ($lisensi4 && $nama_produk4) {
+						$pdf->SetFont('Arial', 'BI', '12');
+						$pdf->Cell(180,7,'      '.++$xx.". ".$lisensi4,'',0,'L');
+						$pdf->SetFont('Arial', '', '12');
+						$pdf->Ln();
+						$piece = explode("\n", $nama_produk4);
+						foreach ($piece as $key => $val) {
+							$val = trim($val);
+							$pdf->SetFont('Arial', '', 12);
+							$pdf->Cell(90,7,'          '.$val.'','','1');
+						}
+						$pdf->Ln(5);
+					}
+					if ($lisensi5 && $nama_produk5) {
+						$pdf->SetFont('Arial', 'BI', '12');
+						$pdf->Cell(180,7,'      '.++$xx.". ".$lisensi5,'',0,'L');
+						$pdf->SetFont('Arial', '', '12');
+						$pdf->Ln();
+						$piece = explode("\n", $nama_produk5);
+						foreach ($piece as $key => $val) {
+							$val = trim($val);
+							$pdf->SetFont('Arial', '', 12);
+							$pdf->Cell(90,7,'          '.$val.'','','1');
+						}
+						$pdf->Ln(5);
+					}
+	
+				} else {
+					$pdf->SetFont('Arial', 'BI', '12');
+					$pdf->Cell(180,7,'      '.++$xx.". ".$lisensi,'',0,'L');
+					$pdf->SetFont('Arial', '', '12');
+					$pdf->Ln();
+					$piece = explode("\n", $nama_produk);
+					foreach ($piece as $key => $val) {
+						$val = trim($val);
+						$pdf->SetFont('Arial', '', 12);
+						$pdf->Cell(90,7,'          '.$val.'','','1');
+					}
+					$pdf->Ln(5);
+				}
+	
+				$pdf->setfont('Arial','',12);
+				$pdf->multicell(0,7,'Dengan ketentuan bahwa alat kesehatan tersebut harus mendapatkan persetujuan izin edar sebelum di edarkan.');
+				$pdf->SetFont('Arial','B',12);
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'a.n DIREKTUR JENDERAL PELAYANAN','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'KEFARMASIAN DAN ALAT  KESEHATAN','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'DIREKTUR BINA PRODUKSI DAN DISTRIBUSI','',0,'C');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(100,7,'ALAT KESEHATAN','',0,'C');
+				$pdf->Ln(20);
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(10,7,'','',0,'L');$pdf->Cell(80,7,''.$nama.'','B',0,'C');$pdf->Cell(10,7,'','',0,'L');
+				$pdf->Ln();
+				$pdf->Cell(80,7,'','',0,'L');$pdf->Cell(10,7,'','',0,'L');$pdf->Cell(80,7,'NIP .'.$nip.'','',0,'C');$pdf->Cell(10,7,'','',1,'L');
+				$pdf->Ln(4);
+			}
+			$pdf->output();
+			exit();
+		}
+
+		define('FPDF_FONTPATH','fpdf/font/');
+		require('fpdf/fpdf.php');
+		$pdf=new FPDF('P','mm','legal');
+		$pdf->Open();
+
+		list($suf1, $suf2, $suf3) = split(" ", strtolower($GLOBALS[my_title]));
+//========================
+//----------------
+		if ($suf2 == 'edar') {
+			$rs = $adodb->Execute("SELECT * FROM ".$GLOBALS[my_kat]." WHERE id_kategori='".$id_kategori."'");
+			$kategori = $rs->fields[nama_kategori];
+			$rs = $adodb->Execute("SELECT * FROM ".$GLOBALS[my_subkat]." WHERE id_subkategori='".$id_sub_kategori."'");
+			$subkategori = $rs->fields[nama_subkategori];
+		}
+
+
+		if (empty($suf3)) {
+#		$adodb->debug = 1;
+			$rs = $adodb->Execute("SELECT tt.jenis_izin_produksi FROM ".$GLOBALS[my_tt]." tt LEFT JOIN ".$GLOBALS[my_cek]." cek ON tt.no_tt = cek.no_tt LEFT JOIN ".$GLOBALS[my_sk]." sk ON cek.id_cek_1 = sk.id_cek_1 WHERE id_sk = '".$_GET[id_sk]."'");
+			$suf3 = intval($rs->fields[jenis_izin_produksi]);
+#			echo $suf3;exit;
+		}
+
+		$map1[registrasi] = 'permohonan';
+		$map1[perubahan] = 'pembaharuan';
+		$map1[ubah] = 'pembaharuan';
+		$map1[pemutihan] = 'pembaharuan';
+
+		#$map3[0] = 'alat kesehatan';
+		#$map3[1] = 'PKRT';
+
+		$map30[0] = 'ALAT KESEHATAN';
+		$map30[1] = 'PERBEKALAN KESEHATAN RUMAH TANGGA';
+
+		#$perihal = ucwords(strtolower($map1[$suf1].' izin '.$suf2.' '.$map30[$suf3]));
+		$perihal = ucwords(strtolower('izin '.$suf2.' '.$map30[$suf3]));
+		#$keterangan = strtoupper($suf2).' '.$map30[$suf3];
+
+		if ($no_pemohon) $no_pemohon = 'No. '.$no_pemohon;
+		if ($date_pemohon) $date_pemohon = 'tanggal '.$date_pemohon;
+
+//----------- tutup nya di mana ????
+		if ($suf2 == 'edar') {
+			$pdf->AddPage();
+			$pdf->SetFont('Arial','',12);
+			$pdf->Ln(60);
+			$pdf->Cell(180,5,'Berdasarkan:', '', 1, 'L');
+			$pdf->Cell(10,5,'1.', '', 0, 'R');
+			$pdf->MultiCell(0,7,'Peraturan Menteri Kesehatan RI No. 1184/Menkes/Per/X/2004 Tanggal 19 Oktober 2004 tentang Pengamanan Alat dan Perbekalan Kesehatan Rumah Tangga.');
+/*			$pdf->Cell(10,5,'2.', '', 0, 'R');
+			$pdf->MultiCell(170,5,'Keputusan Direktur Jenderal Pengawasan Obat dan Makanan'.
+			' No. 1477/C/SK/IV/1991 tentang Petunjuk Pelaksanaan Wajib Daftar Alat Kesehatan'.
+			', Kosmetika dan Perbekalan Kesehatan Rumah Tangga');
+*/
+			$pdf->Ln();
+			$pdf->Cell(180,7, 'dengan ini diberikan persetujuan untuk diedarkan dengan :', '', 1, 'L');
+			$pdf->Ln();
+			$pdf->Cell(180,5,'NOMOR PENDAFTARAN', '', 1, 'C');
+			$pdf->Ln();
+//--------
+			$pdf->SetFont('Arial', 'B', '12');
+			if ($suf3 == 'alkes') $pdf->Cell(180,5,'A L A T   K E S E H A T A N', '', 1, 'C');
+			else $pdf->Cell(180,5,'PERBEKALAN KESEHATAN RUMAH TANGGA', '', 1, 'C');
+
+			$pdf->Ln();
+			$pdf->Cell(50,5,'');
+			$pdf->Cell(80,7,'DEPKES RI '.$no_sk, 1, 1, 'C');
+			$pdf->SetFont('Arial', '', '12');
+			$pdf->Ln();
+			$pdf->Cell(50,5,'Nama Produk');
+			$pdf->Cell(10,5,':');
+			$pdf->SetFont('Arial', 'B', '12');
+			$pdf->Cell(110,5,$nama_produk,'',1);
+			$pdf->SetFont('Arial', '', '12');
+			$pdf->Ln(3);
+
+			$pdf->Cell(50,5,'Jenis Produk');$pdf->Cell(10,5,':');
+			$pdf->Cell(120,5,$jenis,'',1);$pdf->Ln(3);
+			$pdf->Cell(50,5,'Kategori');$pdf->Cell(10,5,':');
+			$pdf->Cell(120,5,$kategori,'',1);$pdf->Ln(3);
+			$pdf->Cell(50,5,'Sub Kategori');$pdf->Cell(10,5,':');
+			$pdf->Cell(120,5,$subkategori,'',1);$pdf->Ln(3);
+//------------
+			if ($suf3 == 'alkes') { $pdf->Cell(50,5,'Tipe / Ukuran');$pdf->Cell(10,5,':'); }
+			else if ($suf3 == 'pkrt') { $pdf->Cell(50,5,'Bentuk Sediaan / Warna');$pdf->Cell(10,5,':'); }
+			$pdf->Cell(120,5,$ukuran,'',1);$pdf->Ln(3);
+			$pdf->Cell(50,5,'Kemasan');$pdf->Cell(10,5,':');
+			$pdf->Cell(120,5,$kemasan,'',1);$pdf->Ln(3);
+			$pdf->Cell(50,5,'Nama Pabrik');$pdf->Cell(10,5,':');
+			$pdf->MultiCell(120,5,''.$nama_pabrik.', '.$alamat_pabrik.'');$pdf->Ln(3);
+			//$pdf->Cell(120,5,$nama_pabrik.', '.$alamat_pabrik,'',1);$pdf->Ln(3);
+			$pdf->Cell(50,5,'Nama Pendaftar');$pdf->Cell(10,5,':');
+			$pdf->MultiCell(120,5,''.$nama_pendaftar.', '.$alamat_pendaftar.'');$pdf->Ln(3);
+			//$pdf->Cell(120,5,$nama_pendaftar.', '.$alamat_pendaftar,'',1);$pdf->Ln(3);
+			$pdf->Cell(50,5,'Atas dasar lisensi dari');$pdf->Cell(10,5,':');
+			$pdf->Cell(120,5,$lisensi,'',1);$pdf->Ln(3);
+
+			$pdf->Cell(50,5,'Ketentuan');$pdf->Cell(10,5,':');
+//------------
+			if ($suf1 != 'registrasi') {
+				//$pdf->Cell(5,5,'1.');
+				$xx = 115;
+			} else {
+				$xx = 120;
+			}
+			$pdf->Cell(5,5,'1.');$pdf->MultiCell($xx,6,'Izin edar berlaku 4 (empat) tahun sejak tanggal di keluarkan.');
+//			$pdf->ln();
+			$pdf->Cell(50,5,'');$pdf->Cell(10,5,':');
+			$pdf->Cell(5,5,'2.');$pdf->MultiCell($xx,6,'Wajib menyampaikan laporan berkala setiap 1 (satu) tahun terhadap jenis dan akibat samping dari produk yang diedarkan.');
+//--------------
+			if ($suf1 != 'registrasi') {
+				if ($date_sk_lama) $date_sk_lama = 'tanggal '.$date_sk_lama;
+				if ($no_sk_lama) $no_sk_lama = 'No. '.$no_sk_lama;
+				$pdf->Cell(50,5,'Ketentuan');$pdf->Cell(10,5,':');$pdf->Cell(5,5,'2.');
+				$pdf->MultiCell(115,5,'Produk '.$nama_produk.' dengan Izin Edar '.$no_sk_lama.
+				' yang dikeluarkan '.$date_sk_lama.' dinyatakan tidak berlaku lagi.');
+			}
+			$pdf->Ln(3);
+
+			$pdf->Cell(50,5,'Persyaratan');$pdf->Cell(10,5,':');$pdf->Cell(5,5,'1.');
+			$pdf->MultiCell(115,6,'Apabila dikemudian hari ada pihak lain yang lebih berhak atas keagenan'.
+			' diatas, sesuai ketentuan yang berlaku, pendaftar bersedia melepaskan'.
+			' keagenan atas produk tersebut.');
+			$pdf->Cell(50,5,'');$pdf->Cell(10,5,'');$pdf->Cell(5,5,'2.');
+			$pdf->MultiCell(115,5,'Apabila dikemudian hari terdapat kekeliruan maka persetujuan ini akan'.
+			' ditinjau kembali.');
+			$pdf->Ln();
+			$pdf->Cell(80,5,'');
+			$pdf->Cell(100,5,'Jakarta, '.date('d F Y'), '', 1, 'C');
+			$pdf->Ln();
+			$pdf->SetFont('Arial', 'B', '12');
+//			$pdf->Cell(80,5,'','',0,'L');$pdf->Cell(100,5,'a.n MENTERI KESEHATAN REPUBLIK INDONESIA','',1,'C');
+			$pdf->Cell(80,5,'','',0,'L');$pdf->Cell(100,5,'a.n DIREKTUR JENDERAL PELAYANAN','',1,'C');
+			$pdf->Cell(80,5,'','',0,'L');$pdf->Cell(100,5,'KEFARMASIAN DAN ALAT  KESEHATAN','',1,'C');
+			$pdf->Cell(80,5,'','',0,'L');$pdf->Cell(100,5,'DIREKTUR BINA PRODUKSI DAN DISTRIBUSI','',1,'C');
+			$pdf->Cell(80,5,'','',0,'L');$pdf->Cell(100,5,'ALAT KESEHATAN','',1,'C');
+			$pdf->Ln(15);
+			$pdf->Cell(80,5,'','',0,'L');$pdf->Cell(10,5,'','',0,'L');$pdf->Cell(80,5,''.$nama.'','B',0,'C');$pdf->Cell(10,5,'','',1,'L');
+			$pdf->Cell(80,5,'','',0,'L');$pdf->Cell(10,5,'','',0,'L');$pdf->Cell(80,5,'NIP .'.$nip.'','',0,'C');$pdf->Cell(10,5,'','',1,'L');
+			$pdf->Output();
+			exit();
+		}
+// mudah 2x bener, ini end edar
+
+		// halaman 1
+
+/*
+ * Begin of Modification by : 566
+ *
+ * Build Date          : Wed, Jul 12, 2006
+ * Script written by   : Sugeng Utomo
+ * 
+ *`*.*`*.*`*.*`*.*`*.*`*.*`*.*`*.*`*.*`*.*`*.*`*.*`*.*`*.*/
+
+/*
+ * Require Smarty Class
+ */
+require_once '/home/sgg/public_html/depkes2/smarty/libs/Smarty.class.php';
+
+/*
+ * Create an instance of Smarty Class
+ */
+$smarty = new Smarty;
+
+/*
+ * Define some configurations for new instance of Smarty Class
+ */
+$smarty->compile_check = true;
+$smarty->debugging = false;
+$smarty->template_dir = '/home/sgg/public_html/depkes2/templates/';
+$smarty->compile_dir  = '/home/sgg/public_html/depkes2/templates_c/';
+
+/*
+ * Start Output Buffer
+ */
+ob_start();
+
+/*
+ * Define current date
+ */
+$tg = date('d F Y');
+
+/*
+ * Assign some Smarty variables
+ */
+$smarty->assign('no_sk',$no_sk);
+$smarty->assign('perihal',strtoupper($perihal));
+$smarty->assign('nama_pendaftar',$nama_pendaftar);
+$smarty->assign('alamat_pendaftar',$alamat_pendaftar);
+$smarty->assign('no_pemohon',$no_pemohon);
+$smarty->assign('date_pemohon',$date_pemohon);
+$smarty->assign('nama_propinsi_1',$nama_propinsi_1);
+$smarty->assign('no_bap',$no_bap);
+$smarty->assign('date_bap',$date_bap);
+$smarty->assign('no_rekomendasi',$no_rekomendasi);
+$smarty->assign('date_rekomendasi',$date_rekomendasi);
+$smarty->assign('npwp',$npwp);
+$smarty->assign('nama_direktur',$nama_direktur);
+$smarty->assign('nama_penanggung',$nama_penanggung);
+$smarty->assign('alamat_pabrik',$alamat_pabrik);
+$smarty->assign('tg',$tg);
+$smarty->assign('nama',$nama);
+$smarty->assign('nip',$nip);
+
+$piece        = explode("\n", $nama_produk);
+$product_name = "";
+foreach ($piece as $key => $val) {
+  $product_name .= $val;
+}
+$smarty->assign('nama_produk',$product_name);
+
+/*
+ * Display template results
+ */
+$smarty->display('surat_01.tpl');
+
+/*
+ * Define a temp folder
+ */
+$tmpfname = tempnam("/tmp", "FOO");
+
+/*
+ * Open a temp file with writeable mode
+ */
+$handle = fopen($tmpfname, "w");
+
+/*
+ * Write a temp file with Output Buffer Content
+ */
+fwrite($handle, ob_get_contents());
+
+/*
+ * End Output Buffer
+ */
+ob_end_clean();
+
+/*
+ * Close a temp file
+ */
+fclose($handle);
+
+/*
+ * Define a header with Content-Type: application/pdf
+ */
+header('Content-Type: application/pdf');
+
+/*
+ * Execute an external program and then display raw output
+ */
+passthru('htmldoc -t pdf --webpage '.$tmpfname);
+
+/*
+ * Delete a temp file
+ */
+unlink($tmpfname);
+
+/*
+ * End of Modification by : 566
+ */
+
+	}
+
+	// handle list sk
+	function list_sk($extra_config='') {
+//		if (! $this->get_permission('fill_this')) return $this->intruder();
+		global $adodb, ${$GLOBALS['get_vars']};
+		$sql = 'SELECT
+		sk.id_sk,
+		sk.no_sk,
+		[produksi]
+		pendaftar.nama_pendaftar,
+		sk.nip,
+		sk.nama
+		FROM	
+		'.$GLOBALS[my_table].' sk
+		LEFT JOIN '.$GLOBALS[my_cek].' cek ON (cek.id_cek_1 = sk.id_cek_1)
+		LEFT JOIN '.$GLOBALS[my_tt].' tt ON (tt.no_tt = cek.no_tt)
+		LEFT JOIN '.$GLOBALS[my_pendaftar].' pendaftar ON (pendaftar.kode_pendaftar = tt.kode_pendaftar)
+		ORDER BY sk.no_sk DESC
+		';
+
+
+		list($suf1, $suf2, $suf3) = split(" ", strtolower($GLOBALS[my_title]));	
+		if ($suf2 != 'produksi') {
+			$optional_arr[izin_produksi] = TRUE;
+		}
+		if ($sufb == 'produksi') {
+			$sql = str_replace('[produksi]', 'sk.izin_produksi,', $sql);
+		} else {
+			$sql = str_replace('[produksi]', '', $sql);
+		}
+		
+		$optional_arr = $this->optional_arr;
+		$optional_arr['insert_by'] = FALSE;
+		$optional_arr['date_insert'] = FALSE;
+
+		$vsel_arr = array (
+			'id_sk' => TRUE,
+			'sk' => TRUE,
+			'insert_by' => FALSE,
+			'date_insert' => FALSE
+		);
+		$eval_arr = array ();
+		$pk = array (
+			'id_sk' => TRUE
+		);
+//		if ($this->get_permission('fill_this')) {
+			$add_anchor = pager::pager_button(array("link"=>'javascript:'.
+			'win=openIT(\'' . $GLOBALS['PHP_SELF'] .
+			'?action=add' .
+			'\', 600, 400, null, null, \'add_sk\');'.
+			'win.focus()',
+			"label"=>__("Add"),
+			"image"=>$GLOBALS['path_theme'].'/images/new.gif',
+			"type"=>"button"));
+//			if ($this->get_permission('fill_this')) {	'no_rekomendasi' => $_POST['no_rekomendasi'],
+
+//				$add_anchor .= pager::pager_button(array("link"=>'javascript:openIT(\'' . $GLOBALS['PHP_SELF'] .
+//				'?action=import' .
+//			}
+//		}
+//		if ($this->get_permission('fill_this')) {
+			$edit_anchor = pager::pager_button(array("link"=>'javascript:'.
+			'win=openIT(\'' . $GLOBALS['PHP_SELF'] .
+			'?action=edit%s\', 600, 400, null, null, \'edit_sk\');'.
+			'win.focus()',
+			"label"=>__('Edit'),
+			"image"=>$GLOBALS['path_theme'].'/images/update.gif',
+			"type"=>"button"));
+//		}
+//		if ($this->get_permission('fill_this')) {
+			$del_anchor = pager::pager_button(array(
+			"link"=>'javascript:confirm(\''.
+			__('Confirm Delete').'?\')?(' . 
+			'win=openIT(\'' . $GLOBALS['PHP_SELF'] .
+			'?action=del%s\', 600, 400, null, null, \'del_sk\')'.
+			'win.focus()):' . 
+			'alert(\''.__('Cancelling Delete').'\');', 
+			"label"=>__('Delete'),
+			"image"=>$GLOBALS['path_theme'].'/images/delete.gif',
+			"type"=>"button"));
+//		}
+			$view_anchor = pager::pager_button(array("link"=>'javascript:'.
+			'location.href=\'' . $GLOBALS['PHP_SELF'] .
+			'?action=view%s\';'.
+			'',
+			"label"=>__('View'),
+			"image"=>$GLOBALS['path_theme'].'/images/word.gif',
+			"type"=>"button"));
+//		}
+
+		$print_anchor = pager::pager_button(array(
+			"link"=>'javascript:win=openIT(\'' . $GLOBALS['PHP_SELF'] .
+			'?action=print\''.
+			', 600, 400, null, null, \'print_sk\');'.
+			'win.focus()',
+			"label"=>__('Print'),
+			"type"=>"button",
+			"image"=>$GLOBALS['path_theme'].'/images/print.gif'));
+
+		$label_arr = $this->sk_label;
+		$config = array (
+			'id'		=> 'sk',
+			'db'		=> &$GLOBALS['adodb'],
+			'optional_arr'	=> $optional_arr,
+			'label_arr'	=> $label_arr,
+			'vsel_arr'	=> $vsel_arr,
+			'eval_arr'	=> $eval_arr,
+			'sql'		=> $sql,
+			'extra_param'	=> 'action=find',
+			'add_anchor'	=> $add_anchor,
+			'edit_anchor'	=> "<nobr>".$edit_anchor." ".$view_anchor."</nobr>",
+			'del_anchor'	=> $del_anchor,
+			'print_anchor'	=> $print_anchor,
+			'pk'		=> $pk,
+			'form_width'	=> 595,
+			'form_title'	=> __('List').' Surat Keputusan '.$GLOBALS[my_title].' - '.date($GLOBALS['date_format']));
+		if (is_array($extra_config)) $config = array_merge($config, $extra_config);
+		$_pager = new pager($config);
+		return $_pager->render();
+	}
+
+	// handle print sk
+	function print_sk() {
+		$config['header_view'] = FALSE;
+		$config['add_anchor'] = FALSE;
+		$config['del_anchor'] = FALSE;
+		$config['edit_anchor'] = FALSE;
+		return $this->list_sk($config);
+	}
+}
+
+} // end of define
+
+if (! $GLOBALS['_CONTROLLED']) {
+	$GLOBALS['_CONTROLLED'] = TRUE;
+
+	$sk_controller = new sk_controller();
+	$action = ${$GLOBALS['post_vars']}['action'] ? ${$GLOBALS['post_vars']}['action'] : ${$GLOBALS['get_vars']}['action'];
+	switch ($action) {
+		case 'add':
+			$out_extra_body =  'onLoad="DocumentLoad()"';
+			$out_content = $sk_controller->add_sk_form();
+			$out_content .= $back_to_menu;
+			break;
+		case 'postadd':
+			$out_content = $sk_controller->add_sk();
+			$out_content .= $self_close_js;
+			$out_content .= $back_to_menu;
+			break;
+		case 'edit':
+			$out_extra_body =  'onLoad="DocumentLoad()"';
+			$out_content = $sk_controller->update_sk_form();
+			$out_content .= $back_to_menu;
+			break;
+		case 'postedit':
+			$out_content = $sk_controller->update_sk();
+			$out_content .= $self_close_js;
+			$out_content .= $back_to_menu;
+			break;
+		case 'view':
+		    	$out_extra_body =  'onLoad="DocumentLoad()"';
+		    	$out_content = $sk_controller->view_sk_form();
+			$out_content .= $back_to_menu;
+			echo $out_content;
+			exit;
+			break;
+		case 'del':
+			$out_content = $sk_controller->delete_sk();
+			$out_content .= $self_close_js;
+			$out_content .= $back_to_menu;
+			break;
+		case 'import':
+			$out_extra_body =  'onLoad="DocumentLoad()"';
+			$out_content = $sk_controller->import_sk_form();
+			$out_content .= $back_to_menu;
+			break;
+		case 'postimport':
+			$out_content = $sk_controller->import_sk();
+			$out_content .= $self_close_js;
+			$out_content .= $back_to_menu;
+			break;
+		case 'print':
+			$out_content = $sk_controller->print_sk();
+			$out_extra_body = 'onLoad=top.window.print()';
+			break;
+		case 'find':
+		default:
+			$out_content = $sk_controller->list_sk();
+			include 'depkes2_menu.php';
+			exit;
+			break;
+	}
+
+	$_title = 'Surat Keputusan '.$GLOBALS[my_title].' Administration';
+	include 'depkes2_nonmenu.php';
+} // end of CONTROLLED
+?>

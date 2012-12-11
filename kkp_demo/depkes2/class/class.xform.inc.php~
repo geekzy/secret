@@ -1,0 +1,320 @@
+<?php
+
+$cname = 'xform';
+
+if (class_exists($cname)) return;
+class xform{
+	function start() {
+		global $xxxob;
+       		$xxxob = ob_get_contents();
+		ob_clean();
+		ob_end_clean();
+		ob_implicit_flush(FALSE);
+		ob_start();
+	}
+	function stop() {
+		global $xxxob;
+		$str = $xxxob.ob_get_contents();
+		ob_clean();
+		ob_end_clean();
+		$xxxob = null;
+		return $str;
+	}
+	function xform() {}
+	function xmonth($arr) {
+		if (!is_array($arr)) return;
+		$name = $arr[name];
+		$attr = $arr[attr] ? $arr[attr] : 'class=text';
+		$selected = $arr[selected] ? $arr[selected] : $_POST[$name];
+		if ($selected<=0 || $selected>12) $selected = date('n');
+		xform::start();
+		echo "<select name={$name} {$attr}>\n";
+                for ($k=1;$k<=12;$k++) {
+                        $v = date('F', mktime(0,0,0,$k,1,2004));
+                        echo "<option ";
+                        if ($k==$selected) echo 'selected';
+                        echo " value='{$k}'>{$v}</option>\n";
+                }
+                echo "</select>\n";
+		return xform::stop();
+	}
+	function xxmonth($name,$selected=null) {
+		$arr[name] = $name;
+		$arr[selected] = $selected;
+		return xform::xmonth($arr);
+	}
+	function xxm($a,$b) { return xform::xxmonth($a,$b); }
+	function xfield($name,$type='',$max_length='') {
+		$arr[name] = $name;
+		$arr[type] = $type ? $type : null;
+		$arr[max_length] = $max_length ? $max_length : null;
+		return $arr;
+	}
+	function xf($a,$b='',$c='') { return xform::xfield($a,$b,$c); }
+	function first_day() { 
+		return mktime(0,0,0,date('m'),1,date('Y')); 
+	}
+	function last_day() { 
+		return mktime(0,0,0,date('m'),date('t'),date('Y')); 
+	}
+	function fd() { return xform::first_day(); }
+	function ld() { return xform::first_day(); }
+	function zero_of_day() {
+		return mktime(0,0,0,date('m'),date('d'),date('Y')); 
+	}
+	function zod() { return xform::zero_of_day(); }
+	function db_selector($arr) {
+		global $adodb;
+		if (!is_array($arr)) return;
+		$size = $arr[size];
+		$name = $arr[name];
+		$attr = $arr[attr] ? $arr[attr] : 'class=text';
+		$selected = $arr[selected] ? $arr[selected] : $_POST[$name];
+		$sql = $arr[sql];
+		$felm = isset($arr[first]) ? $arr[first] : TRUE;
+		$fval = xform::xhe($arr[first_val]);
+		$ftxt = xform::xhe($arr[first_txt]);
+		$rs = $adodb->Execute($sql);
+		xform::start();
+                echo "<select name={$name} {$attr}>\n";
+                if ($felm) echo "<option value='$fval'>$ftxt</option>\n";
+                while (!$rs->EOF && $rs) {
+			$val = xform::xhe($rs->fields[val]);
+			$txt = '';
+			if ($rs->fields[txt1]) {
+				for ($i=1;$i<5;$i++) {
+					if (isset($rs->fields["txt$i"])) {
+						if ($txt) $txt .= ' - ';
+						$txt .= xform::xhe($rs->fields["txt$i"]);
+					}
+				}
+			} else {
+				$txt = xform::xhe($rs->fields[txt]);
+			}
+			if ($size && strlen($txt)>$size) $txt = substr($txt,0,$size-3)."...";
+			$txt = ucwords($txt);
+                        echo "<option ";
+                        if ($rs->fields[val] == $selected) echo 'selected';
+                        echo " value='{$val}'>{$txt}</option>\n";
+                        $rs->MoveNext();
+                }
+                echo "</select>\n";
+		return xform::stop();
+	}
+	function dbs($a) { return xform::db_selector($a); }
+	function xhtmlentities($a) { return htmlentities($a, ENT_NOQUOTES); }
+	function xhe($a) { return xform::xhtmlentities($a); }
+	function hidden($arr, $protect=FALSE) {
+		if (!is_array($arr)) return;
+		$name = $arr[name];
+		$selected = $arr[selected] ? $arr[selected] : $_POST[$name];
+		if (is_array($selected)) {
+			$i=0;
+			foreach ($selected as $k => $v) {
+				$k = xform::xhe($k);
+				if ($i>0) $str .= "<br>\n";
+				if ($protect) $extra = $k;
+				$str .= "<input type=hidden name='{$name}[{$k}]' value='1'>$extra";
+				$i++;
+			}
+		} else {
+			$selected = xform::xhe($selected);
+			if ($protect) $extra = $selected;
+			$str = "<input type=hidden name='{$name}' value='{$selected}'>$extra\n";
+		}
+		return $str;
+	}
+	function hid($name,$selected=null) { 
+		$arr[name] = $name;
+		$arr[selected] = $selected;
+		return xform::hidden($arr); 
+	}
+	function pro($name,$selected=null) { 
+		$arr[name] = $name;
+		$arr[selected] = $selected;
+		return xform::hidden($arr, TRUE); 
+	}
+	function text($arr) {
+		if (!is_array($arr)) return;
+		$name = $arr[name];
+		$attr = $arr[attr] ? $arr[attr] : 'class=text';
+		$selected = $arr[selected] ? $arr[selected] : $_POST[$name];
+		$selected = xform::xhe($selected);
+		return "<input type=text name='{$name}' value='{$selected}' {$attr}>\n";
+	}
+	function txt($name,$selected=null) {
+		$arr[name] = $name;
+		$arr[selected] = $selected;
+		return xform::text($arr);
+	}
+	function year($arr) {
+		if (!is_array($arr)) return;
+		$name = $arr[name];
+		$attr = $arr[attr] ? $arr[attr] : 'class=text';
+		$selected = $arr[selected] ? $arr[selected] : $_POST[$name];
+		if ($selected==0) $selected = date('Y');
+		return "<input type=text size=4 maxlength=4 ".
+		"name='{$name}' value='{$selected}' {$attr}>\n";
+	}
+	function yr($name,$selected=FALSE) {
+		$arr[name] = $name;
+		$arr[selected] = $selected;
+		return xform::year($arr);
+	}
+	function radio($arr) {
+		if (!is_array($arr)) return;
+		global $xxxradio;
+		$name = $arr[name];
+		$selected = $arr[selected] ? $arr[selected] : $_POST[$name];
+		if (empty($selected)) $selected = $arr[def];
+		$attr = $arr[attr];
+		$data = $arr[data];
+		$extra = $arr[extra];
+		$break = isset($arr['break']) ? $arr['break'] : TRUE;
+		$i = 0;
+		xform::start();
+		$ndata = count($data);
+		foreach ($data as $k=>$v) {
+			if ($i>0&&$break) echo '<br>';
+			$k = xform::xhe($k);
+			$v = xform::xhe($v);
+			$ext = $arr[extra][$k];
+			$xxxradio++;
+			echo '<input type=radio ';
+			if ($k==$selected) echo 'checked';
+			echo " id='radio{$xxxradio}' name='{$name}' value='{$k}' {$attr}><label for='radio{$xxxradio}'>{$v}</label>".str_repeat('&nbsp;',5)."{$ext}\n";
+			if ($k==$selected&&$ndata>1) $js = "<script language=javascript>document.theform.{$name}[{$i}].checked=true</script>\n";
+			else if ($k==$selected&&$ndata==1) $js = "<script language=javascript>document.theform.{$name}.checked=true</script>\n";
+			$i++;
+		}
+		echo $js;
+		return xform::stop();
+	}
+	function calendar($arr) {
+		global $i_need_calendar_js;
+		$i_need_calendar_js = TRUE;
+		if (!is_array($arr)) return;
+		$name = $arr[name];
+		$selected = $arr[selected] ? $arr[selected] : $_POST[$name];
+		if (! is_int($selected)) $selected = strtotime($selected);
+		if ($selected==0) $selected = time();
+		$selected = date($GLOBALS[date_format],$selected);
+		$size = strlen($selected);
+		$attr = $arr[attr];
+		return "<input name='{$name}' class=text  ".
+		"value='{$selected}' type=text size={$size}><a href=# ".
+		"onclick=\"ppcDF='{$GLOBALS[date_format]}';".
+		"getCalendarFor(document.theform.{$name});return false\">".
+		"<img src={$GLOBALS[path_theme]}/images/calendar.gif ".
+		"align=middle border=0 /></a>\n";
+	}
+	function cal($name,$selected=null) {
+		$arr[name] = $name;
+		$arr[selected] = $selected;
+		return xform::calendar($arr);
+	}
+	function arr_selector($arr) {
+		if (!is_array($arr)) return;
+		$name = $arr[name];
+		$attr = $arr[attr] ? $arr[attr] : 'class=text';
+		$selected = $arr[selected] ? $arr[selected] : $_POST[$name];
+		$sql = $arr[sql];
+		$felm = isset($arr[first]) ? $arr[first] : TRUE;
+		$fval = xform::xhe($arr[first_val]);
+		$ftxt = xform::xhe($arr[first_txt]);
+		$data = $arr[data];
+		xform::start();
+                echo "<select name={$name} {$attr}>\n";
+                if ($felm) echo "<option value='$fval'>$ftxt</option>\n";
+		foreach ($data as $k=>$v) {
+			if ($arr[keysameval]) $k = $v;
+			$val = xform::xhe($k);
+			$txt = xform::xhe($v);
+                        echo "<option ";
+                        if ($k==$selected) echo 'selected';
+                        echo " value='{$val}'>{$txt}</option>\n";
+                }
+                echo "</select>\n";
+		return xform::stop();
+	}
+	function ars($a) { return xform::arr_selector($a); }
+	function render($arr) {
+		$field = $arr[field];
+		$label = $arr[label];
+		$value = $arr[value];
+		$opt = $arr[opt];
+		$submit = isset($arr[submit]) ? $arr[submit] : FALSE;
+		$attr = isset($arr[attr])?$arr[attr]:'name=theform method=post';
+		xform::start();
+                echo "<table border=0 cellpadding=1 cellspacing=1 ".
+                ""."width=90% class=in_table>\n";
+                echo str_replace('[attr]', $attr, "<form [attr]>\n");
+                echo "<tr class=title_table>\n".
+                ""."<th>{$label[form_title]}</th></tr>\n";
+                foreach ($field as $k => $v) {
+                        $name = $field[$k][name];
+                        if ($opt[$name]!==TRUE)
+                                echo "<tr><td>{$value[$name]}</td></tr>\n";
+                }
+	
+		echo "<tr><td>";
+		if ($submit) {
+			echo $submit;
+		} else {
+	                echo "<input type=submit class=button ".
+        	        ""."name=submit value=Submit>";
+		}
+		echo "</td></tr>\n";
+                echo $label[form_extra];
+                echo "</form>\n";
+                echo "</table>566\n";
+                return xform::stop();
+	}
+	function checkbox($arr) {
+		if (!is_array($arr)) return;
+		$name = $arr[name];
+		$attr = $arr[attr] ? $arr[attr] : 'class=text';
+		$selected = $arr[selected] ? $arr[selected] : $_POST[$name];
+		if ($selected) $attr .= ' checked';
+		return "<input type=checkbox name='{$name}' value=1 {$attr}>\n";
+	}
+	function cb($name,$selected=null) {
+		$arr[name] = $name;
+		$arr[selected] = $selected;
+		return xform::checkbox($arr);
+	}
+	function arr_checker($arr) {
+		global $xxxcheck;
+		if (!is_array($arr)) return;
+		$name = $arr[name];
+		//$attr = $arr[attr] ? $arr[attr] : 'class=text';
+		$selected = $arr[selected] ? $arr[selected] : $_POST[$name];
+		//$sql = $arr[sql];
+		$felm = isset($arr[first]) ? $arr[first] : TRUE;
+		$break = isset($arr['break']) ? $arr['break'] : TRUE;
+		$fval = xform::xhe($arr[first_val]);
+		$ftxt = xform::xhe($arr[first_txt]);
+		$data = $arr[data];
+		$extra = $arr[extra];
+		xform::start();
+		$i = 0;
+		foreach ($data as $k=>$v) {
+			if ($i>0&&$break) echo '<br>';
+			if ($arr[keysameval]) $k = $v;
+			$val = xform::xhe($k);
+			$txt = xform::xhe($v);
+			$xxxcheck++;
+			echo "<nobr>";
+			echo "<input type=checkbox name='{$name}[{$val}]' value='1' ";
+	                echo " id='check{$xxxcheck}' ";
+			if ($k==$selected[$val]) echo 'checked';
+			echo ">";
+			echo "<label for='check{$xxxcheck}'>{$txt}</label>".str_repeat('&nbsp;',5)."{$ext}\n";
+			echo "</nobr>";
+			$i++;	
+                }
+		return xform::stop();
+	}
+}
+
+?>

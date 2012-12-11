@@ -1,0 +1,87 @@
+<?php
+	include "../config/koneksi.php";
+
+
+	if ($_SESSION['level'] == 'Admin') {
+
+
+		echo "<ul class='nav'>
+				<li class='active'><a href=?module=home><i class='icon-home icon-white'></i> Home</a></li>";
+				$main = mysql_query("SELECT * FROM mainmenu where aktif = 'N'  AND adminmenu = 'Y' ".mysql_error());
+				while ($r=mysql_fetch_array($main)) {
+					echo "<li>";
+					/*if (empty($r[link])) {
+						echo '<a class=dropdown-toggle href="" >'.$r[namamenu] . '&nbsp;<strong class=caret></strong></a>';
+					}else{
+						echo '<a href="'.$r[link].'">'.$r[namamenu].'</a>';
+					}
+
+					$sub= mysql_query("SELECT * FROM submenu, mainmenu
+					WHERE submenu.id_main = mainmenu.id_main AND submenu.id_main = $r[id_main] AND submenu.aktif='N'");
+					$jml = mysql_num_rows($sub);
+					// Apabila Ditemukan
+					if ($jml>0) {
+						echo "<ul>";
+						while ($w=mysql_fetch_array($sub)) {
+							echo "<li>";
+							echo '<a href="'.$w[link_sub].'">'.$w[nama_sub].'</a>' ;
+							echo "</li>";
+						}
+						echo "</ul>";
+						echo "</li>";
+					}else{
+						echo "</li>";
+					}*/
+
+				}			
+			echo " </ul>";
+
+	}
+?>
+
+
+
+
+
+<div class="container">
+		<div class="row">
+			<div class="span4 offset4">				
+					<form class="form-actions" name="login" id="login" action="ceklogin.php" method="POST" >
+						<fieldset> 
+								<h2><legend>Please Sign In</legend></h2>
+								<div class="control-group">
+									<div class="div_text">
+										<div class="input-prepend">
+											<div class="controls">
+
+												<span class="add-on">@</span>										
+												<input type="text" placeholder ="Username" name="username" id="username" for="name">
+											</div>
+										</div>
+									</div>
+								</div>						
+									<div class="input-prepend">
+										<span class="add-on"><i class="icon-user"></i></span>
+											<input type="text" placeholder ="Password" name="password" id="password">
+									</div>
+								<div class="div_text">
+									<label class="checkbox" >					
+											<input type="checkbox" >Remember me
+									</label>
+								</div>
+								<button class="btn btn-primary btn-block" data-loading-text="Loading...">Sign In</button>
+						</fieldset>
+						<div class="footer">
+							<legend>
+								
+									<center>
+										<small>
+										Copyright 2012 by Bayu Nugroho. All rights reserved.
+										</small>
+									</center>								
+							</legend>
+						</div>
+					</form>					
+			</div>			
+		</div>
+	</div>

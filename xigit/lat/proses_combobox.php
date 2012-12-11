@@ -1,0 +1,1 @@
+<? echo "Anda memilih jurusan : " . $_POST['jurusan']; ?>

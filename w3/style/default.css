@@ -1,0 +1,25 @@
+@charset "UTF-8";
+@import url('../style/bootstrap/css/bootstrap-responsive.min.css');
+@import url('../style/bootstrap/css/bootstrap-responsive.css');
+/* CSS Document */
+
+body{background-image:url(../img/250px-Grid1aibsvg.png);}
+
+form {background-image:url(../img/grid-18px-masked.png)}
+
+.well{
+	background-color: #FFFFFF;}
+
+label.valid {
+		  width: 20px;
+		  height: 20px;
+		  background: url(../img/valid.png) center center no-repeat;
+		  display: inline-block;
+		  text-indent: 30px;
+		}
+label.error {
+			
+			color: #D34943;
+			padding: 2px 8px;
+			margin-top: 2px;
+		}

@@ -1,0 +1,264 @@
+.|Izin Produksi||||
+..|Kelas|kelas_produksi.php?force_clean=1|||
+..|Registrasi||||
+...|Kelengkapan|kelengkapan_registrasi_produksi.php?force_clean=1|||
+...|Pemohon|pendaftar_registrasi_produksi.php?force_clean=1|||
+...|Tanda Terima|tt_registrasi_produksi.php?force_clean=1|||
+...|Inbox||||
+....|Subdit|inbox_subdit_registrasi_produksi.php?force_clean=1|||
+....|Seksi|inbox_seksi_registrasi_produksi.php?force_clean=1|||
+...|Cek Kelengkapan|cek_registrasi_produksi.php?force_clean=1|||
+...|Surat||||
+....|Surat Keputusan|sk_registrasi_produksi.php?force_clean=1|||
+....|Surat Tambah Data|st_registrasi_produksi.php?force_clean=1|||
+....|Surat Penolakan|sp_registrasi_produksi.php?force_clean=1|||
+...|Laporan|laporan_registrasi_produksi.php?force_clean=1|||
+..|Perubahan||||
+...|Kelengkapan|kelengkapan_ubah_produksi.php?force_clean=1|||
+...|Pemohon|pendaftar_ubah_produksi.php?force_clean=1|||
+...|Tanda Terima|tt_ubah_produksi.php?force_clean=1|||
+...|Inbox||||
+....|Subdit|inbox_subdit_ubah_produksi.php?force_clean=1|||
+....|Seksi|inbox_seksi_ubah_produksi.php?force_clean=1|||
+...|Cek Kelengkapan|cek_ubah_produksi.php?force_clean=1|||
+...|Surat||||
+....|Surat Keputusan|sk_ubah_produksi.php?force_clean=1|||
+....|Surat Tambah Data|st_ubah_produksi.php?force_clean=1|||
+....|Surat Penolakan|sp_ubah_produksi.php?force_clean=1|||
+...|Laporan|laporan_ubah_produksi.php?force_clean=1|||
+..|Pemutihan||||
+...|Kelengkapan|kelengkapan_pemutihan_produksi.php?force_clean=1|||
+...|Pemohon|pendaftar_pemutihan_produksi.php?force_clean=1|||
+...|Tanda Terima|tt_pemutihan_produksi.php?force_clean=1|||
+...|Inbox||||
+....|Subdit|inbox_subdit_pemutihan_produksi.php?force_clean=1|||
+....|Seksi|inbox_seksi_pemutihan_produksi.php?force_clean=1|||
+...|Cek Kelengkapan|cek_pemutihan_produksi.php?force_clean=1|||
+...|Surat||||
+....|Surat Keputusan|sk_pemutihan_produksi.php?force_clean=1|||
+....|Surat Tambah Data|st_pemutihan_produksi.php?force_clean=1|||
+....|Surat Penolakan|sp_pemutihan_produksi.php?force_clean=1|||
+...|Laporan|laporan_pemutihan_produksi.php?force_clean=1|||
+.|Izin Penyalur||||
+..|Registrasi||||
+...|Kelengkapan|kelengkapan_registrasi_penyalur.php?force_clean=1|||
+...|Pemohon|pendaftar_registrasi_penyalur.php?force_clean=1|||
+...|Tanda Terima|tt_registrasi_penyalur.php?force_clean=1|||
+...|Inbox||||
+....|Subdit|inbox_subdit_registrasi_penyalur.php?force_clean=1|||
+....|Seksi|inbox_seksi_registrasi_penyalur.php?force_clean=1|||
+...|Cek Kelengkapan|cek_registrasi_penyalur.php?force_clean=1|||
+...|Surat||||
+....|Surat Keputusan|sk_registrasi_penyalur.php?force_clean=1|||
+....|Surat Tambah Data|st_registrasi_penyalur.php?force_clean=1|||
+....|Surat Penolakan|sp_registrasi_penyalur.php?force_clean=1|||
+...|Laporan|laporan_registrasi_penyalur.php?force_clean=1|||
+..|Perubahan||||
+...|Kelengkapan|kelengkapan_ubah_penyalur.php?force_clean=1|||
+...|Pemohon|pendaftar_ubah_penyalur.php?force_clean=1|||
+...|Tanda Terima|tt_ubah_penyalur.php?force_clean=1|||
+...|Inbox||||
+....|Subdit|inbox_subdit_ubah_penyalur.php?force_clean=1|||
+....|Seksi|inbox_seksi_ubah_penyalur.php?force_clean=1|||
+...|Cek Kelengkapan|cek_ubah_penyalur.php?force_clean=1|||
+...|Surat||||
+....|Surat Keputusan|sk_ubah_penyalur.php?force_clean=1|||
+....|Surat Tambah Data|st_ubah_penyalur.php?force_clean=1|||
+....|Surat Penolakan|sp_ubah_penyalur.php?force_clean=1|||
+...|Laporan|laporan_ubah_penyalur.php?force_clean=1|||
+..|Pemutihan||||
+...|Kelengkapan|kelengkapan_pemutihan_penyalur.php?force_clean=1|||
+...|Pemohon|pendaftar_pemutihan_penyalur.php?force_clean=1|||
+...|Tanda Terima|tt_pemutihan_penyalur.php?force_clean=1|||
+...|Inbox||||
+....|Subdit|inbox_subdit_pemutihan_penyalur.php?force_clean=1|||
+....|Seksi|inbox_seksi_pemutihan_penyalur.php?force_clean=1|||
+...|Cek Kelengkapan|cek_pemutihan_penyalur.php?force_clean=1|||
+...|Surat||||
+....|Surat Keputusan|sk_pemutihan_penyalur.php?force_clean=1|||
+....|Surat Tambah Data|st_pemutihan_penyalur.php?force_clean=1|||
+....|Surat Penolakan|sp_pemutihan_penyalur.php?force_clean=1|||
+...|Laporan|laporan_pemutihan_penyalur.php?force_clean=1|||
+.|Izin Edar||||
+..|Alkes||||
+...|Kelas|kelas_edar_alkes.php?force_clean=1|||
+...|Kategori|kategori_edar_alkes.php?force_clean=1|||
+...|Sub Kategori|subkategori_edar_alkes.php?force_clean=1|||
+...|Lokal||||
+....|Registrasi||||
+.....|Kelengkapan|kelengkapan_registrasi_edar_alkes_lokal.php?force_clean=1|||
+.....|Pemohon|pendaftar_registrasi_edar_alkes_lokal.php?force_clean=1|||
+.....|Tanda Terima|tt_registrasi_edar_alkes_lokal.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_registrasi_edar_alkes_lokal.php?force_clean=1|||
+......|Seksi|inbox_seksi_registrasi_edar_alkes_lokal.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_registrasi_edar_alkes_lokal.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_registrasi_edar_alkes_lokal.php?force_clean=1|||
+......|Surat Tambah Data|st_registrasi_edar_alkes_lokal.php?force_clean=1|||
+......|Surat Penolakan|sp_registrasi_edar_alkes_lokal.php?force_clean=1|||
+.....|Laporan|laporan_registrasi_edar_alkes_lokal.php?force_clean=1|||
+....|Perubahan||||
+.....|Kelengkapan|kelengkapan_ubah_edar_alkes_lokal.php?force_clean=1|||
+.....|Pemohon|pendaftar_ubah_edar_alkes_lokal.php?force_clean=1|||
+.....|Tanda Terima|tt_ubah_edar_alkes_lokal.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_ubah_edar_alkes_lokal.php?force_clean=1|||
+......|Seksi|inbox_seksi_ubah_edar_alkes_lokal.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_ubah_edar_alkes_lokal.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_ubah_edar_alkes_lokal.php?force_clean=1|||
+......|Surat Tambah Data|st_ubah_edar_alkes_lokal.php?force_clean=1|||
+......|Surat Penolakan|sp_ubah_edar_alkes_lokal.php?force_clean=1|||
+.....|Laporan|laporan_ubah_edar_alkes_lokal.php?force_clean=1|||
+....|Pemutihan||||
+.....|Kelengkapan|kelengkapan_pemutihan_edar_alkes_lokal.php?force_clean=1|||
+.....|Pemohon|pendaftar_pemutihan_edar_alkes_lokal.php?force_clean=1|||
+.....|Tanda Terima|tt_pemutihan_edar_alkes_lokal.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_pemutihan_edar_alkes_lokal.php?force_clean=1|||
+......|Seksi|inbox_seksi_pemutihan_edar_alkes_lokal.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_pemutihan_edar_alkes_lokal.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_pemutihan_edar_alkes_lokal.php?force_clean=1|||
+......|Surat Tambah Data|st_pemutihan_edar_alkes_lokal.php?force_clean=1|||
+......|Surat Penolakan|sp_pemutihan_edar_alkes_lokal.php?force_clean=1|||
+.....|Laporan|laporan_pemutihan_edar_alkes_lokal.php?force_clean=1|||
+...|Import||||
+....|Registrasi||||
+.....|Kelengkapan|kelengkapan_registrasi_edar_alkes_import.php?force_clean=1|||
+.....|Pemohon|pendaftar_registrasi_edar_alkes_import.php?force_clean=1|||
+.....|Tanda Terima|tt_registrasi_edar_alkes_import.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_registrasi_edar_alkes_import.php?force_clean=1|||
+......|Seksi|inbox_seksi_registrasi_edar_alkes_import.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_registrasi_edar_alkes_import.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_registrasi_edar_alkes_import.php?force_clean=1|||
+......|Surat Tambah Data|st_registrasi_edar_alkes_import.php?force_clean=1|||
+......|Surat Penolakan|sp_registrasi_edar_alkes_import.php?force_clean=1|||
+.....|Laporan|laporan_registrasi_edar_alkes_import.php?force_clean=1|||
+....|Perubahan||||
+.....|Kelengkapan|kelengkapan_ubah_edar_alkes_import.php?force_clean=1|||
+.....|Pemohon|pendaftar_ubah_edar_alkes_import.php?force_clean=1|||
+.....|Tanda Terima|tt_ubah_edar_alkes_import.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_ubah_edar_alkes_import.php?force_clean=1|||
+......|Seksi|inbox_seksi_ubah_edar_alkes_import.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_ubah_edar_alkes_import.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_ubah_edar_alkes_import.php?force_clean=1|||
+......|Surat Tambah Data|st_ubah_edar_alkes_import.php?force_clean=1|||
+......|Surat Penolakan|sp_ubah_edar_alkes_import.php?force_clean=1|||
+.....|Laporan|laporan_ubah_edar_alkes_import.php?force_clean=1|||
+....|Pemutihan||||
+.....|Kelengkapan|kelengkapan_pemutihan_edar_alkes_import.php?force_clean=1|||
+.....|Pemohon|pendaftar_pemutihan_edar_alkes_import.php?force_clean=1|||
+.....|Tanda Terima|tt_pemutihan_edar_alkes_import.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_pemutihan_edar_alkes_import.php?force_clean=1|||
+......|Seksi|inbox_seksi_pemutihan_edar_alkes_import.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_pemutihan_edar_alkes_import.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_pemutihan_edar_alkes_import.php?force_clean=1|||
+......|Surat Tambah Data|st_pemutihan_edar_alkes_import.php?force_clean=1|||
+......|Surat Penolakan|sp_pemutihan_edar_alkes_import.php?force_clean=1|||
+.....|Laporan|laporan_pemutihan_edar_alkes_import.php?force_clean=1|||
+..|PKRT||||
+...|Kelas|kelas_edar_pkrt.php?force_clean=1|||
+...|Kategori|kategori_edar_pkrt.php?force_clean=1|||
+...|Sub Kategori|subkategori_edar_pkrt.php?force_clean=1|||
+...|Lokal||||
+....|Registrasi||||
+.....|Kelengkapan|kelengkapan_registrasi_edar_pkrt_lokal.php?force_clean=1|||
+.....|Pemohon|pendaftar_registrasi_edar_pkrt_lokal.php?force_clean=1|||
+.....|Tanda Terima|tt_registrasi_edar_pkrt_lokal.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_registrasi_edar_pkrt_lokal.php?force_clean=1|||
+......|Seksi|inbox_seksi_registrasi_edar_pkrt_lokal.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_registrasi_edar_pkrt_lokal.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_registrasi_edar_pkrt_lokal.php?force_clean=1|||
+......|Surat Tambah Data|st_registrasi_edar_pkrt_lokal.php?force_clean=1|||
+......|Surat Penolakan|sp_registrasi_edar_pkrt_lokal.php?force_clean=1|||
+.....|Laporan|laporan_registrasi_edar_pkrt_lokal.php?force_clean=1|||
+....|Perubahan||||
+.....|Kelengkapan|kelengkapan_ubah_edar_pkrt_lokal.php?force_clean=1|||
+.....|Pemohon|pendaftar_ubah_edar_pkrt_lokal.php?force_clean=1|||
+.....|Tanda Terima|tt_ubah_edar_pkrt_lokal.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_ubah_edar_pkrt_lokal.php?force_clean=1|||
+......|Seksi|inbox_seksi_ubah_edar_pkrt_lokal.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_ubah_edar_pkrt_lokal.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_ubah_edar_pkrt_lokal.php?force_clean=1|||
+......|Surat Tambah Data|st_ubah_edar_pkrt_lokal.php?force_clean=1|||
+......|Surat Penolakan|sp_ubah_edar_pkrt_lokal.php?force_clean=1|||
+.....|Laporan|laporan_ubah_edar_pkrt_lokal.php?force_clean=1|||
+....|Pemutihan||||
+.....|Kelengkapan|kelengkapan_pemutihan_edar_pkrt_lokal.php?force_clean=1|||
+.....|Pemohon|pendaftar_pemutihan_edar_pkrt_lokal.php?force_clean=1|||
+.....|Tanda Terima|tt_pemutihan_edar_pkrt_lokal.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_pemutihan_edar_pkrt_lokal.php?force_clean=1|||
+......|Seksi|inbox_seksi_pemutihan_edar_pkrt_lokal.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_pemutihan_edar_pkrt_lokal.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_pemutihan_edar_pkrt_lokal.php?force_clean=1|||
+......|Surat Tambah Data|st_pemutihan_edar_pkrt_lokal.php?force_clean=1|||
+......|Surat Penolakan|sp_pemutihan_edar_pkrt_lokal.php?force_clean=1|||
+.....|Laporan|laporan_pemutihan_edar_pkrt_lokal.php?force_clean=1|||
+...|Import||||
+....|Registrasi||||
+.....|Kelengkapan|kelengkapan_registrasi_edar_pkrt_import.php?force_clean=1|||
+.....|Pemohon|pendaftar_registrasi_edar_pkrt_import.php?force_clean=1|||
+.....|Tanda Terima|tt_registrasi_edar_pkrt_import.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_registrasi_edar_pkrt_import.php?force_clean=1|||
+......|Seksi|inbox_seksi_registrasi_edar_pkrt_import.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_registrasi_edar_pkrt_import.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_registrasi_edar_pkrt_import.php?force_clean=1|||
+......|Surat Tambah Data|st_registrasi_edar_pkrt_import.php?force_clean=1|||
+......|Surat Penolakan|sp_registrasi_edar_pkrt_import.php?force_clean=1|||
+.....|Laporan|laporan_registrasi_edar_pkrt_import.php?force_clean=1|||
+....|Perubahan||||
+.....|Kelengkapan|kelengkapan_ubah_edar_pkrt_import.php?force_clean=1|||
+.....|Pemohon|pendaftar_ubah_edar_pkrt_import.php?force_clean=1|||
+.....|Tanda Terima|tt_ubah_edar_pkrt_import.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_ubah_edar_pkrt_import.php?force_clean=1|||
+......|Seksi|inbox_seksi_ubah_edar_pkrt_import.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_ubah_edar_pkrt_import.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_ubah_edar_pkrt_import.php?force_clean=1|||
+......|Surat Tambah Data|st_ubah_edar_pkrt_import.php?force_clean=1|||
+......|Surat Penolakan|sp_ubah_edar_pkrt_import.php?force_clean=1|||
+.....|Laporan|laporan_ubah_edar_pkrt_import.php?force_clean=1|||
+....|Pemutihan||||
+.....|Kelengkapan|kelengkapan_pemutihan_edar_pkrt_import.php?force_clean=1|||
+.....|Pemohon|pendaftar_pemutihan_edar_pkrt_import.php?force_clean=1|||
+.....|Tanda Terima|tt_pemutihan_edar_pkrt_import.php?force_clean=1|||
+.....|Inbox||||
+......|Subdit|inbox_subdit_pemutihan_edar_pkrt_import.php?force_clean=1|||
+......|Seksi|inbox_seksi_pemutihan_edar_pkrt_import.php?force_clean=1|||
+.....|Cek Kelengkapan|cek_pemutihan_edar_pkrt_import.php?force_clean=1|||
+.....|Surat||||
+......|Surat Keputusan|sk_pemutihan_edar_pkrt_import.php?force_clean=1|||
+......|Surat Tambah Data|st_pemutihan_edar_pkrt_import.php?force_clean=1|||
+......|Surat Penolakan|sp_pemutihan_edar_pkrt_import.php?force_clean=1|||
+.....|Laporan|laporan_pemutihan_edar_pkrt_import.php?force_clean=1|||
+.|General Setup||||
+..|Propinsi|propinsi.php?force_clean=1|||
+..|Subdit|subdit.php?force_clean=1|||
+.|ADMINISTRATOR||||
+..|Penilai|penilai.php?force_clean=1|||
+..|Kasubdit|kasubdit.php?force_clean=1|||
+..|Kaseksi|kaseksi.php?force_clean=1|||
+..|Direktur|direktur.php?force_clean=1|||
+..|Operator|operator.php?force_clean=1|||
+..|Admin|admin.php?force_clean=1|||
+..|Log Intern|log_intern.php?force_clean=1|||
+..|Change Password|javascript:win=openIT(\'password.php?force_clean=1\', 600, 400, null, null, \'changePassword\');win.focus();|||
+..|Setting Menu|phplayersmenu.php?force_clean=1|||
+.|Logout|logout.php?force_clean=1|||

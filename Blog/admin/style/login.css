@@ -1,0 +1,18 @@
+body{
+	background-color: #222;
+}
+
+legend small{
+	font-size: 10px;
+}
+.form-actions{
+	min-height: 20px;
+	padding: 19px;
+	margin-bottom: 20px;
+	background-color: whiteSmoke;
+
+}
+.div_text{
+	padding-top: 8px;
+	padding-bottom: 5px;
+}

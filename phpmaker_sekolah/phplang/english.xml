@@ -1,0 +1,1404 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<ew-language date="2011/9/9" version="8.0.0" id="en" name="English" desc="English" author="e.World Technology Ltd.">
+	<global>
+		<phrase id="actiondeleted" value="Deleted"/>
+		<phrase id="actioninserted" value="Inserted"/>
+		<phrase id="actioninsertedgridadd" value="Inserted (Grid-Add)"/>
+		<phrase id="actionupdated" value="Updated"/>
+		<phrase id="actionupdatedgridedit" value="Updated (Grid-Edit)"/>
+		<phrase id="actionupdatedmultiupdate" value="Updated (Multi-Update)"/>
+		<phrase id="activateaccount" value="Your account is activated"/>
+		<phrase id="activatefailed" value="Activation failed"/>
+		<phrase id="add" value="Add to"/>
+		<phrase id="addblankrow" value="Add Blank Row"/>
+		<phrase id="addbtn" value="Add"/>
+		<phrase id="addlink" value="Add"/>
+		<phrase id="addsuccess" value="Add succeeded"/>
+		<phrase id="advancedsearch" value="Advanced Search"/>
+		<phrase id="allrecords" value="All"/>
+		<phrase id="allword" value="All words"/>
+		<phrase id="alwaysask" value="Always ask for my user name and password"/>
+		<phrase id="anyword" value="Any word"/>
+		<phrase id="audittrailautologin" value="autologin"/>
+		<phrase id="audittrailfailedattempt" value="failed attempt: %n"/>
+		<phrase id="audittrailuserloggedin" value="user already logged in"/>
+		<phrase id="audittrailpasswordexpired" value="password expired"/>
+		<phrase id="audittraillogin" value="login"/>
+		<phrase id="audittraillogout" value="logout"/>
+		<phrase id="autologin" value="Auto login until I logout explicitly"/>
+		<phrase id="average" value="Average"/>
+		<phrase id="backtolist" value="Back to List"/>
+		<phrase id="backtologin" value="Back to login page"/>
+		<phrase id="backtomasterpage" value="Back to master page"/>
+		<phrase id="batchdeletebegin" value="*** Batch delete begin ***"/>
+		<phrase id="batchdeleterollback" value="*** Batch delete rollback ***"/>
+		<phrase id="batchdeletesuccess" value="*** Batch delete successful ***"/>
+		<phrase id="batchinsertbegin" value="*** Batch insert begin ***"/>
+		<phrase id="batchinsertrollback" value="*** Batch insert rollback ***"/>
+		<phrase id="batchinsertsuccess" value="*** Batch insert successful ***"/>
+		<phrase id="batchupdatebegin" value="*** Batch update begin ***"/>
+		<phrase id="batchupdaterollback" value="*** Batch update rollback ***"/>
+		<phrase id="batchupdatesuccess" value="*** Batch update successful ***"/>
+		<phrase id="cancelbtn" value="Cancel"/>
+		<phrase id="cancellink" value="Cancel"/>
+		<phrase id="changepwd" value="Change Password"/>
+		<phrase id="changepwdpage" value="Change Password Page"/>
+		<phrase id="changepwdbtn" value="Change Password"/>
+		<phrase id="confirm" value="Confirm"/>
+		<phrase id="confirmbtn" value="Confirm"/>
+		<phrase id="confirmpassword" value="Confirm Password"/>
+		<phrase id="conflictcancellink" value="Cancel"/>
+		<phrase id="copylink" value="Copy"/>
+		<phrase id="count" value="Count"/>
+		<phrase id="customview" value="CUSTOM VIEW"/>
+		<phrase id="delete" value="Delete From"/>
+		<phrase id="deletebtn" value="Confirm Delete"/>
+		<phrase id="deletecancelled" value="Delete cancelled"/>
+		<phrase id="deleteconfirmmsg" value="Do you want to delete this record?" client="1"/>
+		<phrase id="deletelink" value="Delete"/>
+		<phrase id="deletemulticonfirmmsg" value="Do you want to delete the selected records?" client="1"/>
+		<phrase id="deleteselectedlink" value="Delete Selected Records"/>
+		<phrase id="deletesuccess" value="Delete succeeded"/>
+		<phrase id="detaillink" value=""/>
+		<phrase id="detailcount" value="(%c)"/>
+		<phrase id="dupindex" value="Duplicate value '%v' for unique index '%f'"/>
+		<phrase id="dupkey" value="Duplicate primary key: '%f'"/>
+		<phrase id="edit" value="Edit"/>
+		<phrase id="editbtn" value="Edit"/>
+		<phrase id="editlink" value="Edit"/>
+		<phrase id="enternewpassword" value="Please enter new password" client="1"/>
+		<phrase id="enteroldpassword" value="Please enter old password" client="1"/>
+		<phrase id="enterpassword" value="Please enter password" client="1"/>
+		<phrase id="enterpwd" value="Please enter password" client="1"/>
+		<phrase id="enterrequiredfield" value="Please enter required field" client="1"/>
+		<phrase id="entersearchcriteria" value="Please enter search criteria"/>
+		<phrase id="enterusername" value="Please enter username" client="1"/>
+		<phrase id="entervalidatecode" value="Please enter the validation code shown" client="1"/>
+		<phrase id="entersenderemail" value="Please enter sender email" client="1"/>
+		<phrase id="enterpropersenderemail" value="Exceed maximum sender email count or email address incorrect" client="1"/>
+		<phrase id="enterrecipientemail" value="Please enter recipient email" client="1"/>
+		<phrase id="enterproperrecipientemail" value="Exceed maximum recipient email count or email address incorrect" client="1"/>
+		<phrase id="enterproperccemail" value="Exceed maximum cc email count or email address incorrect" client="1"/>
+		<phrase id="enterproperbccemail" value="Exceed maximum bcc email count or email address incorrect" client="1"/>
+		<phrase id="entersubject" value="Please enter subject" client="1"/>
+		<phrase id="emailformsender" value="From"/>
+		<phrase id="emailformrecipient" value="To"/>
+		<phrase id="emailformcc" value="Cc"/>
+		<phrase id="emailformbcc" value="Bcc"/>
+		<phrase id="emailformsubject" value="Subject"/>
+		<phrase id="emailformmessage" value="Message"/>
+		<phrase id="emailformcontenttype" value="Send as"/>
+		<phrase id="emailformcontenttypeurl" value="URL"/>
+		<phrase id="emailformcontenttypehtml" value="HTML"/>
+		<phrase id="enteruid" value="Please enter user ID" client="1"/>
+		<phrase id="entervalidemail" value="Please enter valid Email Address!" client="1"/>
+		<phrase id="exactphrase" value="Exact phrase"/>
+		<phrase id="exceedmaxretry" value="Exceed maximum login retry count. Account is locked. Please try again in %t minutes"/>
+		<phrase id="exceedmaxemailexport" value="Exceed maximum export email count. Please try again later"/>
+		<phrase id="exporttocsv" value="Export to CSV"/>
+		<phrase id="exporttoemail" value="Email" client="1"/>
+		<phrase id="exporttoexcel" value="Export to Excel"/>
+		<phrase id="exporttohtml" value="Export to HTML"/>
+		<phrase id="exporttopdf" value="Export to PDF"/>
+		<phrase id="exporttoword" value="Export to Word"/>
+		<phrase id="exporttoxml" value="Export to XML"/>
+		<phrase id="failedtosendmail" value="Failed to send mail. "/>
+		<phrase id="fieldname" value="Field Name"/>
+		<phrase id="fieldrequiredindicator" value="&lt;span class=&quot;ewRequired&quot;&gt;&amp;nbsp;*&lt;/span&gt;"/>
+		<phrase id="overwritebtn" value="Overwrite"/>
+		<phrase id="overwritelink" value="Overwrite"/>
+		<phrase id="forgotpwd" value="Forgot Password"/>
+		<phrase id="goback" value="Go Back"/>
+		<phrase id="gridaddlink" value="Grid Add"/>
+		<phrase id="gridcancellink" value="Cancel"/>
+		<phrase id="grideditlink" value="Grid Edit"/>
+		<phrase id="gridinsertlink" value="Insert"/>
+		<phrase id="gridsavelink" value="Save"/>
+		<phrase id="hidehighlight" value="Hide highlight" client="1"/>
+		<phrase id="incorrectcreditcard" value="Incorrect credit card number"/>
+		<phrase id="incorrectdateymd" value="Incorrect date, format = yyyy%smm%sdd"/>
+		<phrase id="incorrectdatemdy" value="Incorrect date, format = mm%sdd%syyyy"/>
+		<phrase id="incorrectdatedmy" value="Incorrect date, format = dd%smm%syyyy"/>
+		<phrase id="incorrectshortdateymd" value="Incorrect date, format = yy%smm%sdd"/>
+		<phrase id="incorrectshortdatemdy" value="Incorrect date, format = mm%sdd%syy"/>
+		<phrase id="incorrectshortdatedmy" value="Incorrect date, format = dd%smm%syy"/>
+		<phrase id="incorrectemail" value="Incorrect email" client="1"/>
+		<phrase id="incorrectfield" value="Incorrect field" client="1"/>
+		<phrase id="incorrectfloat" value="Incorrect floating point number" client="1"/>
+		<phrase id="incorrectguid" value="Incorrect GUID" client="1"/>
+		<phrase id="incorrectinteger" value="Incorrect integer" client="1"/>
+		<phrase id="incorrectphone" value="Incorrect phone number" client="1"/>
+		<phrase id="incorrectregexp" value="Regular expression not matched" client="1"/>
+		<phrase id="incorrectrange" value="Number must be between %1 and %2" client="1"/>
+		<phrase id="incorrectssn" value="Incorrect social security number" client="1"/>
+		<phrase id="incorrecttime" value="Incorrect time (hh:mm:ss)" client="1"/>
+		<phrase id="incorrectzip" value="Incorrect ZIP code" client="1"/>
+		<phrase id="inlineaddlink" value="Inline Add"/>
+		<phrase id="inlinecopylink" value="Inline Copy"/>
+		<phrase id="inlineeditlink" value="Inline Edit"/>
+		<phrase id="insertcancelled" value="Insert cancelled"/>
+		<phrase id="insertfailed" value="Insert failed"/>
+		<phrase id="insertlink" value="Insert"/>
+		<phrase id="insertsuccess" value="Insert succeeded"/>
+		<phrase id="invalidemail" value="Invalid Email"/>
+		<phrase id="invalidfield" value="Invalid Field"/>
+		<phrase id="invalidkeyvalue" value="Invalid key value"/>
+		<phrase id="invalidrecord" value="Invalid Record! Key is null" client="1"/>
+		<phrase id="invalidparameter" value="Invalid Parameter"/>
+		<phrase id="invalidpassword" value="Invalid Password"/>
+		<phrase id="invalidnewpassword" value="Invalid New Password"/>
+		<phrase id="invaliduidpwd" value="Incorrect user ID or password"/>
+		<phrase id="keep" value="Keep"/>
+		<phrase id="language" value="Language"/>
+		<phrase id="loading" value="Loading..." client="1"/>
+		<phrase id="login" value="Login"/>
+		<phrase id="logincancelled" value="Login cancelled"/>
+		<phrase id="loginpage" value="Login Page"/>
+		<phrase id="logout" value="Logout"/>
+		<phrase id="masterrecord" value="Master Record: "/>
+		<phrase id="maxfilesize" value="Max. file size (%s bytes) exceeded."/>
+		<phrase id="mismatchpassword" value="Mismatch Password" client="1"/>
+		<phrase id="missinglookuptablename" value="Missing lookup table name"/>
+		<phrase id="missingdisplayfieldname" value="Missing display field name"/>
+		<phrase id="missingdisplayfieldvalue" value="Missing display field value"/>
+		<phrase id="missinguserlevelid" value="Missing User Level ID"/>
+		<phrase id="missinguserlevelname" value="Missing User Level name"/>
+		<phrase id="new" value="New"/>
+		<phrase id="newpassword" value="New Password"/>
+		<phrase id="newvalue" value="New Value"/>
+		<phrase id="next" value="Next"/>
+		<phrase id="noaddrecord" value="No records to be added" client="1"/>
+		<phrase id="nofieldselected" value="No field selected for update" client="1"/>
+		<phrase id="nopermission" value="You do not have permission to access the page."/>
+		<phrase id="noaddpermission" value="You do not have permission to add the record."/>
+		<phrase id="nodeletepermission" value="You do not have permission to delete the record."/>
+		<phrase id="noeditpermission" value="You do not have permission to edit the record."/>
+		<phrase id="norecord" value="No records found"/>
+		<phrase id="norecordforkey" value="No record found for key = "/>
+		<phrase id="norecordselected" value="No records selected" client="1"/>
+		<phrase id="notablegenerated" value="No tables generated"/>
+		<phrase id="of" value="of"/>
+		<phrase id="old" value="Old"/>
+		<phrase id="oldpassword" value="Old Password"/>
+		<phrase id="optionalreadyexist" value="Option already exists"/>
+		<phrase id="page" value="Page"/>
+		<phrase id="pagerfirst" value="First"/>
+		<phrase id="pagerlast" value="Last"/>
+		<phrase id="pagernext" value="Next"/>
+		<phrase id="pagerprevious" value="Previous"/>
+		<phrase id="password" value="Password"/>
+		<phrase id="passwordrequest" value="Password Request"/>
+		<phrase id="passwordchanged" value="Password Changed"/>
+		<phrase id="passwordexpired" value="Password Expired. Please change password."/>
+		<phrase id="permission" value="Permission"/>
+		<phrase id="permissionaddcopy" value="Add/Copy"/>
+		<phrase id="permissiondelete" value="Delete"/>
+		<phrase id="permissionedit" value="Edit"/>
+		<phrase id="permissionlistsearchview" value="List/Search/View"/>
+		<phrase id="permissionlist" value="List"/>
+		<phrase id="permissionsearch" value="Search"/>
+		<phrase id="permissionview" value="View"/>
+		<phrase id="phpuploaderr1" value="The uploaded file exceeds the upload_max_filesize directive in php.ini."/>
+		<phrase id="phpuploaderr2" value="The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."/>
+		<phrase id="phpuploaderr3" value="The uploaded file was only partially uploaded."/>
+		<phrase id="phpuploaderr4" value="No file was uploaded."/>
+		<phrase id="phpuploaderr6" value="Missing a temporary folder."/>
+		<phrase id="phpuploaderr7" value="Failed to write file to disk."/>
+		<phrase id="phpuploaderr8" value="File upload stopped by extension."/>
+		<phrase id="pickdate" value="Pick a date"/>
+		<phrase id="pleaseselect" value="Please Select"/>
+		<phrase id="primarykeyunspecified" value="Primary key unspecified"/>
+		<phrase id="printerfriendly" value="Printer Friendly"/>
+		<phrase id="prev" value="Prev"/>
+		<phrase id="pwdemailsent" value="Password sent to your email"/>
+		<phrase id="quicksearch" value="Quick Search"/>
+		<phrase id="quicksearchbtn" value="Search (*)"/>
+		<phrase id="record" value="Records"/>
+		<phrase id="recordchangedbyotheruser" value="Data has been changed by other user. Click [Reload] to retrieve the changed data (your data in the form will be overwritten) or click [Overwrite] to overwrite the changed data."/>
+		<phrase id="recorddeleted" value="record(s) deleted"/>
+		<phrase id="recordinserted" value="record(s) inserted"/>
+		<phrase id="recordupdated" value="record(s) updated"/>
+		<phrase id="recordsperpage" value="Page Size"/>
+		<phrase id="register" value="Register"/>
+		<phrase id="registerbtn" value="Register"/>
+		<phrase id="registersuccess" value="Registration succeeded"/>
+		<phrase id="registersuccessactivate" value="Registration succeeded. An email has been sent to your email address, please click the link in the email to activate your account."/>
+		<phrase id="registerpage" value="Registration Page"/>
+		<phrase id="reloadbtn" value="Reload"/>
+		<phrase id="reloadlink" value="Reload"/>
+		<phrase id="rememberme" value="Remember me"/>
+		<phrase id="remove" value="Remove"/>
+		<phrase id="replace" value="Replace"/>
+		<phrase id="report" value="Report"/>
+		<phrase id="requestpwdpage" value="Request Password Page"/>
+		<phrase id="reset" value="Reset"/>
+		<phrase id="resetsearch" value="Reset search criteria"/>
+		<phrase id="rptavg" value="Average"/>
+		<phrase id="rptdtlrec" value="Detail Records"/>
+		<phrase id="rptgrandtotal" value="Grand Total"/>
+		<phrase id="rptmax" value="Maximum"/>
+		<phrase id="rptmin" value="Minimum"/>
+		<phrase id="rptsum" value="Sum"/>
+		<phrase id="rptsumhead" value="Summary for"/>
+		<phrase id="saveusername" value="Save my user name"/>
+		<phrase id="search" value="Search"/>
+		<phrase id="sendemailbtn" value="Send"/>
+		<phrase id="sendemailsuccess" value="Email sent successfully" client="1"/>
+		<phrase id="sendpwd" value="Send Password"/>
+		<phrase id="showall" value="Show all"/>
+		<phrase id="showhighlight" value="Show highlight" client="1"/>
+		<phrase id="srchlegend" value="&amp;nbsp;(*)"/>
+		<phrase id="table" value="TABLE"/>
+		<phrase id="tbltypetable" value="Table: "/>
+		<phrase id="tbltypeview" value="View: "/>
+		<phrase id="tbltypecustomview" value=""/>
+		<phrase id="tbltypereport" value="Report: "/>
+		<phrase id="to" value="to"/>
+		<phrase id="total" value="Total"/>
+		<phrase id="unauthorizeduserid" value="The current user (%c) is not authorized to assign the user ID (%u)."/>
+		<phrase id="unauthorizedparentuserid" value="The current user (%c) is not authorized to assign the parent user ID (%p)."/>
+		<phrase id="unauthorizedmasteruserid" value="The current user (%c) is not authorized to insert the record. Master filter: %f"/>
+		<phrase id="unmatchedvalue" value="&lt;img src=&quot;%falert-small.gif&quot; alt=&quot;Value does not exist&quot; title=&quot;Value does not exist&quot; width=&quot;16&quot; height=&quot;16&quot; border=&quot;0&quot;&gt;"/>
+		<phrase id="update" value="Update"/>
+		<phrase id="updatebtn" value="Update"/>
+		<phrase id="updatecancelled" value="Update cancelled"/>
+		<phrase id="updatefailed" value="Update failed"/>
+		<phrase id="updatelink" value="Update"/>
+		<phrase id="updateselectedlink" value="Update Selected Records"/>
+		<phrase id="updatesuccess" value="Update succeeded"/>
+		<phrase id="updatevalue" value="Update"/>
+		<phrase id="useremail" value="User Email"/>
+		<phrase id="userexists" value="User already exists"/>
+		<phrase id="userlevel" value="User Level: "/>
+		<phrase id="userleveladministratorname" value="User level name for user level -1 must be 'Administrator'" client="1"/>
+		<phrase id="userlevelpermission" value="User Level Permissions"/>
+		<phrase id="userlevelidinteger" value="User Level ID must be integer" client="1"/>
+		<phrase id="userleveldefaultname" value="User level name for user level 0 must be 'Default'" client="1"/>
+		<phrase id="userlevelidincorrect" value="User defined User Level ID must be larger than 0" client="1"/>
+		<phrase id="userlevelnameincorrect" value="User defined User Level name cannot be 'Administrator' or 'Default'" client="1"/>
+		<phrase id="userloggedin" value="User '%u' already logged in!"/>
+		<phrase id="username" value="User Name"/>
+		<phrase id="userprofilecorrupted" value="User profile is corrupted. Please logout and login again"/>
+		<phrase id="view" value="View"/>
+		<phrase id="viewlink" value="View"/>
+		<phrase id="viewpageaddlink" value="Add"/>
+		<phrase id="viewpagecopylink" value="Copy"/>
+		<phrase id="viewpagedeletelink" value="Delete"/>
+		<phrase id="viewpagedetaillink" value=""/>
+		<phrase id="viewpageeditlink" value="Edit"/>
+		<phrase id="wrongfiletype" value="File type is not allowed." client="1"/>
+		<phrase id="tableorview" value="Tables/Views"/>
+		<phrase id="=" value="="/>
+		<phrase id="&lt;&gt;" value="&lt;&gt;"/>
+		<phrase id="&lt;" value="&lt;"/>
+		<phrase id="&lt;=" value="&lt;="/>
+		<phrase id="&gt;" value="&gt;"/>
+		<phrase id="&gt;=" value="&gt;="/>
+		<phrase id="like" value="contains"/>
+		<phrase id="not like" value="not contains"/>
+		<phrase id="starts with" value="starts with"/>
+		<phrase id="between" value="between"/>
+		<phrase id="and" value="and"/>
+		<phrase id="or" value="or"/>
+	</global>
+	<project><phrase id="footertext" value="&amp;copy;2011 e.World Technology Ltd. All rights reserved."/>
+<menu id="315"><phrase id="menutext" value="st umum"/>
+</menu>
+<menu id="316"><phrase id="menutext" value="st peserta 2"/>
+</menu>
+<menu id="314"><phrase id="menutext" value="view peserta 2"/>
+</menu>
+<menu id="251"><phrase id="menutext" value="list khs kolektif 2"/>
+</menu>
+<menu id="252"><phrase id="menutext" value="pemilihan kelas"/>
+</menu>
+<menu id="250"><phrase id="menutext" value="rekap kirim"/>
+</menu>
+<menu id="249"><phrase id="menutext" value="saldo rugilaba"/>
+</menu>
+<menu id="191"><phrase id="menutext" value="Report 1"/>
+</menu>
+<menu id="192"><phrase id="menutext" value="uji"/>
+</menu>
+<menu id="140"><phrase id="menutext" value="tahap 5"/>
+</menu>
+<menu id="138"><phrase id="menutext" value="tahap 4"/>
+</menu>
+<menu id="139"><phrase id="menutext" value="subtigarek"/>
+</menu>
+<menu id="137"><phrase id="menutext" value="subduarek"/>
+</menu>
+<menu id="135"><phrase id="menutext" value="tahap 22"/>
+</menu>
+<menu id="92"><phrase id="menutext" value="tahap 1"/>
+</menu>
+<menu id="91"><phrase id="menutext" value="subsaturek"/>
+</menu>
+<menu id="54"><phrase id="menutext" value="st krs masal"/>
+</menu>
+<menu id="52"><phrase id="menutext" value="rekening 2"/>
+</menu>
+<menu id="50"><phrase id="menutext" value="keu cicilan"/>
+</menu>
+<menu id="48"><phrase id="menutext" value="keu tanggungan"/>
+</menu>
+<menu id="46"><phrase id="menutext" value="setting"/>
+</menu>
+<menu id="42"><phrase id="menutext" value="st master komponen mk"/>
+</menu>
+<menu id="43"><phrase id="menutext" value="st view mahasiswa"/>
+</menu>
+<menu id="16"><phrase id="menutext" value="ujian pengganti absensi"/>
+</menu>
+<menu id="13"><phrase id="menutext" value="pokokrek"/>
+</menu>
+<menu id="15"><phrase id="menutext" value="st master kelas dinamik"/>
+</menu>
+<menu id="11"><phrase id="menutext" value="st view master dosen"/>
+</menu>
+<menu id="6"><phrase id="menutext" value="userlevelpermissions"/>
+</menu>
+<menu id="7"><phrase id="menutext" value="userlevels"/>
+</menu>
+<menu id="3"><phrase id="menutext" value="Master"/>
+</menu>
+<menu id="1"><phrase id="menutext" value="Master Tingkat"/>
+</menu>
+<menu id="2"><phrase id="menutext" value="st patokan nilai"/>
+</menu>
+<menu id="4"><phrase id="menutext" value="Master Admin"/>
+</menu>
+<menu id="5"><phrase id="menutext" value="Pengguna"/>
+</menu>
+<menu id="8"><phrase id="menutext" value="Master Pengajar"/>
+</menu>
+<menu id="9"><phrase id="menutext" value="Master Siswa"/>
+</menu>
+<menu id="10"><phrase id="menutext" value="Jenis Agama"/>
+</menu>
+<menu id="12"><phrase id="menutext" value="Master Kelas"/>
+</menu>
+<menu id="14"><phrase id="menutext" value="Master Kelas Kelompok"/>
+</menu>
+<menu id="17"><phrase id="menutext" value="Peserta Kelas Kelompok"/>
+</menu>
+<menu id="44"><phrase id="menutext" value="Lihat Peserta Kelompok"/>
+</menu>
+<menu id="45"><phrase id="menutext" value="sch master lembaga"/>
+</menu>
+<menu id="53"><phrase id="menutext" value="Pemilihan Pokok"/>
+</menu>
+<menu id="90"><phrase id="menutext" value="Buat rekening"/>
+</menu>
+<menu id="313"><phrase id="menutext" value="Entri Peserta Kelas Kelompok"/>
+</menu>
+<menu id="18"><phrase id="menutext" value="Master Tanggungan"/>
+</menu>
+<menu id="130"><phrase id="menutext" value="Master Rekening"/>
+</menu>
+<menu id="131"><phrase id="menutext" value="Tahap 1"/>
+</menu>
+<menu id="132"><phrase id="menutext" value="Tahap 2"/>
+</menu>
+<menu id="133"><phrase id="menutext" value="Tahap 3"/>
+</menu>
+<menu id="134"><phrase id="menutext" value="Tahap 4"/>
+</menu>
+<menu id="190"><phrase id="menutext" value="Tahap 5"/>
+</menu>
+<menu id="136"><phrase id="menutext" value="tahap 3"/>
+</menu>
+<menu id="36"><phrase id="menutext" value="Keuangan"/>
+</menu>
+<menu id="19"><phrase id="menutext" value="Entri Tanggungan per Kelompok123"/>
+</menu>
+<menu id="20"><phrase id="menutext" value="view peserta"/>
+</menu>
+<menu id="37"><phrase id="menutext" value="pemilihan jenis biaya"/>
+</menu>
+<menu id="41"><phrase id="menutext" value="Entri Tanggungan per Kelompok"/>
+</menu>
+<menu id="47"><phrase id="menutext" value="Edit Tanggungan"/>
+</menu>
+<menu id="49"><phrase id="menutext" value="Transaksi Pembayaran"/>
+</menu>
+<menu id="51"><phrase id="menutext" value="Jurnal Umum"/>
+</menu>
+<menu id="246"><phrase id="menutext" value="Jurnal Umum"/>
+</menu>
+<menu id="245"><phrase id="menutext" value="Laporan"/>
+</menu>
+<menu id="194"><phrase id="menutext" value="neraca 1"/>
+</menu>
+<menu id="248"><phrase id="menutext" value="Neraca Saldo"/>
+</menu>
+<menu id="247"><phrase id="menutext" value="Neraca Rugi Laba"/>
+</menu>
+<table id="grid_krs_kelas_absensi1"/>
+<table id="grid_krs_kelas_absensi2"/>
+<table id="ketuntasan_keuangan"/>
+<table id="keu_cicilan"><phrase id="tblcaption" value="Cicilan"/>
+<field id="cicilan"><phrase id="fldcaption" value="cicilan"/>
+</field>
+<field id="tanggal_pembayaran"><phrase id="fldcaption" value="tanggal pembayaran"/>
+</field>
+<field id="rek_kas"><phrase id="fldcaption" value="rek kas"/>
+</field>
+<field id="rek_pendapatan"><phrase id="fldcaption" value="rek pendapatan"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="kode_otomatis_tanggungan"><phrase id="fldcaption" value="kode otomatis tanggungan"/>
+</field>
+<field id="kode_otomatis_master"><phrase id="fldcaption" value="kode otomatis master"/>
+</field>
+</table>
+<table id="keu_master_tanggungan"><phrase id="tblcaption" value="Master Tanggungan"/>
+<field id="nama_biaya"><phrase id="fldcaption" value="nama biaya"/>
+</field>
+<field id="apakah_disembunyikan"><phrase id="fldcaption" value="apakah disembunyikan"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="rek_pendapatan"><phrase id="fldcaption" value="Rek Pendapatan"/>
+</field>
+<field id="rek_kas"><phrase id="fldcaption" value="Rek Kas"/>
+</field>
+</table>
+<table id="keu_tanggungan"><phrase id="tblcaption" value="Tanggungan Siswa"/>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="kode_otomatis_master_tanggungan"><phrase id="fldcaption" value="kode otomatis master tanggungan"/>
+</field>
+<field id="identitas"><phrase id="fldcaption" value="identitas"/>
+</field>
+<field id="diskon_sosial"><phrase id="fldcaption" value="diskon sosial"/>
+</field>
+<field id="diskon_waktu"><phrase id="fldcaption" value="diskon waktu"/>
+</field>
+<field id="diskon_prestasi"><phrase id="fldcaption" value="diskon prestasi"/>
+</field>
+<field id="diskon_internal"><phrase id="fldcaption" value="diskon internal"/>
+</field>
+<field id="diskon_lain_lain"><phrase id="fldcaption" value="diskon lain lain"/>
+</field>
+<field id="nilai_tanggungan"><phrase id="fldcaption" value="nilai tanggungan"/>
+</field>
+<field id="tanggal_rencana_bayar"><phrase id="fldcaption" value="tanggal rencana bayar"/>
+</field>
+</table>
+<table id="list_khs_kolektif"/>
+<table id="list_khs_kolektif2"><phrase id="tblcaption" value="list khs kolektif 2"/>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="kode_otomatis_krs"><phrase id="fldcaption" value="kode otomatis krs"/>
+</field>
+<field id="nim"><phrase id="fldcaption" value="nim"/>
+</field>
+<field id="nama"><phrase id="fldcaption" value="nama"/>
+</field>
+<field id="kode_mk"><phrase id="fldcaption" value="kode mk"/>
+</field>
+<field id="nama_komponen_mk"><phrase id="fldcaption" value="nama komponen mk"/>
+</field>
+<field id="nama_mk"><phrase id="fldcaption" value="nama MK"/>
+</field>
+<field id="tahun"><phrase id="fldcaption" value="tahun"/>
+</field>
+<field id="semester"><phrase id="fldcaption" value="semester"/>
+</field>
+<field id="nilai"><phrase id="fldcaption" value="nilai"/>
+</field>
+<field id="kode_otomatis_kelas_absensi"><phrase id="fldcaption" value="kode otomatis kelas absensi"/>
+</field>
+</table>
+<table id="pengguna"><phrase id="tblcaption" value="pengguna"/>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="nama_pengguna"><phrase id="fldcaption" value="nama pengguna"/>
+</field>
+<field id="password"><phrase id="fldcaption" value="password"/>
+</field>
+<field id="username"><phrase id="fldcaption" value="username"/>
+</field>
+<field id="kode_otomatis_tingkat"><phrase id="fldcaption" value="kode otomatis tingkat"/>
+</field>
+<field id="user_level"><phrase id="fldcaption" value="user level"/>
+</field>
+</table>
+<table id="pokokrek"><phrase id="tblcaption" value="pokokrek"/>
+<field id="kodepokok"><phrase id="fldcaption" value="kode Pokok"/>
+</field>
+<field id="namapokok"><phrase id="fldcaption" value="nama Pokok"/>
+</field>
+</table>
+<table id="rekap_kirim"><phrase id="tblcaption" value="rekap kirim"/>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="hp"><phrase id="fldcaption" value="hp"/>
+</field>
+<field id="pesan"><phrase id="fldcaption" value="pesan"/>
+</field>
+<field id="tanggal_kirim"><phrase id="fldcaption" value="tanggal kirim"/>
+</field>
+</table>
+<table id="rekening2"><phrase id="tblcaption" value="rekening 2"/>
+<field id="kodepokok"><phrase id="fldcaption" value="kode Pokok"/>
+</field>
+<field id="kodesubsatu"><phrase id="fldcaption" value="kode Sub Satu"/>
+</field>
+<field id="kodesubdua"><phrase id="fldcaption" value="kode Sub Dua"/>
+</field>
+<field id="kodesubtiga"><phrase id="fldcaption" value="kode Sub Tiga"/>
+</field>
+<field id="norek"><phrase id="fldcaption" value="Norek"/>
+</field>
+<field id="keterangan"><phrase id="fldcaption" value="Keterangan"/>
+</field>
+<field id="d2fk"><phrase id="fldcaption" value="D/ K"/>
+</field>
+<field id="saldoawal"><phrase id="fldcaption" value="Saldo Awal"/>
+</field>
+<field id="saldo"><phrase id="fldcaption" value="Saldo"/>
+</field>
+<field id="tanggalsaldo"><phrase id="fldcaption" value="Tanggal Saldo"/>
+</field>
+<field id="target"><phrase id="fldcaption" value="target"/>
+</field>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="debet_kali"><phrase id="fldcaption" value="debet kali"/>
+</field>
+<field id="kredit_kali"><phrase id="fldcaption" value="kredit kali"/>
+</field>
+</table>
+<table id="rekeningju"><phrase id="tblcaption" value="rekeningju"/>
+<field id="norek"><phrase id="fldcaption" value="No Rek"/>
+</field>
+<field id="keterangan"><phrase id="fldcaption" value="Keterangan"/>
+</field>
+<field id="debet"><phrase id="fldcaption" value="debet"/>
+</field>
+<field id="kredit"><phrase id="fldcaption" value="kredit"/>
+</field>
+<field id="kode_bukti"><phrase id="fldcaption" value="kode bukti"/>
+</field>
+<field id="tanggal"><phrase id="fldcaption" value="tanggal"/>
+</field>
+<field id="kode_otomatis_master"><phrase id="fldcaption" value="kode otomatis sumber"/>
+</field>
+<field id="tanggal_nota"><phrase id="fldcaption" value="tanggal nota"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="kode_otomatis_tingkat"><phrase id="fldcaption" value="kode otomatis tingkat"/>
+</field>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="apakah_original"><phrase id="fldcaption" value="apakah original"/>
+</field>
+</table>
+<table id="sch_master_lembaga"><phrase id="tblcaption" value="sch master lembaga"/>
+<field id="kode_lembaga"><phrase id="fldcaption" value="kode lembaga"/>
+</field>
+<field id="nama_lembaga"><phrase id="fldcaption" value="nama lembaga"/>
+</field>
+</table>
+<table id="setting"><phrase id="tblcaption" value="setting"/>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="device"><phrase id="fldcaption" value="device"/>
+</field>
+<field id="speed"><phrase id="fldcaption" value="speed"/>
+</field>
+<field id="pin"><phrase id="fldcaption" value="pin"/>
+</field>
+<field id="nopengenal"><phrase id="fldcaption" value="no Pengenal"/>
+</field>
+</table>
+<table id="smsevaluasi"/>
+<table id="smskeluar"/>
+<table id="smslainlain"/>
+<table id="smsmassal"/>
+<table id="smsmasuk"/>
+<table id="st_absen1"/>
+<table id="st_absensi_dosen"/>
+<table id="st_absensi_mahasiswa"/>
+<table id="st_absensi2"/>
+<table id="st_absensi3"/>
+<table id="st_absensi4"/>
+<table id="st_akses_dosen"/>
+<table id="st_aksesmenu"/>
+<table id="st_hasil_absensi"/>
+<table id="st_kelas"/>
+<table id="st_kelas_absensi"/>
+<table id="st_khs"/>
+<table id="st_krs"/>
+<table id="st_krs_masal"><phrase id="tblcaption" value="st krs masal"/>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="kode_mk"><phrase id="fldcaption" value="kode mk"/>
+</field>
+<field id="bobot_sks"><phrase id="fldcaption" value="bobot sks"/>
+</field>
+<field id="tahun"><phrase id="fldcaption" value="tahun"/>
+</field>
+<field id="semester"><phrase id="fldcaption" value="semester"/>
+</field>
+<field id="angkatan"><phrase id="fldcaption" value="angkatan"/>
+</field>
+</table>
+<table id="st_mahasiswa"/>
+<table id="st_master_admin"><phrase id="tblcaption" value="st master admin"/>
+<field id="user_id"><phrase id="fldcaption" value="user id"/>
+</field>
+<field id="nama"><phrase id="fldcaption" value="nama"/>
+</field>
+<field id="password"><phrase id="fldcaption" value="password"/>
+</field>
+<field id="tingkat"><phrase id="fldcaption" value="tingkat"/>
+</field>
+<field id="apakah_valid"><phrase id="fldcaption" value="apakah valid"/>
+</field>
+<field id="kode_otomatis_tingkat"><phrase id="fldcaption" value="kode otomatis tingkat"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+</table>
+<table id="st_master_grup"/>
+<table id="st_master_kelas"><phrase id="tblcaption" value="Master Kelas"/>
+<field id="kelas"><phrase id="fldcaption" value="kelas"/>
+</field>
+<field id="kode_otomatis_tingkat"><phrase id="fldcaption" value="kode otomatis tingkat"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+</table>
+<table id="st_master_kelas_dinamik"><phrase id="tblcaption" value="st master kelas dinamik"/>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="tahun_ajaran"><phrase id="fldcaption" value="tahun ajaran"/>
+</field>
+<field id="tingkat"><phrase id="fldcaption" value="tingkat"/>
+</field>
+<field id="kode_mk"><phrase id="fldcaption" value="kode mk"/>
+</field>
+<field id="dosen"><phrase id="fldcaption" value="dosen"/>
+</field>
+<field id="semester"><phrase id="fldcaption" value="semester"/>
+</field>
+<field id="apakah_valid"><phrase id="fldcaption" value="apakah valid"/>
+</field>
+<field id="kode_kelas"><phrase id="fldcaption" value="kode kelas"/>
+</field>
+</table>
+<table id="st_master_kelas_kelompok"><phrase id="tblcaption" value="Master Kelas Kelompok"/>
+<field id="tahun"><phrase id="fldcaption" value="tahun"/>
+</field>
+<field id="kelas"><phrase id="fldcaption" value="kelas"/>
+</field>
+<field id="nama_kelas_kelompok"><phrase id="fldcaption" value="nama kelas kelompok"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="apakah_valid"><phrase id="fldcaption" value="apakah valid"/>
+</field>
+<field id="kode_otomatis_tingkat"><phrase id="fldcaption" value="kode otomatis tingkat"/>
+</field>
+</table>
+<table id="st_master_komponen_mk"><phrase id="tblcaption" value="st master komponen mk"/>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="tahun"><phrase id="fldcaption" value="tahun"/>
+</field>
+<field id="kode_mk"><phrase id="fldcaption" value="kode mk"/>
+</field>
+<field id="nama_komponen_mk"><phrase id="fldcaption" value="nama komponen mk"/>
+</field>
+<field id="urutan"><phrase id="fldcaption" value="urutan"/>
+</field>
+<field id="persentase"><phrase id="fldcaption" value="persentase"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="semester"><phrase id="fldcaption" value="semester"/>
+</field>
+</table>
+<table id="st_master_mata_kuliah"/>
+<table id="st_master_tingkat"><phrase id="tblcaption" value="Master Tingkat"/>
+<field id="tingkat"><phrase id="fldcaption" value="tingkat"/>
+</field>
+<field id="apakah_disembunyikan"><phrase id="fldcaption" value="apakah disembunyikan"/>
+<phrase id="fldtagcaption1" value="y"/>
+<phrase id="fldtagcaption2" value="t"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+</table>
+<table id="st_patokan_nilai"><field id="nilai_awal"><phrase id="fldcaption" value="nilai awal"/>
+</field>
+<field id="nilai_akhir"><phrase id="fldcaption" value="nilai akhir"/>
+</field>
+<field id="nilai_huruf"><phrase id="fldcaption" value="nilai huruf"/>
+</field>
+<field id="nilai_baku"><phrase id="fldcaption" value="nilai baku"/>
+</field>
+</table>
+<table id="st_pedoman"/>
+<table id="st_peserta_kelas_kelompok"><phrase id="tblcaption" value="Peserta Kelas Kelompok"/>
+<field id="identitas"><phrase id="fldcaption" value="identitas"/>
+</field>
+<field id="kode_otomatis_kelompok"><phrase id="fldcaption" value="kode otomatis kelompok"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+</table>
+<table id="st_riwayat_user"/>
+<table id="st_syarat_krs"/>
+<table id="st_umum"><phrase id="tblcaption" value="st umum"/>
+<field id="tingkat"><phrase id="fldcaption" value="tingkat"/>
+</field>
+<field id="tahun_ajaran_saat_ini"><phrase id="fldcaption" value="tahun ajaran saat ini"/>
+</field>
+<field id="semester_saat_ini"><phrase id="fldcaption" value="semester saat ini"/>
+</field>
+<field id="apakah_boleh_entri_krs"><phrase id="fldcaption" value="apakah boleh entri krs"/>
+</field>
+<field id="apakah_boleh_entri_khs"><phrase id="fldcaption" value="apakah boleh entri khs"/>
+</field>
+<field id="apakah_boleh_entri_komponen"><phrase id="fldcaption" value="apakah boleh entri komponen"/>
+</field>
+</table>
+<table id="st_view_mahasiswa"><phrase id="tblcaption" value="st view mahasiswa"/>
+<field id="nim"><phrase id="fldcaption" value="nim"/>
+</field>
+<field id="nama"><phrase id="fldcaption" value="nama"/>
+</field>
+<field id="angkatan"><phrase id="fldcaption" value="angkatan"/>
+</field>
+<field id="tingkat"><phrase id="fldcaption" value="tingkat"/>
+</field>
+</table>
+<table id="st_view_master_dosen"><field id="kode_dosen"><phrase id="fldcaption" value="kode dosen"/>
+</field>
+<field id="nama"><phrase id="fldcaption" value="nama"/>
+</field>
+<field id="tingkat"><phrase id="fldcaption" value="tingkat"/>
+</field>
+</table>
+<table id="st_view_mata_kuliah"/>
+<table id="subduarek"><phrase id="tblcaption" value="subduarek"/>
+<field id="kodepokok"><phrase id="fldcaption" value="kode Pokok"/>
+</field>
+<field id="kodesubsatu"><phrase id="fldcaption" value="kode Sub Satu"/>
+</field>
+<field id="kodesubdua"><phrase id="fldcaption" value="kode Sub Dua"/>
+</field>
+<field id="namasubdua"><phrase id="fldcaption" value="nama Sub Dua"/>
+</field>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+</table>
+<table id="subsaturek"><phrase id="tblcaption" value="subsaturek"/>
+<field id="kodesubsatu"><phrase id="fldcaption" value="kode Sub Satu"/>
+</field>
+<field id="namasubsatu"><phrase id="fldcaption" value="nama Sub Satu"/>
+</field>
+<field id="kodepokok"><phrase id="fldcaption" value="kode Pokok"/>
+</field>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+</table>
+<table id="subtigarek"><phrase id="tblcaption" value="subtigarek"/>
+<field id="kodepokok"><phrase id="fldcaption" value="kode Pokok"/>
+</field>
+<field id="kodesubsatu"><phrase id="fldcaption" value="kode Sub Satu"/>
+</field>
+<field id="kodesubdua"><phrase id="fldcaption" value="kode Sub Dua"/>
+</field>
+<field id="kodesubtiga"><phrase id="fldcaption" value="kode Sub Tiga"/>
+</field>
+<field id="namasubtiga"><phrase id="fldcaption" value="nama Sub Tiga"/>
+</field>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+</table>
+<table id="ujian_pengganti_absensi"><phrase id="tblcaption" value="ujian pengganti absensi"/>
+<field id="kode_otomatis_kelas_absensi"><phrase id="fldcaption" value="kode otomatis kelas absensi"/>
+</field>
+<field id="nim"><phrase id="fldcaption" value="nim"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+</table>
+<table id="userlevelpermissions"><phrase id="tblcaption" value="userlevelpermissions"/>
+<field id="userlevelid"><phrase id="fldcaption" value="userlevelid"/>
+</field>
+<field id="ztablename"><phrase id="fldcaption" value="tablename"/>
+</field>
+<field id="permission"><phrase id="fldcaption" value="permission"/>
+</field>
+</table>
+<table id="userlevels"><phrase id="tblcaption" value="userlevels"/>
+<field id="userlevelid"><phrase id="fldcaption" value="userlevelid"/>
+</field>
+<field id="userlevelname"><phrase id="fldcaption" value="userlevelname"/>
+</field>
+</table>
+<table id="st_master_pengajar"><phrase id="tblcaption" value="Master Pengajar"/>
+<field id="nama"><phrase id="fldcaption" value="nama"/>
+</field>
+<field id="kode_pengajar"><phrase id="fldcaption" value="kode pengajar"/>
+</field>
+<field id="password"><phrase id="fldcaption" value="password"/>
+</field>
+<field id="kode_otomatis_tingkat"><phrase id="fldcaption" value="kode otomatis tingkat"/>
+</field>
+<field id="hp"><phrase id="fldcaption" value="hp"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+</table>
+<table id="master_siswa"><phrase id="tblcaption" value="Master Siswa"/>
+<phrase id="tblpagecaption1" value="A. Keterangan Diri Siswa"/>
+<phrase id="tblpagecaption2" value="B. Keterangan Tempat Tinggal"/>
+<phrase id="tblpagecaption3" value="C. Keterangan Kesehatan"/>
+<phrase id="tblpagecaption4" value="D. Keterangan Pendidikan"/>
+<phrase id="tblpagecaption5" value="E. Keterangan Tentang Ayah Kandung"/>
+<phrase id="tblpagecaption6" value="F. Keterangan Tentang Ibu Kandung"/>
+<phrase id="tblpagecaption7" value="G. Keterangan Tentang Wali"/>
+<phrase id="tblpagecaption8" value="H. Kegemaran Siswa"/>
+<phrase id="tblpagecaption9" value="I. Keterangan Perkembangan Siswa"/>
+<phrase id="tblpagecaption10" value="J. Keterangan Setelah Selesai Pendidikan"/>
+<field id="no_absen"><phrase id="fldcaption" value="no absen"/>
+</field>
+<field id="a_nis_nasional"><phrase id="fldcaption" value="A nis nasional"/>
+</field>
+<field id="a_nama_lengkap"><phrase id="fldcaption" value="A nama Lengkap"/>
+</field>
+<field id="a_nama_panggilan"><phrase id="fldcaption" value="A nama panggilan"/>
+</field>
+<field id="a_jenis_kelamin"><phrase id="fldcaption" value="A jenis kelamin"/>
+</field>
+<field id="a_tempat_lahir"><phrase id="fldcaption" value="A tempat lahir"/>
+</field>
+<field id="a_tanggal_lahir"><phrase id="fldcaption" value="A tanggal lahir"/>
+</field>
+<field id="a_agama"><phrase id="fldcaption" value="A agama"/>
+</field>
+<field id="a_kewarganegaraan"><phrase id="fldcaption" value="A kewarganegaraan"/>
+</field>
+<field id="a_anak_keberapa"><phrase id="fldcaption" value="A anak keberapa"/>
+</field>
+<field id="a_jumlah_saudara_kandung"><phrase id="fldcaption" value="A jumlah saudara kandung"/>
+</field>
+<field id="a_jumlah_saudara_tiri"><phrase id="fldcaption" value="A jumlah saudara tiri"/>
+</field>
+<field id="a_jumlah_saudara_angkat"><phrase id="fldcaption" value="A jumlah saudara angkat"/>
+</field>
+<field id="a_status_yatim"><phrase id="fldcaption" value="A status yatim"/>
+</field>
+<field id="a_bahasa"><phrase id="fldcaption" value="A bahasa"/>
+</field>
+<field id="b_alamat"><phrase id="fldcaption" value="B alamat"/>
+</field>
+<field id="b_telepon_rumah"><phrase id="fldcaption" value="B telepon rumah"/>
+</field>
+<field id="b_tinggal"><phrase id="fldcaption" value="B tinggal"/>
+</field>
+<field id="b_jarak"><phrase id="fldcaption" value="B jarak"/>
+</field>
+<field id="b_hp"><phrase id="fldcaption" value="B hp"/>
+</field>
+<field id="c_golongan_darah"><phrase id="fldcaption" value="C golongan darah"/>
+</field>
+<field id="c_penyakit"><phrase id="fldcaption" value="C penyakit"/>
+</field>
+<field id="c_jasmani"><phrase id="fldcaption" value="C jasmani"/>
+</field>
+<field id="c_tinggi"><phrase id="fldcaption" value="C tinggi"/>
+</field>
+<field id="c_berat"><phrase id="fldcaption" value="C berat"/>
+</field>
+<field id="d_tamatan_dari"><phrase id="fldcaption" value="D tamatan dari"/>
+</field>
+<field id="d_sttb"><phrase id="fldcaption" value="D sttb"/>
+</field>
+<field id="d_tanggal_sttb"><phrase id="fldcaption" value="D tanggal sttb"/>
+</field>
+<field id="d_danum"><phrase id="fldcaption" value="D danum"/>
+</field>
+<field id="d_tanggal_danum"><phrase id="fldcaption" value="D tanggal danum"/>
+</field>
+<field id="d_lama_belajar"><phrase id="fldcaption" value="D lama belajar"/>
+</field>
+<field id="d_dari_sekolah"><phrase id="fldcaption" value="D dari sekolah"/>
+</field>
+<field id="d_alasan"><phrase id="fldcaption" value="D alasan"/>
+</field>
+<field id="d_kelas"><phrase id="fldcaption" value="D kelas"/>
+</field>
+<field id="d_kelompok"><phrase id="fldcaption" value="D kelompok"/>
+</field>
+<field id="d_tanggal"><phrase id="fldcaption" value="D tanggal"/>
+</field>
+<field id="d_saat_ini_tingkat"><phrase id="fldcaption" value="D saat ini tingkat"/>
+</field>
+<field id="d_saat_ini_kelas"><phrase id="fldcaption" value="D saat ini kelas"/>
+</field>
+<field id="d_saat_ini_kelompok"><phrase id="fldcaption" value="D saat ini kelompok"/>
+</field>
+<field id="d_no_psb"><phrase id="fldcaption" value="D no psb"/>
+</field>
+<field id="d_nilai_danum_sd"><phrase id="fldcaption" value="D nilai danum sd"/>
+</field>
+<field id="d_jumlah_pelajaran_danum"><phrase id="fldcaption" value="D jumlah pelajaran danum"/>
+</field>
+<field id="d_nilai_ujian_psb"><phrase id="fldcaption" value="D nilai ujian psb"/>
+</field>
+<field id="d_tahun_psb"><phrase id="fldcaption" value="D tahun psb"/>
+</field>
+<field id="d_diterima"><phrase id="fldcaption" value="D diterima"/>
+</field>
+<field id="d_spp"><phrase id="fldcaption" value="D spp"/>
+</field>
+<field id="d_spp_potongan"><phrase id="fldcaption" value="D spp potongan"/>
+</field>
+<field id="d_status_lama_baru"><phrase id="fldcaption" value="D status lama baru"/>
+</field>
+<field id="e_nama_ayah"><phrase id="fldcaption" value="E nama ayah"/>
+</field>
+<field id="e_tempat_lahir"><phrase id="fldcaption" value="E tempat lahir"/>
+</field>
+<field id="e_tanggal_lahir"><phrase id="fldcaption" value="E tanggal lahir"/>
+</field>
+<field id="e_agama"><phrase id="fldcaption" value="E agama"/>
+</field>
+<field id="e_kewarganegaraan"><phrase id="fldcaption" value="E kewarganegaraan"/>
+</field>
+<field id="e_pendidikan"><phrase id="fldcaption" value="E pendidikan"/>
+</field>
+<field id="e_pekerjaan"><phrase id="fldcaption" value="E pekerjaan"/>
+</field>
+<field id="e_pengeluaran"><phrase id="fldcaption" value="E pengeluaran"/>
+</field>
+<field id="e_alamat"><phrase id="fldcaption" value="E alamat"/>
+</field>
+<field id="e_telepon"><phrase id="fldcaption" value="E telepon"/>
+</field>
+<field id="e_hp"><phrase id="fldcaption" value="E hp"/>
+</field>
+<field id="e_hidup"><phrase id="fldcaption" value="E hidup"/>
+</field>
+<field id="f_nama_ibu"><phrase id="fldcaption" value="F nama ibu"/>
+</field>
+<field id="f_tempat_lahir"><phrase id="fldcaption" value="F tempat lahir"/>
+</field>
+<field id="f_tanggal_lahir"><phrase id="fldcaption" value="F tanggal lahir"/>
+</field>
+<field id="f_agama"><phrase id="fldcaption" value="F agama"/>
+</field>
+<field id="f_kewarganegaraan"><phrase id="fldcaption" value="F kewarganegaraan"/>
+</field>
+<field id="f_pendidikan"><phrase id="fldcaption" value="F pendidikan"/>
+</field>
+<field id="f_pekerjaan"><phrase id="fldcaption" value="F pekerjaan"/>
+</field>
+<field id="f_pengeluaran"><phrase id="fldcaption" value="F pengeluaran"/>
+</field>
+<field id="f_alamat"><phrase id="fldcaption" value="F alamat"/>
+</field>
+<field id="f_telepon"><phrase id="fldcaption" value="F telepon"/>
+</field>
+<field id="f_hp"><phrase id="fldcaption" value="F hp"/>
+</field>
+<field id="f_hidup"><phrase id="fldcaption" value="F hidup"/>
+</field>
+<field id="g_nama_wali"><phrase id="fldcaption" value="G nama wali"/>
+</field>
+<field id="g_tempat_lahir"><phrase id="fldcaption" value="G tempat lahir"/>
+</field>
+<field id="g_tanggal_lahir"><phrase id="fldcaption" value="G tanggal lahir"/>
+</field>
+<field id="g_agama"><phrase id="fldcaption" value="G agama"/>
+</field>
+<field id="g_kewarganegaraan"><phrase id="fldcaption" value="G kewarganegaraan"/>
+</field>
+<field id="g_pendidikan"><phrase id="fldcaption" value="G pendidikan"/>
+</field>
+<field id="g_pekerjaan"><phrase id="fldcaption" value="G pekerjaan"/>
+</field>
+<field id="g_pengeluaran"><phrase id="fldcaption" value="G pengeluaran"/>
+</field>
+<field id="g_alamat"><phrase id="fldcaption" value="G alamat"/>
+</field>
+<field id="g_telepon"><phrase id="fldcaption" value="G telepon"/>
+</field>
+<field id="g_hp"><phrase id="fldcaption" value="G hp"/>
+</field>
+<field id="h_kesenian"><phrase id="fldcaption" value="H kesenian"/>
+</field>
+<field id="h_olahraga"><phrase id="fldcaption" value="H olahraga"/>
+</field>
+<field id="h_kemasyarakatan"><phrase id="fldcaption" value="H kemasyarakatan"/>
+</field>
+<field id="h_lainlain"><phrase id="fldcaption" value="H lainlain"/>
+</field>
+<field id="i_tanggal_meninggalkan"><phrase id="fldcaption" value="I tanggal meninggalkan"/>
+</field>
+<field id="i_alasan"><phrase id="fldcaption" value="I alasan"/>
+</field>
+<field id="i_tanggal_lulus"><phrase id="fldcaption" value="I tanggal lulus"/>
+</field>
+<field id="i_sttb"><phrase id="fldcaption" value="I sttb"/>
+</field>
+<field id="i_danum"><phrase id="fldcaption" value="I danum"/>
+</field>
+<field id="i_nilai_danum_smp"><phrase id="fldcaption" value="I nilai danum smp"/>
+</field>
+<field id="i_tahun1"><phrase id="fldcaption" value="I tahun 1"/>
+</field>
+<field id="i_tahun2"><phrase id="fldcaption" value="I tahun 2"/>
+</field>
+<field id="i_tahun3"><phrase id="fldcaption" value="I tahun 3"/>
+</field>
+<field id="i_tk1"><phrase id="fldcaption" value="I tk 1"/>
+</field>
+<field id="i_tk2"><phrase id="fldcaption" value="I tk 2"/>
+</field>
+<field id="i_tk3"><phrase id="fldcaption" value="I tk 3"/>
+</field>
+<field id="i_dari1"><phrase id="fldcaption" value="I dari 1"/>
+</field>
+<field id="i_dari2"><phrase id="fldcaption" value="I dari 2"/>
+</field>
+<field id="i_dari3"><phrase id="fldcaption" value="I dari 3"/>
+</field>
+<field id="j_melanjutkan"><phrase id="fldcaption" value="J melanjutkan"/>
+</field>
+<field id="j_tanggal_bekerja"><phrase id="fldcaption" value="J tanggal bekerja"/>
+</field>
+<field id="j_nama_perusahaan"><phrase id="fldcaption" value="J nama perusahaan"/>
+</field>
+<field id="j_penghasilan"><phrase id="fldcaption" value="J penghasilan"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="apakah_valid"><phrase id="fldcaption" value="apakah valid"/>
+</field>
+</table>
+<table id="identitas"/>
+<table id="master_agama"><phrase id="tblcaption" value="Master Agama"/>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="agama"><phrase id="fldcaption" value="agama"/>
+</field>
+</table>
+<table id="master_transaksi"/>
+<table id="keu_jum_cicilan"/>
+<table id="keu_laporan_keuangan"><phrase id="tblcaption" value="Transaksi Keuangan"/>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="identitas"><phrase id="fldcaption" value="NIS"/>
+</field>
+<field id="a_nama_lengkap"><phrase id="fldcaption" value="Nama"/>
+</field>
+<field id="nama_biaya"><phrase id="fldcaption" value="Nama Biaya"/>
+</field>
+<field id="nilai_tanggungan_bruto"><phrase id="fldcaption" value="Tanggungan Bruto"/>
+</field>
+<field id="tanggal_rencana_bayar"><phrase id="fldcaption" value="Rencana Bayar"/>
+</field>
+<field id="diskon_sosial"><phrase id="fldcaption" value="Diskon Sosial"/>
+</field>
+<field id="diskon_waktu"><phrase id="fldcaption" value="Diskon Waktu"/>
+</field>
+<field id="diskon_prestasi"><phrase id="fldcaption" value="Diskon Prestasi"/>
+</field>
+<field id="diskon_internal"><phrase id="fldcaption" value="Diskon Internal"/>
+</field>
+<field id="diskon_lain_lain"><phrase id="fldcaption" value="Diskon lain lain"/>
+</field>
+<field id="nilai_tanggungan_netto"><phrase id="fldcaption" value="Tanggungan Netto"/>
+</field>
+<field id="jum_cicilan"><phrase id="fldcaption" value="Jum Cicilan"/>
+</field>
+<field id="kekurangan_pembayaran"><phrase id="fldcaption" value="Kekurangan"/>
+</field>
+</table>
+<table id="edit_tanggungan"><phrase id="tblcaption" value="edit tanggungan"/>
+</table>
+<table id="pemilihan_pokok"><phrase id="tblcaption" value="pemilihan pokok"/>
+<field id="kodepokok"><phrase id="fldcaption" value="kode Pokok"/>
+</field>
+<field id="nama_pokok"><phrase id="fldcaption" value="nama pokok"/>
+</field>
+<field id="kodesubsatu"><phrase id="fldcaption" value="kode Sub Satu"/>
+</field>
+<field id="nama_sub_satu"><phrase id="fldcaption" value="nama sub satu"/>
+</field>
+<field id="kodesubdua"><phrase id="fldcaption" value="kode Sub Dua"/>
+</field>
+<field id="nama_sub_dua"><phrase id="fldcaption" value="nama sub dua"/>
+</field>
+<field id="kodesubtiga"><phrase id="fldcaption" value="kode Sub Tiga"/>
+</field>
+<field id="nama_sub_tiga"><phrase id="fldcaption" value="nama sub tiga"/>
+</field>
+<field id="norek"><phrase id="fldcaption" value="Norek"/>
+</field>
+<field id="keterangan"><phrase id="fldcaption" value="Keterangan"/>
+</field>
+<field id="d2fk"><phrase id="fldcaption" value="D/ K"/>
+</field>
+<field id="saldoawal"><phrase id="fldcaption" value="Saldo Awal"/>
+</field>
+<field id="tanggalsaldo"><phrase id="fldcaption" value="Tanggal Saldo"/>
+</field>
+<field id="saldo"><phrase id="fldcaption" value="Saldo"/>
+</field>
+<field id="target"><phrase id="fldcaption" value="target"/>
+</field>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+</table>
+<table id="tahap22"><phrase id="tblcaption" value="tahap 22"/>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="kodesubsatu"><phrase id="fldcaption" value="kode Sub Satu"/>
+</field>
+</table>
+<table id="neraca1"><phrase id="tblcaption" value="neraca 1"/>
+<field id="norek"><phrase id="fldcaption" value="Norek"/>
+</field>
+<field id="keterangan"><phrase id="fldcaption" value="Keterangan"/>
+</field>
+<field id="saldo_debet"><phrase id="fldcaption" value="saldo debet"/>
+</field>
+<field id="saldo_kredit"><phrase id="fldcaption" value="saldo kredit"/>
+</field>
+<field id="tanggal"><phrase id="fldcaption" value="tanggal"/>
+</field>
+</table>
+<table id="master_transaksi2"><phrase id="tblcaption" value="master transaksi 2"/>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="penjelasan"><phrase id="fldcaption" value="penjelasan"/>
+</field>
+<field id="tanggal"><phrase id="fldcaption" value="tanggal"/>
+</field>
+<field id="tipe_transaksi"><phrase id="fldcaption" value="tipe transaksi"/>
+</field>
+<field id="saldo_debet"><phrase id="fldcaption" value="saldo debet"/>
+</field>
+<field id="saldo_kredit"><phrase id="fldcaption" value="saldo kredit"/>
+</field>
+</table>
+<table id="entri_tanggungan_perkelompok"><phrase id="tblcaption" value="Entri Tanggungan Per kelompok"/>
+<field id="tahun"><phrase id="fldcaption" value="tahun"/>
+</field>
+<field id="kelas"><phrase id="fldcaption" value="kelas"/>
+</field>
+<field id="nama_kelas_kelompok"><phrase id="fldcaption" value="nama kelas kelompok"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="apakah_valid"><phrase id="fldcaption" value="apakah valid"/>
+</field>
+<field id="kode_otomatis_tingkat"><phrase id="fldcaption" value="kode otomatis tingkat"/>
+</field>
+</table>
+<table id="view_peserta"><field id="identitas"><phrase id="fldcaption" value="identitas"/>
+</field>
+<field id="kode_otomatis_kelompok"><phrase id="fldcaption" value="kode otomatis kelompok"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="a_nama_lengkap"><phrase id="fldcaption" value="A nama Lengkap"/>
+</field>
+</table>
+<table id="pemilihan_jenis_biaya"><field id="apakah_disembunyikan"><phrase id="fldcaption" value="Nama Biaya"/>
+</field>
+<field id="kode_biaya"><phrase id="fldcaption" value="Kode Biaya"/>
+</field>
+<field id="nama_kelas_kelompok"><phrase id="fldcaption" value="Nama Kelas Kelompok"/>
+</field>
+<field id="kode_kelompok"><phrase id="fldcaption" value="Kode Kelompok"/>
+</field>
+<field id="tanggal_bayar1"><phrase id="fldcaption" value="tanggal bayar 1"/>
+</field>
+<field id="diskon_sosial"><phrase id="fldcaption" value="diskon sosial"/>
+</field>
+<field id="diskon_waktu"><phrase id="fldcaption" value="diskon waktu"/>
+</field>
+<field id="diskon_prestasi"><phrase id="fldcaption" value="diskon prestasi"/>
+</field>
+<field id="diskon_internal"><phrase id="fldcaption" value="diskon internal"/>
+</field>
+<field id="diskon_lain"><phrase id="fldcaption" value="diskon lain"/>
+</field>
+<field id="langkah"><phrase id="fldcaption" value="langkah"/>
+</field>
+<field id="jumlah"><phrase id="fldcaption" value="jumlah"/>
+</field>
+</table>
+<table id="lihat_peserta_kelompok"><phrase id="tblcaption" value="Custom View 1"/>
+<field id="kode_otomatis_kelompok"><phrase id="fldcaption" value="kode otomatis kelompok"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="identitas"><phrase id="fldcaption" value="identitas"/>
+</field>
+</table>
+<table id="tahap1"><phrase id="tblcaption" value="tahap 1"/>
+<field id="kodepokok"><phrase id="fldcaption" value="kode Pokok"/>
+</field>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+</table>
+<table id="tahap3"><phrase id="tblcaption" value="tahap 3"/>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="kodesubdua"><phrase id="fldcaption" value="Kode Sub Dua"/>
+</field>
+</table>
+<table id="tahap4"><phrase id="tblcaption" value="tahap 4"/>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="kodesubtiga"><phrase id="fldcaption" value="kode Sub Tiga"/>
+</field>
+</table>
+<table id="tahap5"><phrase id="tblcaption" value="tahap 5"/>
+<field id="id"><phrase id="fldcaption" value="id"/>
+</field>
+<field id="norek"><phrase id="fldcaption" value="Norek"/>
+</field>
+<field id="keterangan"><phrase id="fldcaption" value="Nama Rekening"/>
+</field>
+<field id="d2fk"><phrase id="fldcaption" value="Saldo Normal"/>
+<phrase id="fldtagcaption1" value="Debet"/>
+<phrase id="fldtagcaption2" value="Kredit"/>
+</field>
+<field id="kodepokok"><phrase id="fldcaption" value="kode Pokok"/>
+</field>
+<field id="kodesubsatu"><phrase id="fldcaption" value="kode Sub Satu"/>
+</field>
+<field id="kodesubdua"><phrase id="fldcaption" value="kode Sub Dua"/>
+</field>
+<field id="kodesubtiga"><phrase id="fldcaption" value="kode Sub Tiga"/>
+</field>
+<field id="debet_kali"><phrase id="fldcaption" value="debet kali"/>
+</field>
+<field id="kredit_kali"><phrase id="fldcaption" value="kredit kali"/>
+</field>
+</table>
+<table id="uji"><phrase id="tblcaption" value="uji"/>
+<field id="norek"><phrase id="fldcaption" value="Norek"/>
+</field>
+<field id="keterangan"><phrase id="fldcaption" value="Keterangan"/>
+</field>
+<field id="kodepokok"><phrase id="fldcaption" value="kode Pokok"/>
+</field>
+<field id="saldo_debet"><phrase id="fldcaption" value="saldo debet"/>
+</field>
+<field id="saldo_kredit"><phrase id="fldcaption" value="saldo kredit"/>
+</field>
+</table>
+<table id="report1"><phrase id="tblcaption" value="Report 1"/>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="identitas"><phrase id="fldcaption" value="NIS"/>
+</field>
+<field id="a_nama_lengkap"><phrase id="fldcaption" value="Nama"/>
+</field>
+<field id="nama_biaya"><phrase id="fldcaption" value="Nama Biaya"/>
+</field>
+<field id="nilai_tanggungan_bruto"><phrase id="fldcaption" value="Tanggungan Bruto"/>
+</field>
+<field id="tanggal_rencana_bayar"><phrase id="fldcaption" value="Rencana Bayar"/>
+</field>
+<field id="diskon_sosial"><phrase id="fldcaption" value="Diskon Sosial"/>
+</field>
+<field id="diskon_waktu"><phrase id="fldcaption" value="Diskon Waktu"/>
+</field>
+<field id="diskon_prestasi"><phrase id="fldcaption" value="Diskon Prestasi"/>
+</field>
+<field id="diskon_internal"><phrase id="fldcaption" value="Diskon Internal"/>
+</field>
+<field id="diskon_lain_lain"><phrase id="fldcaption" value="Diskon lain lain"/>
+</field>
+<field id="nilai_tanggungan_netto"><phrase id="fldcaption" value="Tanggungan Netto"/>
+</field>
+<field id="jum_cicilan"><phrase id="fldcaption" value="Jum Cicilan"/>
+</field>
+<field id="kekurangan_pembayaran"><phrase id="fldcaption" value="Kekurangan"/>
+</field>
+</table>
+<table id="neraca_rugilaba"><phrase id="tblcaption" value="neraca rugilaba"/>
+<field id="norek"><phrase id="fldcaption" value="Norek"/>
+</field>
+<field id="keterangan"><phrase id="fldcaption" value="Keterangan"/>
+</field>
+<field id="tanggal"><phrase id="fldcaption" value="tanggal"/>
+</field>
+<field id="saldo_debet"><phrase id="fldcaption" value="saldo debet"/>
+</field>
+<field id="saldo_kredit"><phrase id="fldcaption" value="saldo kredit"/>
+</field>
+</table>
+<table id="neraca2"><phrase id="tblcaption" value="neraca 2"/>
+<field id="norek"><phrase id="fldcaption" value="Norek"/>
+</field>
+<field id="keterangan"><phrase id="fldcaption" value="Keterangan"/>
+</field>
+<field id="tanggal"><phrase id="fldcaption" value="tanggal"/>
+</field>
+<field id="saldo_debet"><phrase id="fldcaption" value="saldo debet"/>
+</field>
+<field id="saldo_kredit"><phrase id="fldcaption" value="saldo kredit"/>
+</field>
+</table>
+<table id="saldo_rugilaba"><phrase id="tblcaption" value="saldo rugilaba"/>
+<field id="norek"><phrase id="fldcaption" value="norek"/>
+</field>
+<field id="keterangan"><phrase id="fldcaption" value="keterangan"/>
+</field>
+<field id="tanggal"><phrase id="fldcaption" value="tanggal"/>
+</field>
+<field id="debet"><phrase id="fldcaption" value="debet"/>
+</field>
+<field id="kredit"><phrase id="fldcaption" value="kredit"/>
+</field>
+</table>
+<table id="pemilihan_kelas"><phrase id="tblcaption" value="pemilihan kelas"/>
+<field id="nama_kelas_kelompok"><phrase id="fldcaption" value="Nama Kelas Kelompok"/>
+</field>
+<field id="apakah_valid"><phrase id="fldcaption" value="apakah valid"/>
+</field>
+<field id="kode_otomatis_tingkat"><phrase id="fldcaption" value="kode otomatis tingkat"/>
+</field>
+<field id="tahun"><phrase id="fldcaption" value="tahun"/>
+</field>
+<field id="kelas"><phrase id="fldcaption" value="kelas"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+</table>
+<table id="view_peserta2"><phrase id="tblcaption" value="view peserta 2"/>
+<field id="a_nama_lengkap"><phrase id="fldcaption" value="A nama Lengkap"/>
+</field>
+<field id="a_nis_nasional"><phrase id="fldcaption" value="A nis nasional"/>
+</field>
+</table>
+<table id="st_peserta2"><phrase id="tblcaption" value="Peserta Kelas"/>
+<field id="identitas"><phrase id="fldcaption" value="identitas"/>
+</field>
+<field id="a_nama_lengkap"><phrase id="fldcaption" value="A nama Lengkap"/>
+</field>
+<field id="kode_otomatis"><phrase id="fldcaption" value="kode otomatis"/>
+</field>
+<field id="kode_otomatis_kelompok"><phrase id="fldcaption" value="kode otomatis kelompok"/>
+</field>
+</table>
+</project>
+</ew-language>

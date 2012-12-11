@@ -1,0 +1,261 @@
+-- phpMyAdmin SQL Dump
+-- version 2.6.0-pl2
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Waktu pembuatan: 19. Maret 2008 jam 09:32
+-- Versi Server: 4.1.7
+-- Versi PHP: 4.3.9
+-- 
+-- Database: `lukisan`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Struktur dari tabel `admin`
+-- 
+
+CREATE TABLE `admin` (
+  `username` varchar(100) NOT NULL default '',
+  `password` varchar(50) NOT NULL default '',
+  `nama` varchar(255) NOT NULL default '',
+  `email` varchar(255) NOT NULL default '',
+  `alamat` varchar(255) NOT NULL default '',
+  PRIMARY KEY  (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data untuk tabel `admin`
+-- 
+
+INSERT INTO `admin` VALUES ('rudi', '', 'rudi budi dewanto', 'neng_jayuz@yahoo.com', 'jl. pandeyan UH V no. 683');
+
+-- --------------------------------------------------------
+
+-- 
+-- Struktur dari tabel `hit`
+-- 
+
+CREATE TABLE `hit` (
+  `jumlah` int(11) NOT NULL default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data untuk tabel `hit`
+-- 
+
+INSERT INTO `hit` VALUES (1117);
+
+-- --------------------------------------------------------
+
+-- 
+-- Struktur dari tabel `kalender`
+-- 
+
+CREATE TABLE `kalender` (
+  `id_kegiatan` int(4) NOT NULL auto_increment,
+  `tema` varchar(255) NOT NULL default '',
+  `tgl` varchar(25) NOT NULL default '',
+  `jam` varchar(20) NOT NULL default '',
+  `lokasi` varchar(255) NOT NULL default '',
+  `penyelenggara` varchar(255) NOT NULL default '',
+  `status` enum('on','off') NOT NULL default 'on',
+  `mktime` bigint(20) NOT NULL default '0',
+  PRIMARY KEY  (`id_kegiatan`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+-- 
+-- Dumping data untuk tabel `kalender`
+-- 
+
+INSERT INTO `kalender` VALUES (6, 'Seminar Membangun Telekomunikasi Daerah', 'Sen, 16-2-2004', '09:00', 'DPRD Kab. Sleman', 'Kerjasama DPRD dengan PT Lintas Teknologi Indonesia', 'on', 0);
+INSERT INTO `kalender` VALUES (5, 'Peresmian Gedung Perkantoran Baru', 'Jum, 13-2-2004', '09:00', 'Kompleks Gedung Barus', 'Pemkab Sleman', 'on', 0);
+INSERT INTO `kalender` VALUES (7, 'FESTIVAL SURAN 2004, Pestanya Rakyat , 21-28 Feb', 'Sab, 21-2-2004', '00:00', 'Kaliurang & Modinan, Banyuraden, Gamping', 'Pemerintah Kabupaten Sleman', 'on', 0);
+INSERT INTO `kalender` VALUES (8, 'Seleksi Tilawatil Qur''an Tingkat Propinsi', 'Sen, 8-3-2004', '09:00', 'Eks. Kantor Kepegawaian Pemkab Sleman', 'Bagian Kesra Pemkab Sleman', 'on', 0);
+INSERT INTO `kalender` VALUES (9, 'Upacara Adat Saparan Wonolelo', 'Sab, 13-3-2004', '17:00', 'Desa Widodomartani Ngemplak', 'Pemkab Sleman', 'on', 0);
+INSERT INTO `kalender` VALUES (13, 'Penyampaian Nota Pengantar LPJ Bupati Tahun Anggaran 2003', 'Sab, 27-3-2004', '09:00', 'R. Paripurna DPRD', 'DPRD Kabupaten Sleman', 'on', 0);
+INSERT INTO `kalender` VALUES (14, 'Campursari', 'Ahad, 11-4-2004', '10:16', 'Tlogo Putri Kaliurang', 'Bidang pariwisata', 'on', 0);
+INSERT INTO `kalender` VALUES (15, 'Penetapan  LPJ Bupati TA 2003', 'Sen, 26-4-2004', '19:00', 'Gedung DPRD Sleman', 'DPRD Sleman', 'on', 0);
+INSERT INTO `kalender` VALUES (16, 'Lomba Lari 10 K', 'Ahad, 9-5-2004', '06:00', 'GOR Pangukan', 'Dinas Kebudayaan dan Pariwisata', 'on', 0);
+INSERT INTO `kalender` VALUES (17, 'Kirab Andong Hias Dalam Rangka Hari Jadi ke-88 Kab. Sleman', 'Sab,  15-5-2004', '12:00', 'Pendopo Hotel Ambarukmo - Lap. Denggung', 'Panitia Hari Jadi  Ke-88 Kab. Sleman', 'on', 1084597200);
+INSERT INTO `kalender` VALUES (18, 'Sembada Fun Bike', 'Ahad, 30-5-2004', '06:00', 'Lapangan Sleman', 'Panitia Hari Jadi Kab.Sleman', 'on', 1085871600);
+INSERT INTO `kalender` VALUES (19, 'Seminar Pengembangan Manajemen Rumah Sakit', 'Kam, 17-6-2004', '08:00', 'Aula Lt. III Pemkab Sleman, Jl. Parasamya, Beran', 'RSUD Sleman', 'on', 1087434000);
+INSERT INTO `kalender` VALUES (20, 'Sumbangan sosial ke Pondok Pesantren', 'Sen,   2-8-2004', '11:30', 'PonPes Taruna Alquran Monjali', 'Pem daerah Sleman', 'on', 1091421000);
+
+-- --------------------------------------------------------
+
+-- 
+-- Struktur dari tabel `news`
+-- 
+
+CREATE TABLE `news` (
+  `id_news` int(6) NOT NULL auto_increment,
+  `judul` varchar(80) NOT NULL default '',
+  `ringkasan` mediumtext NOT NULL,
+  `news` text NOT NULL,
+  `gambar` varchar(60) NOT NULL default '',
+  `status` enum('on','off') NOT NULL default 'on',
+  `tanggal` varchar(40) NOT NULL default '',
+  `pengisi` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id_news`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- 
+-- Dumping data untuk tabel `news`
+-- 
+
+INSERT INTO `news` VALUES (1, 'Gelar Karya Gelegar Seni Peduli Gempa', '<p align="left">27  Mei 2006 merupakan hari Sabtu kelabu bagi masyarakat Yogyakarta dan  sekitarnya. Gempa dengan kekuatan 5,9 skala Richter mengguncang  Yogyakarta dengan ribuan korban jiwa, puluhan ribu korban luka, dan  ribuan rumah luluh lantak, rata dengan tanah. Sejuta kebisuan mengharu  biru manakala jerit kecil dan isak tangis menggema, sementara alam tak  henti menyapa dengan suara duka.</p>', '<p align="left">27  Mei 2006 merupakan hari Sabtu kelabu bagi masyarakat Yogyakarta dan  sekitarnya. Gempa dengan kekuatan 5,9 skala Richter mengguncang  Yogyakarta dengan ribuan korban jiwa, puluhan ribu korban luka, dan  ribuan rumah luluh lantak, rata dengan tanah. Sejuta kebisuan mengharu  biru manakala jerit kecil dan isak tangis menggema, sementara alam tak  henti menyapa dengan suara duka.</p>\r\n<p>Yogyakarta  dengan kota budaya dan seni, kini tengah berduka dan membutuhkan uluran  tangan kepedulian kita bersama. Dihadapkan pada hal demikian, mampukah  para seniman / pelaku budaya bertegur sapa lewat karya, membangun asa  lewat solidaritas dan partisipasi nyata, sebagai wujud rasa simpati dan  empati kepada sesama? Di sisi lain, dapatkah para pecinta seni budaya,  khususnya kolektor bisa mewujudkan potongan asa seniman, menjadi sebuah  untaian kepedulian yang utuh untuk disajikan?</p>\r\n<p>Yogyakarta  dengan alamnya yang indah mempesona telah memberikan kontribusi idealis  dan inspirasi tak ternilai pada seniman-seniman besar Indonesia, bahkan  mancanegara. Ada saat dimana ceceran inspirasi yang tervisualisasi  lewat karya disajikan dalam bentuk partisipasi, sebagai wujud sebuah  kepedulian. </p>', '', 'off', '19-08-2006 ; 15:09:49', '');
+INSERT INTO `news` VALUES (2, 'Welcome', 'Welcome\r\nCongratulations on choosing PHPTriad for your Windows PHP needs. We''re always striving toward making the package better, so be sure to check in at PHPGeek.com to be sure you received the latest version and additional extensions.', 'Welcome\r\nCongratulations on choosing PHPTriad for your Windows PHP needs. We''re always striving toward making the package better, so be sure to check in at PHPGeek.com to be sure you received the latest version and additional extensions.\r\nWhile PHPTriad is free both financially and in the sense of freedom, it takes money and time to run this project. If this product is useful to you consider contributing to the ongoing development of this project. There are several ways to give back. \r\n\r\nGiving money directly through my "Give Something Back" box at PHPGeek.com. \r\nBuying me something off of my Amazon.com wish list linked in that same box at PHPGeek.com. \r\nBuying T-shirts and other products from the shirt gallery linked at PHPGeek.com. \r\nBuying products and services from the advertisers and endorsements at PHPGeek.com \r\n', 'bg_01.gif', 'on', '19-08-2006 ; 15:11:09', '');
+
+-- --------------------------------------------------------
+
+-- 
+-- Struktur dari tabel `pelukis`
+-- 
+
+CREATE TABLE `pelukis` (
+  `id_pelukis` int(6) NOT NULL auto_increment,
+  `nama` varchar(80) NOT NULL default '',
+  `ringkasan` mediumtext NOT NULL,
+  `news` text NOT NULL,
+  `gambar` varchar(60) NOT NULL default '',
+  `status` enum('on','off') NOT NULL default 'on',
+  `tanggal` varchar(40) NOT NULL default '',
+  `pengisi` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id_pelukis`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Dumping data untuk tabel `pelukis`
+-- 
+
+INSERT INTO `pelukis` VALUES (1, 'dewa', 'ada;ah seorang', '', 'gino_dung2_plak.jpg', 'on', '', '');
+
+-- --------------------------------------------------------
+
+-- 
+-- Struktur dari tabel `polling`
+-- 
+
+CREATE TABLE `polling` (
+  `id_polling` int(11) NOT NULL auto_increment,
+  `topik` varchar(255) NOT NULL default '',
+  `pilihan1` varchar(255) NOT NULL default '',
+  `pilihan2` varchar(255) NOT NULL default '',
+  `pilihan3` varchar(255) NOT NULL default '',
+  `pilihan4` varchar(255) NOT NULL default '',
+  `jumlah1` int(11) NOT NULL default '0',
+  `jumlah2` int(11) NOT NULL default '0',
+  `jumlah3` int(11) NOT NULL default '0',
+  `jumlah4` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id_polling`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+-- 
+-- Dumping data untuk tabel `polling`
+-- 
+
+INSERT INTO `polling` VALUES (3, 'Bagaimana tampilan web dinkes yang baru menurut anda ?', 'sangat bagus', 'bagus', 'sama saja', 'tidak bagus', 5, 4, 5, 6);
+INSERT INTO `polling` VALUES (7, 'Apa yang anda sukai dengan website ini?', 'Tampilannya', 'Isinya', 'Fasilitasnya', 'Biasa saja', 5, 4, 5, 6);
+
+-- --------------------------------------------------------
+
+-- 
+-- Struktur dari tabel `special`
+-- 
+
+CREATE TABLE `special` (
+  `id_special` int(6) NOT NULL auto_increment,
+  `judul` varchar(80) NOT NULL default '',
+  `ringkasan` mediumtext NOT NULL,
+  `special` text NOT NULL,
+  `gambar` varchar(60) NOT NULL default '',
+  `status` enum('on','off') NOT NULL default 'on',
+  `tanggal` varchar(40) NOT NULL default '',
+  `pengisi` varchar(100) NOT NULL default '',
+  PRIMARY KEY  (`id_special`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+-- 
+-- Dumping data untuk tabel `special`
+-- 
+
+INSERT INTO `special` VALUES (3, 'di jual cepat sebuah lukisan', 'lukisan salah satu karya rudi akan dijual dengan harga pantes yang hasilnya akan disumbangkan kepada masyarakat yang terkena bencana alam di sidoarjo', 'lukisan salah satu karya rudi akan dijual dengan harga pantes yang hasilnya akan disumbangkan kepada masyarakat yang terkena bencana alam di sidoarjo\r\nlukisan salah satu karya rudi akan dijual dengan harga pantes yang hasilnya akan disumbangkan kepada masyarakat yang terkena bencana alam di sidoarjo\r\nlukisan salah satu karya rudi akan dijual dengan harga pantes yang hasilnya akan disumbangkan kepada masyarakat yang terkena bencana alam di sidoarjo\r\nlukisan salah satu karya rudi akan dijual dengan harga pantes yang hasilnya akan disumbangkan kepada masyarakat yang terkena bencana alam di sidoarjo\r\nlukisan salah satu karya rudi akan dijual dengan harga pantes yang hasilnya akan disumbangkan kepada masyarakat yang terkena bencana alam di sidoarjo\r\nlukisan salah satu karya rudi akan dijual dengan harga pantes yang hasilnya akan disumbangkan kepada masyarakat yang terkena bencana alam di sidoarjo', '', 'on', '16-03-2008 ; 13:27:09', 'rudi');
+
+-- --------------------------------------------------------
+
+-- 
+-- Struktur dari tabel `tamu`
+-- 
+
+CREATE TABLE `tamu` (
+  `no_id` int(5) NOT NULL auto_increment,
+  `nama` varchar(50) NOT NULL default '',
+  `email` varchar(60) NOT NULL default '',
+  `waktu` varchar(30) NOT NULL default '',
+  `koment` text NOT NULL,
+  PRIMARY KEY  (`no_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=88 ;
+
+-- 
+-- Dumping data untuk tabel `tamu`
+-- 
+
+INSERT INTO `tamu` VALUES (18, ' Eddy Maszudi, S.IP', 'maszudi@yahoo.com', '23-02-2004, 14:41:15', 'Mohon informasi tentang penrimaan CPNS Pemda SLEMAN. Apakah sarjana hubungan internasional bisa menjadi pegawai pemda? Kurang dan lebihnya kami mohon maaf.');
+INSERT INTO `tamu` VALUES (13, 'Rif\\''an Muazin', 'rifanila1@yahoo.com.hk', '24-08-2003, 20:41:06', 'Websitenya bagus juga , ');
+INSERT INTO `tamu` VALUES (14, 'anan', 'anan@email.com', '30-12-2003, 23:32:00', 'tes');
+INSERT INTO `tamu` VALUES (19, '5656', 'ghghghgh@ghghgjgj.kjkhkk', '25-02-2004, 08:20:33', 'rereererereryyy');
+INSERT INTO `tamu` VALUES (20, 'lkadlfolhjfkjsd', 'bnsb@yahoo.com', '26-02-2004, 09:25:07', 'jdlksjf dljshfjhu oeh idsjj asjdj iueir hjdshjh odhfouiue iud8u uwhqeuh uohaudhf jhq8R ;JSAL HRHFIUJER HEHUH JADSHJH0 8U  hjshd uuhasduh uhuer uhasuhdwey hsadh8erjoijdfp jhadsuhu8we hjds dhjkdas kjadksjfir kljdaskjalkjirs kjdasj ;9aieruiowae ijdijuiwuer ijeijidjiuj8wreu kjikdi  ieuriuiwejr isadjoaeuiri asdijiouiaes idijidjsa o;8euw rioasdio o8wuer88t uwo84 weiuiuweai iausdiuijudfidiouasiouaoi;uwroiu iasdiousadiu iurewtiuw8u80ud dosiaoasu isdoaiodfiosa98se idsuiouoas;uoiuaso8u4ti ieiouiue aiusdoiusad88 iodsoiu9 riujisa  i idsauoiasoi sadiuop u08wutr u diooisa 8r isdi iodu78r odsdiuoi diusdi  sdiuiousdfu8w sdo sduf sdaouds sdahfyu08 ofhouhdsu fhsadouh98r euhudshih987 dshuhiusdhfioidsfio we8 rew08u8e8r09i doioiu fp uodsho9dusf iudsiupisdu08 oidsfoi u 89ut odsoijfoiud so dsu iuds f i dsfo sad isdiou08r  ');
+INSERT INTO `tamu` VALUES (21, 'Tesa', 'Tesa70974@yahoo.com', '03-03-2004, 14:07:59', 'pada data pemerintahan/aparatur data kepegawaian khok tahun 2001, ganti dhong dengan yang baru dan tambah data para pejabat di lingkungan pemda sleman. Ok\r\nBravo...Sleman.Go.Id');
+INSERT INTO `tamu` VALUES (22, 'edie suryono', 'edierd@indosat.net.id', '08-03-2004, 09:17:55', '- Ide pemda Sleman memiliki Website adalah bagus,tetapi jangan cuma latah.\r\n- Isinya masih sangat kurang ( status masih undeer construction ) data yang dicantumkan banyak yang ngawur.coba lihat di Potensi Lahan Investasi, bandingkan per kecamatan-desa.Tidak masuk akal khan');
+INSERT INTO `tamu` VALUES (23, 'http://192.168.3.2', 'ada_aja@bkd.sleman', '10-03-2004, 09:52:58', 'Kepada Yth. Bpk. Ir. Sutrisno, MES.Selamat ulang tahun yang ke-53 pada hari ini tanggal 10-03-2004.Semoga panjang umur dan sehat selalu.');
+INSERT INTO `tamu` VALUES (24, 'kelik sumardiyanto', 'kelik_s@yahoo.com', '11-03-2004, 14:24:39', 'Wahhh jan saestu sae kagungane Web sleman meniko..! mBoten nguciwani yen rencang tanglet.monggo dipun lengkapi Petanipun.\r\nmaturnuwun.\r\nwww.kelik.b3.nu');
+INSERT INTO `tamu` VALUES (25, 'farid arfianto', 'f_arfi@yahoo.com', '22-03-2004, 14:02:46', 'Informasi tentang perda pengaturan PKL.Terimakasih.');
+INSERT INTO `tamu` VALUES (26, 'PT. Adhicipta Aksara Sejati', 'aas@otonomnet.com', '24-03-2004, 19:54:53', 'Assalamuaikum Wr,Wb,\r\nHi, perkenalkanlah kami atas nama Panitia COMIC ILLUSTRATION DESIGN (CID) COMPETETION 2004:  Sayembara ? Festival ? Award 2004 yang Insya Allah akan digelar sejak bulan April-September 2004. Mengharap bantuan dari Webmaster situs ini untuk kiranya mengirimkan informasi yang berkaitan dengan Dongeng-Legenda Rakyat setempat, yang kelak akan kami jadikan tema kegiatan CID mendatang. Bagi yang baca Email ini dan mengharapkan informasi lain dapat hubungi kami,up. Eva,Hp.0812.195.2028, Ellia, Hp. 0812.195.2027, Arief, Hp. 0812. 195.2026, Bayu, Hp. 0812.195.2025\r\n');
+INSERT INTO `tamu` VALUES (27, 'Hudi Wahyono', 'hudi@sat.net.id', '26-03-2004, 16:09:08', 'Kami mohon dalam penentuan PUTUSAN di PN. Slmn untuk dapatnya bertindak Arif dan Bijaksana.\r\nSupaya wibawa PN. Slmn tetap terjaga dengan baik.\r\nDemikian terima kasih atas perhatiannya.');
+INSERT INTO `tamu` VALUES (28, 'Arif Sujoko', 'arif_s_99@yahoo.com', '30-03-2004, 14:55:23', 'Saya ingin sekali menawarkan kerjasama dalam bentuk me-maintenance komputer dalam instansi pemerintahan, tapi saya harus berhubungan dengan Bpk/Ibu siapa...mohon bantuannya');
+INSERT INTO `tamu` VALUES (29, 'Andhy Poerwantoro', 'andhy@telkom.net', '30-03-2004, 18:16:30', 'Bagus ya Sleman punya Website yang OK. Boleh nanya nggak ya... saya ada program untuk Pemda, yang barangkali Pemda Sleman belum punya yaitu: Sistim Informasi Manajemen Barang Daerah (Simbada). kalau berminat bisa kontak saya via email. makasih.');
+INSERT INTO `tamu` VALUES (30, 'kaang', 'mailtoextra@yahoo.com', '02-04-2004, 11:52:14', 'Mohon info awal.\r\nTanah kas desa sebetulnya bisa tidak jadi hak milik? bagaimana prosesnya? apakah kolektif?');
+INSERT INTO `tamu` VALUES (31, 'Hijrah Muttaqin', 'm.hijrah@eudoramail.com', '03-04-2004, 21:05:09', 'saya mau cari info tentang padi organik yg dikembangkan di kab sleman khususnya di keca gamping sehubungan dengan adanya rencana penelitian saya. bisa mengenai varietas, pupuk organik, pestisida organik mengenai jenis dan dosis pemakaiannya. sebelumnya saya ucapkan terima kasih');
+INSERT INTO `tamu` VALUES (32, 'abdulsalam', 'abdulsalam@yahoo.com', '06-04-2004, 12:22:15', 'gimana ini aku mau liat data pemilu kok sleman belom ada? wah-wah....katanya on line....?');
+INSERT INTO `tamu` VALUES (33, 'heri', 'heri2002@yahoo.com', '06-04-2004, 13:43:25', 'bagaimana kpu sleman? dimana saya mengetahui hasil perhitungan suara secara on line?');
+INSERT INTO `tamu` VALUES (34, 'yoga', 'yogadln@yahoo.com', '14-04-2004, 09:47:50', 'kenapa blom isi data Simrenas Bappenas. kabupaten lain dah isi. alangkah baiknya sleman.go.id juga ada di Simrenas Bappenas. selain dapat interaksi antar kabupaten juga sebagai forum link antar kabupaten seluruh Indonesia. terima kasih.');
+INSERT INTO `tamu` VALUES (35, 'suyana', 'suyana_didot@yahoo.com', '14-04-2004, 14:27:49', '1. susah sekali masuk web site pemerintah kabupaten sleman\r\n2. susah sekali masuk ke surat warga\r\n3. kami mengeluh parkir dan pedagang di pasar stan maguwoharjo pasca pelebaran, mohon pemerintah desa segera menertibkan jangan hanya menarik retribusinya tetapi mengabaikan kepentingan umum/pengguna jalan. apa harus nunggu terjadi kecelakaan. Tolong lurah yang baru ditugaskan hal itu 100 hari pertama setelah dilantik harus dapat menyelesaikan parkir dan kesemarwutan pedagang pasar stan maguwoharjo serta penyelesaian pembebasan tanah pelebaran akses menuju stadion baru.\r\n4. segera diselesaikan jalan dari smk depok sampai tajem karena saat ini proyek berhenti tetapi beberapa penggal tanggung penyelesaiannya bahkan membahayakan pengguna jalan. \r\n5. terima kasih ');
+INSERT INTO `tamu` VALUES (44, 'dody s. m', 'dodysmawardi@yahoo.com', '24-04-2004, 10:37:42', 'Saya adalah mahasiswa Univ. Widya Gama Malang, mohon info mengenai penerapan sistem akuntansi pemerintah daerah di Sleman.');
+INSERT INTO `tamu` VALUES (37, 'Alexander agung', 'Alex@alex.com', '15-04-2004, 13:20:57', 'Pembangunan stadion di dusun jenengan harap dipercepat! Karena PSS sudah kebelet main!\r\n\r\nSlemania\r\n');
+INSERT INTO `tamu` VALUES (38, 'Ragil Kasianto Niti Putro,S.Hut', 'ragilas_97@yahoo.com', '16-04-2004, 09:57:16', 'Secara pribadi, saya sangat salut dengan pemerintah Kab. Sleman. Luar biasa, potensinya sangat tinggi.Semoga Sleman tetap lestari artinya harus seimbang dalam upaya pengelolaan SDA.Saya tahu bahwa posisin Sleman memang sangat strategis sehingga kampus+sekolahan banyak berdiri di tanah Kab. Sleman. Pesan saya \\"jangan terbuai dengan potensi yang melimpah karena apabila salah mengelola akan fatal akibatnya, dan pertanggungjawaban pemerintah Kab. Sleman akan dibebankan pada siapa?\r\n\r\nHormat saya');
+INSERT INTO `tamu` VALUES (39, 'kupiya', 'kupiya@eudoramail.com', '16-04-2004, 15:09:35', 'Kagem Bp. Pengelola web-e sleman\r\n\r\nPak web, profil setiap kecamatn kok ga ono yo ..? jan-2 ne yen diisi kan lumayan buat meliat-2 perkembangan kampoeng halaman.\r\n\r\nMekaten rumiyin Pak,..');
+INSERT INTO `tamu` VALUES (40, 'yusuf', 'adifitrah@maktoob.com', '19-04-2004, 14:10:40', 'Info buat warga Sleman: Anda pengguna ponsel? Kini ada cara cerdas dan bijak isi ulang pulsa. Minimal bisa menutup anggaran belanja pulsa anda. Minimal bisa mendapat penghasilan jutaan per bulan. Segera kunjungi www.pulsaol.cjb.net');
+INSERT INTO `tamu` VALUES (41, 'amron', 'amron@solonet.co.id', '20-04-2004, 12:35:31', 'saya mo nanyain ttg komoditi salak disleman yg utamakan salak pondoh trus varietas yg laen apa aja?trus kalo bs mbok data dr BPS ttg jml luas areal tanam salak brp?jml komoditi salak per th brp harga rata2 brp dan bgmn penanganan pasca panennya?apa dah ditangani scr profsnl pa msh tradisional dan dibuat produk apa aja?tlg sgr dijawab ya aku butuh bgt nih');
+INSERT INTO `tamu` VALUES (42, 'Wildan Prayitno', 'maswildan@hotmail.com', '21-04-2004, 11:55:48', 'Assalamualaiukm Wr. Wb.\r\nSemoga bapak Bupati dan keluarga dalam lindungan Allah SWT. Amin. Kalau ke Singapore silakan call saya atau tidur dirumah dinas kami turun tangga sudah orchard road. Telp saya 67374774 alamat 2 Jl. Jintan Singapore 229002.\r\nSemoga sukses dalam berkarya dan Sleman menjadi kabupaten yang berhasil.\r\nWassalam. Wildan Prayitno dan keluarga.');
+INSERT INTO `tamu` VALUES (43, 'heni', 'telo_pohung@hotmail.com', '21-04-2004, 14:48:32', 'saya senang dpt bergabung');
+INSERT INTO `tamu` VALUES (45, 'yunondro', 'haryadi@ukdw.ac.id', '26-04-2004, 08:00:55', 'website banyak kemajuan dan sudah cepat diakses. Kalau bisa ditambahkan versi cetaknya, (misalnya perda dan artikel2 lain) sehingga mudah disebarluaskan kepada masyarakat Sleman yang belum sempat menggunakan fasilitas internet.\r\n\r\ntrim\\''s');
+INSERT INTO `tamu` VALUES (46, 'mas bekti', 'bekti_ak@plasa.com', '26-04-2004, 13:17:31', 'Dalem saweg meniko sowan wonten situs Sleman. Mongkog raos manah awit Kampung dalem sampun majeng makaten. Dalem bade usul mas ngengingi punggowa kalurahan ingkang sampun karaos dangu mboten pun isi mugi saget enggal dipun isi awit saget nemahi kawontenan ingkang mboten sae. Khususipun wonten kalurahan tratah Kecamatan Cangkringan meniko lho mas. matur nuwun nyuwun gunging  samudro pangaksami     ');
+INSERT INTO `tamu` VALUES (47, 'Istamar', 'tintan73@telkom.net', '27-04-2004, 07:29:04', 'SELAMAT YA ATAS HADIRNYA SITUS anda kami jadi mengerti bagaimana SLEMAN itu ! dan web sleman sanggat indah dan menarik >>> GOD LUCK ');
+INSERT INTO `tamu` VALUES (48, 'zahara', 'blue_hater@yahoo.com', '05-05-2004, 15:49:50', 'sekedar melihat situs ini aja sebagai bahan masukan untuk skripsi saya tentang yogya');
+INSERT INTO `tamu` VALUES (49, 'Basunjaya', 'basunjaya@yahoo.com', '12-05-2004, 09:26:00', 'Mohon petunjuk pak bagaimana caranya, misal :proses persidangan masih berjalan sudah sampai tahapan ke XI dan saya menemukan kejanggalan bukti tertulis dari Penggugat yaitu wasiat yang ternyata pada tanda tangan ada 2 yang dipalsukan (pemberi wasiat dan 1 diantara 2 saksi dlm wasiat itu)apakah bisa langsung Kepolisian atau kebijakan PN.Slmn secara otomatis melimpahkan pada yang berwenang.\r\nDemikian atas perhatian dan kebijaksanaannya terima kasih kami ucapkan.');
+INSERT INTO `tamu` VALUES (50, 'm. syarief al-ghofur', 'maezars@yahoo.com', '12-05-2004, 19:16:20', 'assalamualaikum,\r\naku bercita-cita tinggal dan menetap dikotamu wahai sleman sembada. aku ucapkan selamat hari jadi kota sleman, semoga tambah makmur dalam semua sisi kehidupan. amin.');
+INSERT INTO `tamu` VALUES (51, 'Hudi Wahyono', 'hudi@sat.net.id', '15-05-2004, 10:01:13', 'Kami atas nama warga Desa Keringan, Turi, Sleman, Yk mengucapkan \\" SELAMAT ULTAH KABUPATEN SLEMAN yang ke 88 \\" semoga Sleman tetap maju, dengan berbagai bidang yang menjadi aset daerahnya.Dan Saya yakin Kabupaten Sleman tidak kalah dengan Kabupaten lainnya, bahkan perasaan saya bahkan menjadi percontohan Kabupaten yang lain. Insya! Alloh.');
+INSERT INTO `tamu` VALUES (52, 'Ciko', 'matrixsurabaya@yahoo.com', '16-05-2004, 13:37:12', 'Bagus dan variatif');
+INSERT INTO `tamu` VALUES (53, 'Sigit Handoko,SHI', 'sigit272002@yahoo.com', '23-05-2004, 21:39:55', 'Tentang pengurusan izin mendirikan bangunan. Saya sudah memulai poroses pengajuan izin sampai sekarang sudah hampir 6 bulan kok bellum jadi. Padahal dulu katanya proses cepat saya sampai diberi no telpon kantor untuk menanyakan apa sudah jadi. Trus gimana ini pelayanannya ke publikk? mohon dimengerti. Alamat Jln Monjali km 1 Karang Jati Rt 19 Rw 42, Sinduadi, Mlati Telp 08122961304');
+INSERT INTO `tamu` VALUES (54, 'Dhanang Bagus Jatmiko', 'miko_dhan@plasa.com', '25-05-2004, 08:56:21', 'Mohon diberikan informasi tentang lowongan di Pemda Sleman dan Lowongan yang ada di daerah Sleman');
+INSERT INTO `tamu` VALUES (55, 'lianto', 'lianto@yahoo.com', '26-05-2004, 01:26:15', 'website yang simple, namun gampang di akses, sayangnya informasi tentang informasi produksi daerah ini tidak ada, hanya ada statistiknya. padahal mungkin banyak orang akses kesini untuk mencari produksi tertentu.tolong diupgrade lagi. terima kasih.');
+INSERT INTO `tamu` VALUES (56, 'GATOT HARIYANTO.ST.MT', 'gatjogja@yahoo.com', '27-05-2004, 10:05:55', 'Kepada yang terhormat,\r\nBapak.Bupati\r\n\r\n1). Kami warga jalan kaliurang, sekarang sangat prihatin/kuatir sekali, karena jalan kaliurang dari jl.Apotik kentungan sampai UII. sering terjadi kecelakaan..sampai ngeri juga kalo sampai meninggal.\r\n2). Kami mohon dibuatlah rambu2 lalu lintas..memang ini bukan tugas bapak..tapi mohon perhatian bapak.');
+INSERT INTO `tamu` VALUES (57, 'pgt', 'gatjogja@yahoo.com', '28-05-2004, 09:24:04', 'Kpd:\r\nBpk.Bupati\r\n\r\nTolong dong surat-surat yang masuk ditanggapi.\r\nDan usuljuga para kepala dinas dibuatkan email, biar kita bisa saling memberi masukan.\r\nUntuk Anggota DPRD juga wajib memiliki email...orang kecil ini dulu capek lho,belain anda-anda dan sekarang saatnya anda dikontrol rakyat..selamat bekerja. ');
+INSERT INTO `tamu` VALUES (58, 'm. syarief al-ghofur', 'maezars@yahoo.com', '28-05-2004, 19:29:13', 'senang sekali membuka web site sleman ini, terus mbangun dan berkarya untuk kesejahteraan seluruh lapisan masyarakat. \r\n');
+INSERT INTO `tamu` VALUES (59, 'Triyadi Sumantri', 'triya70974@yahoo.com', '31-05-2004, 12:39:34', 'mohon up date terbaru tiap ada  pelantikan pejabat di lingkungan Pemda Sleman.\r\nAtas perhatiannya disampaikan terima kasih\r\n\r\n');
+INSERT INTO `tamu` VALUES (60, 'Junaidi', 'web@mqbiz.com', '31-05-2004, 16:21:36', ':) K.H Abdullah Gymnastiar [ Aa Gym ] mengajak seluruh warga Sleman termasuk Bp.Bupati, Staff & Jajaran Direksi Pemerintahan, Para Pengusaha dan seluruh warga sleman untuk menciptakan kewirausahaan mandiri, mari membangun bangsa dengan kewirausahaan, ciptakan lapangan kerja mandiri. Berwirausaha bersama Aa Gym di Bisnis MQ net, informasi selengkapnya tentang bisnis ini ada di situs web http://www.MQbiz.com\r\n');
+INSERT INTO `tamu` VALUES (61, 'Sugeng Harjo', 'sugeng@pontianak.go.id', '02-06-2004, 12:11:45', '\r\nAss.ww.Dg.hormat,\r\n\r\nKepada pengelola website Kabupaten Sleman kami ucapkan salamat,tampilan dan kelengkapan datanya memadai.\r\n\r\nSaya dari Kantor Iinformasi dan Komuniskasi Kota Pontianak.\r\nSuatu saatakan mengunjungi Sleman,untuk study banding\r\n\r\nTrima kasih Wassallam ww.');
+INSERT INTO `tamu` VALUES (62, 'lejar penggalih', 'l374r@yahoo.com', '04-06-2004, 21:15:05', '    Assalamualaiku.wr.wb                  sebelumnya saya ucapkan terimakasih pada pemda sleman yang telah membuka situs sleman.     keberadaan situs ini berarti sekali bagi saya ,karena bisa sebagai obat kangen saya terhadap kab sleman yang  tak lain dan tak bukan adalah tempat lahir saya.                                  kini saya berada di luar negeri ,ya sebagai tki ,sebagai warga sleman tentunya juga akan berharap dan terus berharap agar sleman tambah maju.                                  itu saja harapan saya ,sekali lagi saya ucapkan terima kasih.       wassalam.....');
+INSERT INTO `tamu` VALUES (63, 'petrus sumadiyana', 'adiy_petra@yahoo.com', '14-06-2004, 09:29:23', 'kok belum semua candi/tempat wisata ditulis disini, mis: candi gebang, candi kedulan, monumen plataran, dll.\r\numbul pajangan wedomartani itu bagus untuk dikembangkan sebagai tempat wisata lho, dan yang lebih hebat lagi bukit turgo, alangkah megahnya kalau turgo dihubungkan kaliurang dengan jembatan gantung, pasti menjadi pesona wisata yang sangat menakjubkan.\r\n\r\nsalam hangat dari saya pecinta wisata.');
+INSERT INTO `tamu` VALUES (77, ' anwar', 'assa@aka.com', '19-08-2004, 22:21:07', 'apa kabar');
+INSERT INTO `tamu` VALUES (78, 'anwar', 'anwar@yahoo.com', '19-08-2004, 22:30:16', 'pesan buat pak webmaster :\r\n\r\n1.  tampian bagus\r\n2.  berita diupdate ya\r\n3.  dl\r\n\r\nterima kasih\r\n');
+INSERT INTO `tamu` VALUES (66, 'tyas', 'tyasenka@yahoo.com', '18-06-2004, 01:13:37', 'kenalan ');
+INSERT INTO `tamu` VALUES (68, 'eko', 'eko@rekabio.com', '22-06-2004, 14:39:38', 'Dengan Hormat,\r\n\r\nDengan ini kami dari pt rekayasa biometrika ingin menawarkan produk mesin absensi yang tepat cepat akurat dan komputerisasi,untuk informasi lengkap kunjungi kami di http://www.rekabio.com');
+INSERT INTO `tamu` VALUES (79, '&lt;marquee&gt;tes&lt;/marquee&gt;', 'asgas@yahoo.com', '19-08-2004, 22:52:42', 'tes');
+INSERT INTO `tamu` VALUES (71, 'bagus bramantyo', 'Bagus_46@yahoo.com', '29-06-2004, 13:07:30', 'Mohon untuk di update:\r\n1. Data anak asuh dan pantai asuhan\r\n2. Data penyandang cacat\r\ndan Data kependudukan mohon ditambahkan tentang pendduduk miskin (ekonomi lemah)\r\nserta data pendidikan untuk anak pintar kurang mampu biaya sekolah.\r\n\r\n');
+INSERT INTO `tamu` VALUES (80, '&lt;img src='''' width=5000 height=1000&gt;', 'asgas@yahoo.com', '19-08-2004, 22:53:27', 'tes');
+INSERT INTO `tamu` VALUES (84, 'kena tipu', 'kena@tipu.hom', '11-08-2006, 00:09:02', 'jing jing tes...');
+INSERT INTO `tamu` VALUES (86, 'yuki', 'neng_jayuz@yahoo.com', '21-10-2007, 23:05:23', 'alauuu h-ny');
+        
